@@ -37,7 +37,7 @@ is
 --  // User data
 --
 --  /// You can define this to inject whatever data you want in b2Body
---  struct B2_API b2BodyUserData
+   -- struct b2BodyUserData
 --  {
 --    b2BodyUserData()
 --    {
@@ -49,7 +49,7 @@ is
 --  };
 --
 --  /// You can define this to inject whatever data you want in b2Fixture
---  struct B2_API b2FixtureUserData
+   -- struct b2FixtureUserData
 --  {
 --    b2FixtureUserData()
 --    {
@@ -61,7 +61,7 @@ is
 --  };
 --
 --  /// You can define this to inject whatever data you want in b2Joint
---  struct B2_API b2JointUserData
+   -- struct b2JointUserData
 --  {
 --    b2JointUserData()
 --    {
@@ -75,8 +75,8 @@ is
 --  // Memory Allocation
 --
 --  /// Default allocation functions
---  B2_API void* b2Alloc_Default(int32 size);
---  B2_API void b2Free_Default(void* mem);
+   -- void* b2Alloc_Default(int32 size);
+   -- void b2Free_Default(void* mem);
 --
 --  /// Implement this function to use your own memory allocator.
 --  inline void* b2Alloc(int32 size)
@@ -91,7 +91,7 @@ is
 --  }
 --
 --  /// Default logging function
---  B2_API void b2Log_Default(const char* string, va_list args);
+   -- void b2Log_Default(const char* string, va_list args);
 --
 --  /// Implement this to use your own logging.
 --  inline void b2Log(const char* string, ...)

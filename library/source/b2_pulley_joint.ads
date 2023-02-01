@@ -12,7 +12,7 @@ is
 --
 --  /// Pulley joint definition. This requires two ground anchors,
 --  /// two dynamic body anchor points, and a pulley ratio.
---  struct B2_API b2PulleyJointDef : public b2JointDef
+--  struct b2PulleyJointDef : public b2JointDef
 --  {
 --    b2PulleyJointDef()
 --    {
@@ -63,7 +63,7 @@ is
 --  /// work better when combined with prismatic joints. You should also cover the
 --  /// the anchor points with static shapes to prevent one side from going to
 --  /// zero length.
---  class B2_API b2PulleyJoint : public b2Joint
+--  class b2PulleyJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;

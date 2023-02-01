@@ -7,7 +7,7 @@ is
 
    --
 --  /// Profiling data. Times are in milliseconds.
---  struct B2_API b2Profile
+--  struct b2Profile
 --  {
 --    float step;
 --    float collide;
@@ -20,7 +20,7 @@ is
 --  };
 --
 --  /// This is an internal structure.
---  struct B2_API b2TimeStep
+--  struct b2TimeStep
 --  {
 --    float dt;         // time step
 --    float inv_dt;     // inverse time step (0 if dt == 0).
@@ -31,21 +31,21 @@ is
 --  };
 --
 --  /// This is an internal structure.
---  struct B2_API b2Position
+--  struct b2Position
 --  {
 --    b2Vec2 c;
 --    float a;
 --  };
 --
 --  /// This is an internal structure.
---  struct B2_API b2Velocity
+--  struct b2Velocity
 --  {
 --    b2Vec2 v;
 --    float w;
 --  };
 --
 --  /// Solver Data
---  struct B2_API b2SolverData
+--  struct b2SolverData
 --  {
 --    b2TimeStep step;
 --    b2Position* positions;

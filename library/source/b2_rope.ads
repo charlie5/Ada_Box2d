@@ -28,7 +28,7 @@ is
 --  };
 --
 --  ///
---  struct B2_API b2RopeTuning
+--  struct b2RopeTuning
 --  {
 --    b2RopeTuning()
 --    {
@@ -59,7 +59,7 @@ is
 --  };
 --
 --  ///
---  struct B2_API b2RopeDef
+--  struct b2RopeDef
 --  {
 --    b2RopeDef()
 --    {
@@ -79,7 +79,7 @@ is
 --  };
 --
 --  ///
---  class B2_API b2Rope
+--  class b2Rope
 --  {
 --  public:
 --    b2Rope();

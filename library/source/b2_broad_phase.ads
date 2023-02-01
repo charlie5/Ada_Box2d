@@ -10,7 +10,7 @@ is
 
 
 --
---  struct B2_API b2Pair
+--  struct b2Pair
 --  {
 --    int32 proxyIdA;
 --    int32 proxyIdB;
@@ -19,7 +19,7 @@ is
 --  /// The broad-phase is used for computing pairs and performing volume queries and ray casts.
 --  /// This broad-phase does not persist pairs. Instead, this reports potentially new pairs.
 --  /// It is up to the client to consume the new pairs and to track subsequent overlap.
---  class B2_API b2BroadPhase
+--  class b2BroadPhase
 --  {
 --  public:
 --

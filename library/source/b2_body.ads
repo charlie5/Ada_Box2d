@@ -31,7 +31,7 @@ is
 --
 --  /// A body definition holds all the data needed to construct a rigid body.
 --  /// You can safely re-use body definitions. Shapes are added to a body after construction.
---  struct B2_API b2BodyDef
+--  struct b2BodyDef
 --  {
 --    /// This constructor sets the body definition default values.
 --    b2BodyDef()
@@ -107,7 +107,7 @@ is
 --  };
 --
 --  /// A rigid body. These are created via b2World::CreateBody.
---  class B2_API b2Body
+--  class b2Body
 --  {
 --  public:
 --    /// Creates a fixture and attach it to this body. Use this function if you need

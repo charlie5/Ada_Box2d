@@ -16,7 +16,7 @@ is
 --  class b2Fixture;
 --
 --  /// This holds contact filtering data.
---  struct B2_API b2Filter
+--  struct b2Filter
 --  {
 --    b2Filter()
 --    {
@@ -40,7 +40,7 @@ is
 --
 --  /// A fixture definition is used to create a fixture. This class defines an
 --  /// abstract fixture definition. You can reuse fixture definitions safely.
---  struct B2_API b2FixtureDef
+--  struct b2FixtureDef
 --  {
 --    /// The constructor sets the default fixture definition values.
 --    b2FixtureDef()
@@ -82,7 +82,7 @@ is
 --  };
 --
 --  /// This proxy is used internally to connect fixtures to the broad-phase.
---  struct B2_API b2FixtureProxy
+--  struct b2FixtureProxy
 --  {
 --    b2AABB aabb;
 --    b2Fixture* fixture;
@@ -95,7 +95,7 @@ is
 --  /// such as friction, collision filters, etc.
 --  /// Fixtures are created via b2Body::CreateFixture.
 --  /// @warning you cannot reuse fixtures.
---  class B2_API b2Fixture
+--  class b2Fixture
 --  {
 --  public:
 --    /// Get the type of the child shape. You can use this to down cast to the concrete shape.

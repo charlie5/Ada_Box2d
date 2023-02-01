@@ -10,7 +10,7 @@ is
    --
 --  /// Mouse joint definition. This requires a world target point,
 --  /// tuning parameters, and the time step.
---  struct B2_API b2MouseJointDef : public b2JointDef
+--  struct b2MouseJointDef : public b2JointDef
 --  {
 --    b2MouseJointDef()
 --    {
@@ -44,7 +44,7 @@ is
 --  /// NOTE: this joint is not documented in the manual because it was
 --  /// developed to be used in the testbed. If you want to learn how to
 --  /// use the mouse joint, look at the testbed.
---  class B2_API b2MouseJoint : public b2Joint
+--  class b2MouseJoint : public b2Joint
 --  {
 --  public:
 --

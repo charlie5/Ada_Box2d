@@ -9,7 +9,7 @@ is
 
    --
 --  /// Friction joint definition.
---  struct B2_API b2FrictionJointDef : public b2JointDef
+--  struct b2FrictionJointDef : public b2JointDef
 --  {
 --    b2FrictionJointDef()
 --    {
@@ -39,7 +39,7 @@ is
 --
 --  /// Friction joint. This is used for top-down friction.
 --  /// It provides 2D translational friction and angular friction.
---  class B2_API b2FrictionJoint : public b2Joint
+--  class b2FrictionJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;

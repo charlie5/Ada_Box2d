@@ -14,7 +14,7 @@ is
 --  /// can violate the constraint slightly. The joint translation is zero
 --  /// when the local anchor points coincide in world space. Using local
 --  /// anchors and a local axis helps when saving and loading a game.
---  struct B2_API b2WheelJointDef : public b2JointDef
+--  struct b2WheelJointDef : public b2JointDef
 --  {
 --    b2WheelJointDef()
 --    {
@@ -74,7 +74,7 @@ is
 --  /// along an axis fixed in bodyA and rotation in the plane. In other words, it is a point to
 --  /// line constraint with a rotational motor and a linear spring/damper. The spring/damper is
 --  /// initialized upon creation. This joint is designed for vehicle suspensions.
---  class B2_API b2WheelJoint : public b2Joint
+--  class b2WheelJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;

@@ -10,7 +10,7 @@ is
 
    --
 --  /// Input parameters for b2TimeOfImpact
---  struct B2_API b2TOIInput
+--  struct b2TOIInput
 --  {
 --    b2DistanceProxy proxyA;
 --    b2DistanceProxy proxyB;
@@ -20,7 +20,7 @@ is
 --  };
 --
 --  /// Output parameters for b2TimeOfImpact.
---  struct B2_API b2TOIOutput
+--  struct b2TOIOutput
 --  {
 --    enum State
 --    {
@@ -40,6 +40,6 @@ is
 --  /// non-tunneling collisions. If you change the time interval, you should call this function
 --  /// again.
 --  /// Note: use b2Distance to compute the contact point and normal at the time of impact.
---  B2_API void b2TimeOfImpact(b2TOIOutput* output, const b2TOIInput* input);
+--  void b2TimeOfImpact(b2TOIOutput* output, const b2TOIInput* input);
 --
 end b2_Time_of_impact;

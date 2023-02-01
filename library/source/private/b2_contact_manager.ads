@@ -14,7 +14,7 @@ is
 --  class b2BlockAllocator;
 --
 --  // Delegate of b2World.
---  class B2_API b2ContactManager
+--  class b2ContactManager
 --  {
 --  public:
 --    b2ContactManager();

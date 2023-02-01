@@ -113,6 +113,6 @@ is
 --  };
 --
 --  /// Current version.
---  extern B2_API b2Version b2_version;
+--  extern b2Version b2_version;
 --
 end b2_Common;

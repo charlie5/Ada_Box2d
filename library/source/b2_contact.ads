@@ -43,7 +43,7 @@ is
 --                               b2BlockAllocator* allocator);
 --  typedef void b2ContactDestroyFcn(b2Contact* contact, b2BlockAllocator* allocator);
 --
---  struct B2_API b2ContactRegister
+--  struct b2ContactRegister
 --  {
 --    b2ContactCreateFcn* createFcn;
 --    b2ContactDestroyFcn* destroyFcn;
@@ -55,7 +55,7 @@ is
 --  /// is an edge. A contact edge belongs to a doubly linked list
 --  /// maintained in each attached body. Each contact has two contact
 --  /// nodes, one for each attached body.
---  struct B2_API b2ContactEdge
+--  struct b2ContactEdge
 --  {
 --    b2Body* other;       ///< provides quick access to the other body attached.
 --    b2Contact* contact;     ///< the contact
@@ -66,7 +66,7 @@ is
 --  /// The class manages contact between two shapes. A contact exists for each overlapping
 --  /// AABB in the broad-phase (except if filtered). Therefore a contact object may exist
 --  /// that has no contact points.
---  class B2_API b2Contact
+--  class b2Contact
 --  {
 --  public:
 --

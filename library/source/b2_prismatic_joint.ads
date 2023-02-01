@@ -14,7 +14,7 @@ is
 --  /// can violate the constraint slightly. The joint translation is zero
 --  /// when the local anchor points coincide in world space. Using local
 --  /// anchors and a local axis helps when saving and loading a game.
---  struct B2_API b2PrismaticJointDef : public b2JointDef
+--  struct b2PrismaticJointDef : public b2JointDef
 --  {
 --    b2PrismaticJointDef()
 --    {
@@ -70,7 +70,7 @@ is
 --  /// along an axis fixed in bodyA. Relative rotation is prevented. You can
 --  /// use a joint limit to restrict the range of motion and a joint motor to
 --  /// drive the motion or to model joint friction.
---  class B2_API b2PrismaticJoint : public b2Joint
+--  class b2PrismaticJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;

@@ -15,7 +15,7 @@ is
 --  /// This provides a counter-clockwise winding like the polygon shape.
 --  /// Connectivity information is used to create smooth collisions.
 --  /// @warning the chain will not collide properly if there are self-intersections.
---  class B2_API b2ChainShape : public b2Shape
+--  class b2ChainShape : public b2Shape
 --  {
 --  public:
 --    b2ChainShape();

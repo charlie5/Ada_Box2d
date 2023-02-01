@@ -12,7 +12,7 @@ is
 --  /// bodies and the non-zero distance of the distance joint. The definition uses
 --  /// local anchor points so that the initial configuration can violate the
 --  /// constraint slightly. This helps when saving and loading a game.
---  struct B2_API b2DistanceJointDef : public b2JointDef
+--  struct b2DistanceJointDef : public b2JointDef
 --  {
 --    b2DistanceJointDef()
 --    {
@@ -55,7 +55,7 @@ is
 --
 --  /// A distance joint constrains two points on two bodies to remain at a fixed
 --  /// distance from each other. You can view this as a massless, rigid rod.
---  class B2_API b2DistanceJoint : public b2Joint
+--  class b2DistanceJoint : public b2Joint
 --  {
 --  public:
 --

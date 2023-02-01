@@ -13,7 +13,7 @@ is
 
    --
 --  // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
---  B2_API int32 b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;
+--  int32 b2_gjkCalls, b2_gjkIters, b2_gjkMaxIters;
 --
 --  void b2DistanceProxy::Set(const b2Shape* shape, int32 index)
 --  {

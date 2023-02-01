@@ -8,7 +8,7 @@ is
 
 
    --  /// A solid circle shape
---  class B2_API b2CircleShape : public b2Shape
+--  class b2CircleShape : public b2Shape
 --  {
 --  public:
 --    b2CircleShape();

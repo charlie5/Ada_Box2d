@@ -11,7 +11,7 @@ is
 --  /// Weld joint definition. You need to specify local anchor points
 --  /// where they are attached and the relative body angle. The position
 --  /// of the anchor points is important for computing the reaction torque.
---  struct B2_API b2WeldJointDef : public b2JointDef
+--  struct b2WeldJointDef : public b2JointDef
 --  {
 --    b2WeldJointDef()
 --    {
@@ -48,7 +48,7 @@ is
 --
 --  /// A weld joint essentially glues two bodies together. A weld joint may
 --  /// distort somewhat because the island constraint solver is approximate.
---  class B2_API b2WeldJoint : public b2Joint
+--  class b2WeldJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;

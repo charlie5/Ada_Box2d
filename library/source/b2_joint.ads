@@ -30,7 +30,7 @@ is
 --    e_motorJoint
 --  };
 --
---  struct B2_API b2Jacobian
+--  struct b2Jacobian
 --  {
 --    b2Vec2 linear;
 --    float angularA;
@@ -42,7 +42,7 @@ is
 --  /// is an edge. A joint edge belongs to a doubly linked list
 --  /// maintained in each attached body. Each joint has two joint
 --  /// nodes, one for each attached body.
---  struct B2_API b2JointEdge
+--  struct b2JointEdge
 --  {
 --    b2Body* other;       ///< provides quick access to the other body attached.
 --    b2Joint* joint;         ///< the joint
@@ -51,7 +51,7 @@ is
 --  };
 --
 --  /// Joint definitions are used to construct joints.
---  struct B2_API b2JointDef
+--  struct b2JointDef
 --  {
 --    b2JointDef()
 --    {
@@ -78,18 +78,18 @@ is
 --  };
 --
 --  /// Utility to compute linear stiffness values from frequency and damping ratio
---  B2_API void b2LinearStiffness(float& stiffness, float& damping,
+--  void b2LinearStiffness(float& stiffness, float& damping,
 --    float frequencyHertz, float dampingRatio,
 --    const b2Body* bodyA, const b2Body* bodyB);
 --
 --  /// Utility to compute rotational stiffness values frequency and damping ratio
---  B2_API void b2AngularStiffness(float& stiffness, float& damping,
+--  void b2AngularStiffness(float& stiffness, float& damping,
 --    float frequencyHertz, float dampingRatio,
 --    const b2Body* bodyA, const b2Body* bodyB);
 --
 --  /// The base joint class. Joints are used to constraint two bodies together in
 --  /// various fashions. Some joints also feature limits and motors.
---  class B2_API b2Joint
+--  class b2Joint
 --  {
 --  public:
 --

@@ -25,7 +25,7 @@ is
 --  /// The world class manages all physics entities, dynamic simulation,
 --  /// and asynchronous queries. The world also contains efficient memory
 --  /// management facilities.
---  class B2_API b2World
+--  class b2World
 --  {
 --  public:
 --    /// Construct a world object.

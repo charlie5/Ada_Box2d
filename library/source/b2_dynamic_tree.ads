@@ -12,7 +12,7 @@ is
 --  #define b2_nullNode (-1)
 --
 --  /// A node in the dynamic tree. The client does not interact with this directly.
---  struct B2_API b2TreeNode
+--  struct b2TreeNode
 --  {
 --    bool IsLeaf() const
 --    {
@@ -47,7 +47,7 @@ is
 --  /// object to move by small amounts without triggering a tree update.
 --  ///
 --  /// Nodes are pooled and relocatable, so we use node indices rather than pointers.
---  class B2_API b2DynamicTree
+--  class b2DynamicTree
 --  {
 --  public:
 --    /// Constructing the tree initializes the node pool.

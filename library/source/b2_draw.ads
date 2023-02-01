@@ -9,7 +9,7 @@ is
 
    --
 --  /// Color for debug drawing. Each value has the range [0,1].
---  struct B2_API b2Color
+--  struct b2Color
 --  {
 --    b2Color() {}
 --    b2Color(float rIn, float gIn, float bIn, float aIn = 1.0f)
@@ -27,7 +27,7 @@ is
 --
 --  /// Implement and register this class with a b2World to provide debug drawing of physics
 --  /// entities in your game.
---  class B2_API b2Draw
+--  class b2Draw
 --  {
 --  public:
 --    b2Draw();
