@@ -27,6 +27,7 @@ is
 
    Compiler_Options :=   ("-gnat12",
                           "-gnatwa",
+                          "-gnatwU",  -- Suppress 'Unreferenced' warnings (temp way to stop flood of these warnings).
                           "-fno-strict-aliasing")
                         & Style_Options;
 
