@@ -2,7 +2,13 @@
 --  #include "box2d/b2_draw.h"
 --  #include "box2d/b2_distance_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_distance_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // 1-D constrained system
 --  // m (v2 - v1) = lambda
 --  // v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
@@ -397,3 +403,4 @@
 --       }
 --    }
 --  }
+end b2_distance_Joint;

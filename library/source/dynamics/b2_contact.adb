@@ -15,7 +15,13 @@
 --  #include "box2d/b2_shape.h"
 --  #include "box2d/b2_time_of_impact.h"
 --  #include "box2d/b2_world.h"
---
+
+package body b2_Contact
+is
+   procedure dummy is null;
+
+
+   --
 --  b2ContactRegister b2Contact::s_registers[b2Shape::e_typeCount][b2Shape::e_typeCount];
 --  bool b2Contact::s_initialized = false;
 --
@@ -228,3 +234,4 @@
 --       listener->PreSolve(this, &oldManifold);
 --    }
 --  }
+end b2_Contact;

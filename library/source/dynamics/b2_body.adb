@@ -6,7 +6,13 @@
 --
 --  #include <new>
 --
---  b2Body::b2Body(const b2BodyDef* bd, b2World* world)
+
+package body b2_Body
+is
+   procedure dummy is null;
+
+
+   --  b2Body::b2Body(const b2BodyDef* bd, b2World* world)
 --  {
 --    b2Assert(bd->position.IsValid());
 --    b2Assert(bd->linearVelocity.IsValid());
@@ -541,3 +547,4 @@
 --    }
 --    b2Dump("}\n");
 --  }
+end b2_Body;

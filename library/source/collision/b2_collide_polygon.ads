@@ -1,9 +1,9 @@
 --  #include "box2d/b2_collision.h"
 --  #include "box2d/b2_polygon_shape.h"
 
-package body b2_collide_Polygon
+package b2_collide_Polygon
 is
-   procedure dummy is null;
+   procedure dummy;
 
 
    --

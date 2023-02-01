@@ -2,7 +2,13 @@
 --  #include "box2d/b2_draw.h"
 --  #include "box2d/b2_wheel_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_wheel_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Linear constraint (point-to-line)
 --  // d = pB - pA = xB + rB - xA - rA
 --  // C = dot(ay, d)
@@ -648,3 +654,4 @@
 --    draw->DrawPoint(pA, 5.0f, c1);
 --    draw->DrawPoint(pB, 5.0f, c4);
 --  }
+end b2_wheel_Joint;

@@ -2,7 +2,13 @@
 --  #include "box2d/b2_draw.h"
 --  #include "box2d/b2_revolute_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_revolute_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Point-to-point constraint
 --  // C = p2 - p1
 --  // Cdot = v2 - v1
@@ -477,3 +483,4 @@
 --    draw->DrawSegment(pA, pB, color);
 --    draw->DrawSegment(xfB.p, pB, color);
 --  }
+end b2_revolute_Joint;

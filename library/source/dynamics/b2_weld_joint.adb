@@ -1,7 +1,13 @@
 --  #include "box2d/b2_body.h"
 --  #include "box2d/b2_time_step.h"
 --  #include "box2d/b2_weld_joint.h"
---
+
+package body b2_weld_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Point-to-point constraint
 --  // C = p2 - p1
 --  // Cdot = v2 - v1
@@ -320,3 +326,4 @@
 --    b2Dump("  jd.damping = %.9g;\n", m_damping);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
+end b2_weld_Joint;

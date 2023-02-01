@@ -2,7 +2,12 @@
 --  #include "box2d/b2_rope.h"
 --
 --  #include <stdio.h>
---
+
+package body b2_Rope
+is
+   procedure dummy is null;
+
+   --
 --  struct b2RopeStretch
 --  {
 --    int32 i1, i2;
@@ -785,3 +790,4 @@
 --    const b2Color& pc = m_invMasses[m_count - 1] > 0.0f ? pd : pg;
 --    draw->DrawPoint(m_ps[m_count - 1], 5.0f, pc);
 --  }
+end b2_Rope;

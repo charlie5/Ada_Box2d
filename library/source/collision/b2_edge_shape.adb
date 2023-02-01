@@ -1,7 +1,13 @@
 --  #include "box2d/b2_edge_shape.h"
 --  #include "box2d/b2_block_allocator.h"
 --  #include <new>
---
+
+package body b2_edge_Shape
+is
+   procedure dummy is null;
+
+
+   --
 --  void b2EdgeShape::SetOneSided(const b2Vec2& v0, const b2Vec2& v1, const b2Vec2& v2, const b2Vec2& v3)
 --  {
 --    m_vertex0 = v0;
@@ -134,3 +140,4 @@
 --    massData->center = 0.5f * (m_vertex1 + m_vertex2);
 --    massData->I = 0.0f;
 --  }
+end b2_edge_Shape;

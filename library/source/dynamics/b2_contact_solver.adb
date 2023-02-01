@@ -5,7 +5,13 @@
 --  #include "box2d/b2_fixture.h"
 --  #include "box2d/b2_stack_allocator.h"
 --  #include "box2d/b2_world.h"
---
+
+package body b2_contact_Solver
+is
+   procedure dummy is null;
+
+
+   --
 --  // Solver debugging is normally disabled because the block solver sometimes has to deal with a poorly conditioned effective mass matrix.
 --  #define B2_DEBUG_SOLVER 0
 --
@@ -819,3 +825,4 @@
 --    // push the separation above -b2_linearSlop.
 --    return minSeparation >= -1.5f * b2_linearSlop;
 --  }
+end b2_contact_Solver;

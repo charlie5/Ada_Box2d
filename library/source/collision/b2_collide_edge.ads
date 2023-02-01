@@ -3,9 +3,9 @@
 --  #include "box2d/b2_edge_shape.h"
 --  #include "box2d/b2_polygon_shape.h"
 
-package body b2_collide_Edge
+package b2_collide_Edge
 is
-   procedure dummy is null;
+   procedure dummy;
 
 
    --

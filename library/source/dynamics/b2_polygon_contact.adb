@@ -7,7 +7,13 @@
 --  #include "box2d/b2_world_callbacks.h"
 --
 --  #include <new>
---
+
+package body b2_polygon_Contact
+is
+   procedure dummy is null;
+
+
+   --
 --  b2Contact* b2PolygonContact::Create(b2Fixture* fixtureA, int32, b2Fixture* fixtureB, int32, b2BlockAllocator* allocator)
 --  {
 --    void* mem = allocator->Allocate(sizeof(b2PolygonContact));
@@ -33,3 +39,4 @@
 --                   (b2PolygonShape*)m_fixtureA->GetShape(), xfA,
 --                   (b2PolygonShape*)m_fixtureB->GetShape(), xfB);
 --  }
+end b2_polygon_Contact;

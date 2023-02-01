@@ -1,7 +1,11 @@
 --  #include <string.h>
 --
 --  #include "b2_settings.h"
---
+
+package b2_growable_Stack
+is
+
+   --
 --  /// This is a growable LIFO stack with an initial capacity of N.
 --  /// If the stack size exceeds the initial capacity, the heap is used
 --  /// to increase the size of the stack.
@@ -62,3 +66,4 @@
 --    int32 m_capacity;
 --  };
 --
+end b2_growable_Stack;

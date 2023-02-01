@@ -9,7 +9,13 @@
 --
 --  #include "b2_island.h"
 --  #include "dynamics/b2_contact_solver.h"
---
+
+package body b2_Island
+is
+   procedure dummy is null;
+
+
+   --
 --  /*
 --  Position Correction Notes
 --  =========================
@@ -520,3 +526,4 @@
 --       m_listener->PostSolve(c, &impulse);
 --    }
 --  }
+end b2_Island;

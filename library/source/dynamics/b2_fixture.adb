@@ -8,7 +8,13 @@
 --  #include "box2d/b2_edge_shape.h"
 --  #include "box2d/b2_polygon_shape.h"
 --  #include "box2d/b2_world.h"
---
+
+package body b2_Fixture
+is
+   procedure dummy is null;
+
+
+   --
 --  b2Fixture::b2Fixture()
 --  {
 --    m_body = nullptr;
@@ -281,3 +287,4 @@
 --    b2Dump("\n");
 --    b2Dump("    bodies[%d]->CreateFixture(&fd);\n", bodyIndex);
 --  }
+end b2_Fixture;

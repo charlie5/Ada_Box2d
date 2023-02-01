@@ -1,6 +1,12 @@
 --  #include "b2_api.h"
 --  #include "b2_math.h"
 --  #include "b2_shape.h"
+
+package b2_Body
+is
+   procedure dummy;
+
+
 --
 --  class b2Fixture;
 --  class b2Joint;
@@ -853,3 +859,4 @@
 --    return m_world;
 --  }
 --
+end b2_Body;

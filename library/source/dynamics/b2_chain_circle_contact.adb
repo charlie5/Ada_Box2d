@@ -5,7 +5,13 @@
 --  #include "box2d/b2_edge_shape.h"
 --
 --  #include <new>
---
+
+package body b2_chain_circle_Contact
+is
+   procedure dummy is null;
+
+
+   --
 --  b2Contact* b2ChainAndCircleContact::Create(b2Fixture* fixtureA, int32 indexA, b2Fixture* fixtureB, int32 indexB, b2BlockAllocator* allocator)
 --  {
 --    void* mem = allocator->Allocate(sizeof(b2ChainAndCircleContact));
@@ -33,3 +39,4 @@
 --    b2CollideEdgeAndCircle( manifold, &edge, xfA,
 --                      (b2CircleShape*)m_fixtureB->GetShape(), xfB);
 --  }
+end b2_chain_circle_Contact;

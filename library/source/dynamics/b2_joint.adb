@@ -14,7 +14,13 @@
 --  #include "box2d/b2_world.h"
 --
 --  #include <new>
---
+
+package body b2_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  void b2LinearStiffness(float& stiffness, float& damping,
 --    float frequencyHertz, float dampingRatio,
 --    const b2Body* bodyA, const b2Body* bodyB)
@@ -277,3 +283,4 @@
 --       draw->DrawSegment(x2, p2, color);
 --    }
 --  }
+end b2_Joint;

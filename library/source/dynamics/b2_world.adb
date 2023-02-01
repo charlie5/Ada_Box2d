@@ -17,7 +17,13 @@
 --  #include "box2d/b2_world.h"
 --
 --  #include <new>
---
+
+package body b2_World
+is
+   procedure dummy is null;
+
+
+   --
 --  b2World::b2World(const b2Vec2& gravity)
 --  {
 --    m_destructionListener = nullptr;
@@ -1298,3 +1304,4 @@
 --
 --    b2CloseDump();
 --  }
+end b2_World;

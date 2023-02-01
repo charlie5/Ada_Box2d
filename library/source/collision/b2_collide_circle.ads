@@ -2,9 +2,9 @@
 --  #include "box2d/b2_circle_shape.h"
 --  #include "box2d/b2_polygon_shape.h"
 
-package body b2_collide_Circle
+package b2_collide_Circle
 is
-   procedure dummy is null;
+   procedure dummy;
 
 
    --

@@ -4,7 +4,13 @@
 --  #include "box2d/b2_fixture.h"
 --
 --  #include <new>
---
+
+package body b2_edge_polygon_Contact
+is
+   procedure dummy is null;
+
+
+   --
 --  b2Contact* b2EdgeAndPolygonContact::Create(b2Fixture* fixtureA, int32, b2Fixture* fixtureB, int32, b2BlockAllocator* allocator)
 --  {
 --    void* mem = allocator->Allocate(sizeof(b2EdgeAndPolygonContact));
@@ -30,3 +36,4 @@
 --                         (b2EdgeShape*)m_fixtureA->GetShape(), xfA,
 --                         (b2PolygonShape*)m_fixtureB->GetShape(), xfB);
 --  }
+end b2_edge_polygon_Contact;

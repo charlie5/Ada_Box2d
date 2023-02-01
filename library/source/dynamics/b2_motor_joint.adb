@@ -1,7 +1,13 @@
 --  #include "box2d/b2_body.h"
 --  #include "box2d/b2_motor_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_motor_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Point-to-point constraint
 --  // Cdot = v2 - v1
 --  //      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
@@ -287,3 +293,4 @@
 --    b2Dump("  jd.correctionFactor = %.9g;\n", m_correctionFactor);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
+end b2_motor_Joint;

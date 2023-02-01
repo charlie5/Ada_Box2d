@@ -2,7 +2,13 @@
 --  #include "box2d/b2_draw.h"
 --  #include "box2d/b2_prismatic_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_prismatic_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Linear constraint (point-to-line)
 --  // d = p2 - p1 = x2 + r2 - x1 - r1
 --  // C = dot(perp, d)
@@ -619,3 +625,4 @@
 --    draw->DrawPoint(pA, 5.0f, c1);
 --    draw->DrawPoint(pB, 5.0f, c4);
 --  }
+end b2_prismatic_Joint;

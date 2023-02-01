@@ -1,7 +1,13 @@
 --  #include "box2d/b2_body.h"
 --  #include "box2d/b2_mouse_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_mouse_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // p = attached point, m = mouse point
 --  // C = p - m
 --  // Cdot = v
@@ -168,3 +174,4 @@
 --  {
 --    m_targetA -= newOrigin;
 --  }
+end b2_mouse_Joint;

@@ -1,6 +1,12 @@
 --  #include "b2_types.h"
 --  #include "b2_api.h"
---
+
+package b2_Settings
+is
+   procedure dummy;
+
+
+   --
 --  /// @file
 --  /// Settings that can be overriden for your application
 --  ///
@@ -25,44 +31,44 @@
 --
 --  /// The maximum number of vertices on a convex polygon. You cannot increase
 --  /// this too much because b2BlockAllocator has a maximum object size.
---  #define b2_maxPolygonVertices	8
+--  #define b2_maxPolygonVertices   8
 --
 --  // User data
 --
 --  /// You can define this to inject whatever data you want in b2Body
 --  struct B2_API b2BodyUserData
 --  {
---  	b2BodyUserData()
---  	{
---  		pointer = 0;
---  	}
+--    b2BodyUserData()
+--    {
+--       pointer = 0;
+--    }
 --
---  	/// For legacy compatibility
---  	uintptr_t pointer;
+--    /// For legacy compatibility
+--    uintptr_t pointer;
 --  };
 --
 --  /// You can define this to inject whatever data you want in b2Fixture
 --  struct B2_API b2FixtureUserData
 --  {
---  	b2FixtureUserData()
---  	{
---  		pointer = 0;
---  	}
+--    b2FixtureUserData()
+--    {
+--       pointer = 0;
+--    }
 --
---  	/// For legacy compatibility
---  	uintptr_t pointer;
+--    /// For legacy compatibility
+--    uintptr_t pointer;
 --  };
 --
 --  /// You can define this to inject whatever data you want in b2Joint
 --  struct B2_API b2JointUserData
 --  {
---  	b2JointUserData()
---  	{
---  		pointer = 0;
---  	}
+--    b2JointUserData()
+--    {
+--       pointer = 0;
+--    }
 --
---  	/// For legacy compatibility
---  	uintptr_t pointer;
+--    /// For legacy compatibility
+--    uintptr_t pointer;
 --  };
 --
 --  // Memory Allocation
@@ -74,13 +80,13 @@
 --  /// Implement this function to use your own memory allocator.
 --  inline void* b2Alloc(int32 size)
 --  {
---  	return b2Alloc_Default(size);
+--    return b2Alloc_Default(size);
 --  }
 --
 --  /// If you implement b2Alloc, you should also implement this function.
 --  inline void b2Free(void* mem)
 --  {
---  	b2Free_Default(mem);
+--    b2Free_Default(mem);
 --  }
 --
 --  /// Default logging function
@@ -89,13 +95,14 @@
 --  /// Implement this to use your own logging.
 --  inline void b2Log(const char* string, ...)
 --  {
---  	va_list args;
---  	va_start(args, string);
---  	b2Log_Default(string, args);
---  	va_end(args);
+--    va_list args;
+--    va_start(args, string);
+--    b2Log_Default(string, args);
+--    va_end(args);
 --  }
 --
 --  #endif // B2_USER_SETTINGS
 --
 --  #include "b2_common.h"
 --
+end b2_Settings;

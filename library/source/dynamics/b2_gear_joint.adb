@@ -3,7 +3,13 @@
 --  #include "box2d/b2_prismatic_joint.h"
 --  #include "box2d/b2_body.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_gear_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Gear Joint:
 --  // C0 = (coordinate1 + ratio * coordinate2)_initial
 --  // C = (coordinate1 + ratio * coordinate2) - C0 = 0
@@ -405,3 +411,4 @@
 --    b2Dump("  jd.ratio = %.9g;\n", m_ratio);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
+end b2_gear_Joint;

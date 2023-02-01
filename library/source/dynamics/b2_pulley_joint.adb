@@ -1,7 +1,13 @@
 --  #include "box2d/b2_body.h"
 --  #include "box2d/b2_pulley_joint.h"
 --  #include "box2d/b2_time_step.h"
---
+
+package body b2_pulley_Joint
+is
+   procedure dummy is null;
+
+
+   --
 --  // Pulley:
 --  // length1 = norm(p1 - s1)
 --  // length2 = norm(p2 - s2)
@@ -328,3 +334,4 @@
 --    m_groundAnchorA -= newOrigin;
 --    m_groundAnchorB -= newOrigin;
 --  }
+end b2_pulley_Joint;

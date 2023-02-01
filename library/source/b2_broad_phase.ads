@@ -2,6 +2,12 @@
 --  #include "b2_settings.h"
 --  #include "b2_collision.h"
 --  #include "b2_dynamic_tree.h"
+
+package b2_broad_Phase
+is
+   procedure dummy;
+
+
 --
 --  struct B2_API b2Pair
 --  {
@@ -210,3 +216,4 @@
 --    m_tree.ShiftOrigin(newOrigin);
 --  }
 --
+end b2_broad_Phase;

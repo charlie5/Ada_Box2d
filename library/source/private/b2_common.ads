@@ -3,7 +3,11 @@
 --  #include <stddef.h>
 --  #include <assert.h>
 --  #include <float.h>
---
+
+package b2_Common
+is
+
+   --
 --  #if !defined(NDEBUG)
 --    #define b2DEBUG
 --  #endif
@@ -110,3 +114,4 @@
 --  /// Current version.
 --  extern B2_API b2Version b2_version;
 --
+end b2_Common;
