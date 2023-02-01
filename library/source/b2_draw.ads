@@ -1,7 +1,8 @@
---  #include "b2_api.h"
---  #include "b2_math.h"
+with
+     b2_Math;
 
-package b2_draw
+
+package b2_Draw
 is
    procedure dummy;
 
@@ -80,4 +81,4 @@ is
 --    uint32 m_drawFlags;
 --  };
 --
-end b2_draw;
+end b2_Draw;

@@ -1,20 +1,21 @@
---  #include "b2_chain_circle_contact.h"
---  #include "b2_chain_polygon_contact.h"
---  #include "b2_circle_contact.h"
---  #include "b2_contact_solver.h"
---  #include "b2_edge_circle_contact.h"
---  #include "b2_edge_polygon_contact.h"
---  #include "b2_polygon_circle_contact.h"
---  #include "b2_polygon_contact.h"
---
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_shape.h"
---  #include "box2d/b2_time_of_impact.h"
---  #include "box2d/b2_world.h"
+with
+     b2_chain_circle_Contact,
+     b2_chain_polygon_Contact,
+     b2_circle_Contact,
+     b2_contact_Solver,
+     b2_edge_circle_Contact,
+     b2_edge_polygon_Contact,
+     b2_polygon_circle_Contact,
+     b2_polygon_Contact,
+     b2_Contact,
+     b2_block_Allocator,
+     b2_Body,
+     b2_Collision,
+     b2_Fixture,
+     b2_Shape,
+     b2_Time_of_impact,
+     b2_World;
+
 
 package body b2_Contact
 is

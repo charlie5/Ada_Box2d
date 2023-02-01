@@ -1,12 +1,13 @@
---  #include "b2_types.h"
---  #include "b2_api.h"
+with
+     b2_Types;
+
 
 package b2_Settings
 is
    procedure dummy;
 
 
-   --
+
 --  /// @file
 --  /// Settings that can be overriden for your application
 --  ///
@@ -16,7 +17,7 @@ is
 --
 --  /// This is a user file that includes custom definitions of the macros, structs, and functions
 --  /// defined below.
---  #include "b2_user_settings.h"
+--  #include "b2_user_settings"
 --
 --  #else
 --
@@ -103,6 +104,6 @@ is
 --
 --  #endif // B2_USER_SETTINGS
 --
---  #include "b2_common.h"
+--  #include "b2_common"
 --
 end b2_Settings;

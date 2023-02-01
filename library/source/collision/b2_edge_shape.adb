@@ -1,6 +1,7 @@
---  #include "box2d/b2_edge_shape.h"
---  #include "box2d/b2_block_allocator.h"
---  #include <new>
+with
+     b2_edge_Shape,
+     b2_block_Allocator;
+
 
 package body b2_edge_Shape
 is

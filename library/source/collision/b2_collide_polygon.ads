@@ -1,5 +1,7 @@
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_polygon_shape.h"
+with
+     b2_Collision,
+     b2_polygon_Shape;
+
 
 package b2_collide_Polygon
 is

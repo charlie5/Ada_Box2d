@@ -1,8 +1,10 @@
---  #include "box2d/b2_gear_joint.h"
---  #include "box2d/b2_revolute_joint.h"
---  #include "box2d/b2_prismatic_joint.h"
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_gear_Joint,
+     b2_revolute_Joint,
+     b2_prismatic_Joint,
+     b2_Body,
+     b2_time_Step;
+
 
 package body b2_gear_Joint
 is

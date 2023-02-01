@@ -1,7 +1,6 @@
---  #include "box2d/b2_block_allocator.h"
---  #include <limits.h>
---  #include <string.h>
---  #include <stddef.h>
+with
+     b2_block_Allocator;
+
 
 package body b2_block_Allocator
 is

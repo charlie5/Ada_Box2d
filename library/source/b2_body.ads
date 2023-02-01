@@ -1,6 +1,7 @@
---  #include "b2_api.h"
---  #include "b2_math.h"
---  #include "b2_shape.h"
+with
+     b2_Math,
+     b2_Shape;
+
 
 package b2_Body
 is

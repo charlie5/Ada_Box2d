@@ -1,19 +1,19 @@
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_distance_joint.h"
---  #include "box2d/b2_draw.h"
---  #include "box2d/b2_friction_joint.h"
---  #include "box2d/b2_gear_joint.h"
---  #include "box2d/b2_motor_joint.h"
---  #include "box2d/b2_mouse_joint.h"
---  #include "box2d/b2_prismatic_joint.h"
---  #include "box2d/b2_pulley_joint.h"
---  #include "box2d/b2_revolute_joint.h"
---  #include "box2d/b2_weld_joint.h"
---  #include "box2d/b2_wheel_joint.h"
---  #include "box2d/b2_world.h"
---
---  #include <new>
+with
+     b2_block_Allocator,
+     b2_Body,
+     b2_Distance_Joint,
+     b2_Draw,
+     b2_friction_Joint,
+     b2_gear_Joint,
+     b2_motor_Joint,
+     b2_mouse_Joint,
+     b2_prismatic_Joint,
+     b2_pulley_Joint,
+     b2_revolute_Joint,
+     b2_weld_Joint,
+     b2_wheel_Joint,
+     b2_World;
+
 
 package body b2_Joint
 is

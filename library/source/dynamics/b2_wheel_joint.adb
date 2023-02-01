@@ -1,7 +1,9 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_draw.h"
---  #include "box2d/b2_wheel_joint.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_Body,
+     b2_Draw,
+     b2_wheel_Joint,
+     b2_time_Step;
+
 
 package body b2_wheel_Joint
 is

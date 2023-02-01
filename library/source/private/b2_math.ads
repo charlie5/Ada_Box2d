@@ -1,7 +1,8 @@
 --  #include <math.h>
---
---  #include "b2_api.h"
---  #include "b2_settings.h"
+
+with
+     b2_Settings;
+
 
 package b2_Math
 is

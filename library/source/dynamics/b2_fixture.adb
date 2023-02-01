@@ -1,13 +1,15 @@
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_broad_phase.h"
---  #include "box2d/b2_chain_shape.h"
---  #include "box2d/b2_circle_shape.h"
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_edge_shape.h"
---  #include "box2d/b2_polygon_shape.h"
---  #include "box2d/b2_world.h"
+with
+     b2_Fixture,
+     b2_block_Allocator,
+     b2_broad_Phase,
+     b2_chain_Shape,
+     b2_circle_Shape,
+     b2_Collision,
+     b2_Contact,
+     b2_edge_Shape,
+     b2_polygon_Shape,
+     b2_World;
+
 
 package body b2_Fixture
 is

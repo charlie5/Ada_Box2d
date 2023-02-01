@@ -1,9 +1,8 @@
---  #include "b2_edge_circle_contact.h"
---
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_fixture.h"
---
---  #include <new>
+with
+     b2_edge_circle_Contact,
+     b2_block_Allocator,
+     b2_Fixture;
+
 
 package body b2_edge_circle_Contact
 is

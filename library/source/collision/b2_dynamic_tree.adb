@@ -1,5 +1,6 @@
---  #include "box2d/b2_dynamic_tree.h"
---  #include <string.h>
+with
+     b2_dynamic_Tree;
+
 
 package body b2_dynamic_Tree
 is

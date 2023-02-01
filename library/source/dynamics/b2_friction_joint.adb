@@ -1,6 +1,8 @@
---  #include "box2d/b2_friction_joint.h"
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_friction_Joint,
+     b2_Body,
+     b2_time_Step;
+
 
 package body b2_friction_Joint
 is

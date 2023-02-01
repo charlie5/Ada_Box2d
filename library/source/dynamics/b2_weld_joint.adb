@@ -1,6 +1,8 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_time_step.h"
---  #include "box2d/b2_weld_joint.h"
+with
+     b2_Body,
+     b2_time_Step,
+     b2_weld_Joint;
+
 
 package body b2_weld_Joint
 is

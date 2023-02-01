@@ -1,7 +1,9 @@
---  #include "box2d/b2_draw.h"
---  #include "box2d/b2_rope.h"
---
+with
+     b2_Draw,
+     b2_Rope;
+
 --  #include <stdio.h>
+
 
 package body b2_Rope
 is

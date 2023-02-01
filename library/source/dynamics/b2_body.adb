@@ -1,11 +1,10 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_joint.h"
---  #include "box2d/b2_world.h"
---
---  #include <new>
---
+with
+     b2_Body,
+     b2_Contact,
+     b2_Fixture,
+     b2_Joint,
+     b2_World;
+
 
 package body b2_Body
 is

@@ -1,6 +1,8 @@
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_math.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_Collision,
+     b2_Math,
+     b2_time_Step;
+
 
 package b2_contact_Solver
 is

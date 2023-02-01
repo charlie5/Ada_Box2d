@@ -1,6 +1,7 @@
---  #include "b2_api.h"
---  #include "b2_math.h"
---  #include "b2_collision.h"
+with
+     b2_Math,
+     b2_Collision;
+
 
 package b2_Shape
 is

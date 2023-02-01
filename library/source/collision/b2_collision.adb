@@ -1,5 +1,7 @@
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_distance.h"
+with
+     b2_Collision,
+     b2_Distance;
+
 
 package body b2_Collision
 is

@@ -1,7 +1,8 @@
---  #include "b2_api.h"
---  #include "b2_body.h"
---  #include "b2_collision.h"
---  #include "b2_shape.h"
+with
+     b2_Body,
+     b2_Collision,
+     b2_Shape;
+
 
 package b2_Fixture
 is

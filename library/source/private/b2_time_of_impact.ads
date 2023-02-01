@@ -1,6 +1,7 @@
---  #include "b2_api.h"
---  #include "b2_math.h"
---  #include "b2_distance.h"
+with
+     b2_Math,
+     b2_Distance;
+
 
 package b2_Time_of_impact
 is

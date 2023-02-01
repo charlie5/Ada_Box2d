@@ -1,5 +1,7 @@
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_world_callbacks.h"
+with
+     b2_Fixture,
+     b2_world_Callbacks;
+
 
 package body b2_world_Callbacks
 is

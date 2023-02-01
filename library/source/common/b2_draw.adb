@@ -1,6 +1,4 @@
---  #include "box2d/b2_draw.h"
-
-package body b2_draw
+package body b2_Draw
 is
    procedure dummy is null;
 
@@ -30,4 +28,4 @@ is
 --  {
 --    m_drawFlags &= ~flags;
 --  }
-end b2_draw;
+end b2_Draw;

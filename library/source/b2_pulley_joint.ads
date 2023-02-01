@@ -1,5 +1,6 @@
---  #include "b2_api.h"
---  #include "b2_joint.h"
+with
+     b2_Joint;
+
 
 package b2_pulley_Joint
 is

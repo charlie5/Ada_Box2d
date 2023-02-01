@@ -1,6 +1,8 @@
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_circle_shape.h"
---  #include "box2d/b2_polygon_shape.h"
+with
+     b2_Collision,
+     b2_circle_Shape,
+     b2_polygon_Shape;
+
 
 package body b2_collide_Circle
 is

@@ -1,10 +1,11 @@
---  #include "b2_contact_solver.h"
---
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_stack_allocator.h"
---  #include "box2d/b2_world.h"
+with
+     b2_contact_Solver,
+     b2_Body,
+     b2_Contact,
+     b2_Fixture,
+     b2_stack_Allocator,
+     b2_World;
+
 
 package body b2_contact_Solver
 is

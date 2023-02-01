@@ -1,6 +1,8 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_motor_joint.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_Body,
+     b2_motor_Joint,
+     b2_time_Step;
+
 
 package body b2_motor_Joint
 is

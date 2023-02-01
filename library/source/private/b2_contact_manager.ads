@@ -1,5 +1,6 @@
---  #include "b2_api.h"
---  #include "b2_broad_phase.h"
+with
+     b2_broad_Phase;
+
 
 package b2_contact_Manager
 is

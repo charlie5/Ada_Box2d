@@ -1,6 +1,8 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_math.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_Body,
+     b2_Math,
+     b2_time_Step;
+
 
 package b2_Island
 is

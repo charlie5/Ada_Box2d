@@ -1,10 +1,10 @@
---  #include "b2_chain_circle_contact.h"
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_chain_shape.h"
---  #include "box2d/b2_edge_shape.h"
---
---  #include <new>
+with
+     b2_chain_circle_Contact,
+     b2_block_Allocator,
+     b2_Fixture,
+     b2_chain_Shape,
+     b2_edge_Shape;
+
 
 package body b2_chain_circle_Contact
 is

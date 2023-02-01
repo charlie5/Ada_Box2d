@@ -1,5 +1,6 @@
---  #include "b2_api.h"
---  #include "b2_shape.h"
+with
+     b2_Shape;
+
 
 package b2_edge_Shape
 is

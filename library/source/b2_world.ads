@@ -1,10 +1,11 @@
---  #include "b2_api.h"
---  #include "b2_block_allocator.h"
---  #include "b2_contact_manager.h"
---  #include "b2_math.h"
---  #include "b2_stack_allocator.h"
---  #include "b2_time_step.h"
---  #include "b2_world_callbacks.h"
+with
+     b2_block_Allocator,
+     b2_contact_Manager,
+     b2_Math,
+     b2_stack_Allocator,
+     b2_time_Step,
+     b2_world_Callbacks;
+
 
 package b2_World
 is

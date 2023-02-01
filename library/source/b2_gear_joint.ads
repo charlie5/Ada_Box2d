@@ -1,4 +1,6 @@
---  #include "b2_joint.h"
+with
+     b2_Joint;
+
 
 package b2_gear_Joint
 is

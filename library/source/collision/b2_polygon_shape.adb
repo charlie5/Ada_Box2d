@@ -1,7 +1,7 @@
---  #include "box2d/b2_polygon_shape.h"
---  #include "box2d/b2_block_allocator.h"
---
---  #include <new>
+with
+     b2_polygon_Shape,
+     b2_block_Allocator;
+
 
 package body b2_polygon_Shape
 is

@@ -1,11 +1,11 @@
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_distance.h"
---  #include "box2d/b2_circle_shape.h"
---  #include "box2d/b2_polygon_shape.h"
---  #include "box2d/b2_time_of_impact.h"
---  #include "box2d/b2_timer.h"
---
---  #include <stdio.h>
+with
+     b2_Collision,
+     b2_Distance,
+     b2_circle_Shape,
+     b2_polygon_Shape,
+     b2_Time_of_impact,
+     b2_Timer;
+
 
 package body b2_Time_of_impact
 is

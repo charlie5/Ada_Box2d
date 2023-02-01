@@ -1,8 +1,10 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_contact_manager.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_world_callbacks.h"
+with
+     b2_Body,
+     b2_Contact,
+     b2_contact_Manager,
+     b2_Fixture,
+     b2_world_Callbacks;
+
 
 package body b2_contact_Manager
 is

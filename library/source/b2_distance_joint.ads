@@ -1,7 +1,8 @@
---  #include "b2_api.h"
---  #include "b2_joint.h"
+with
+     b2_Joint;
 
-package b2_distance_Joint
+
+package b2_Distance_Joint
 is
    procedure dummy;
 
@@ -154,4 +155,4 @@ is
 --    float m_mass;
 --  };
 --
-end b2_distance_Joint;
+end b2_Distance_Joint;

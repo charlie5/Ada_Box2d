@@ -1,6 +1,6 @@
---  #include <string.h>
---
---  #include "b2_settings.h"
+with
+     b2_Settings;
+
 
 package b2_growable_Stack
 is

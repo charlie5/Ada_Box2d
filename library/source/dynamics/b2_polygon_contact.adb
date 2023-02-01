@@ -1,12 +1,11 @@
---  #include "b2_polygon_contact.h"
---
---  #include "box2d/b2_block_allocator.h"
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_time_of_impact.h"
---  #include "box2d/b2_world_callbacks.h"
---
---  #include <new>
+with
+     b2_polygon_Contact,
+     b2_block_Allocator,
+     b2_Body,
+     b2_Fixture,
+     b2_Time_of_impact,
+     b2_world_Callbacks;
+
 
 package body b2_polygon_Contact
 is

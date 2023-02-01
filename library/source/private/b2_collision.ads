@@ -1,7 +1,6 @@
---  #include <limits.h>
---
---  #include "b2_api.h"
---  #include "b2_math.h"
+with
+     b2_Math;
+
 
 package b2_Collision
 is

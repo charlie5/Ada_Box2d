@@ -1,22 +1,21 @@
---  #include "b2_contact_solver.h"
---  #include "b2_island.h"
---
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_broad_phase.h"
---  #include "box2d/b2_chain_shape.h"
---  #include "box2d/b2_circle_shape.h"
---  #include "box2d/b2_collision.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_draw.h"
---  #include "box2d/b2_edge_shape.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_polygon_shape.h"
---  #include "box2d/b2_pulley_joint.h"
---  #include "box2d/b2_time_of_impact.h"
---  #include "box2d/b2_timer.h"
---  #include "box2d/b2_world.h"
---
---  #include <new>
+with
+     b2_contact_Solver,
+     b2_Island,
+     b2_Body,
+     b2_broad_Phase,
+     b2_chain_Shape,
+     b2_circle_Shape,
+     b2_Collision,
+     b2_Contact,
+     b2_Draw,
+     b2_edge_Shape,
+     b2_Fixture,
+     b2_polygon_Shape,
+     b2_pulley_Joint,
+     b2_Time_of_impact,
+     b2_Timer,
+     b2_World;
+
 
 package body b2_World
 is

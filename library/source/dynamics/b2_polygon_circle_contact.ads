@@ -1,4 +1,6 @@
---  #include "box2d/b2_contact.h"
+with
+     b2_Contact;
+
 
 package b2_polygon_circle_Contact
 is

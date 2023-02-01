@@ -1,6 +1,10 @@
 --  #define _CRT_SECURE_NO_WARNINGS
 --
---  #include "box2d/b2_settings.h"
+
+with
+     b2_Settings;
+
+
 --  #include <stdio.h>
 --  #include <stdarg.h>
 --  #include <stdlib.h>

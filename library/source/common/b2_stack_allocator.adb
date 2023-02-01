@@ -1,5 +1,7 @@
---  #include "box2d/b2_stack_allocator.h"
---  #include "box2d/b2_math.h"
+with
+     b2_stack_Allocator,
+     b2_Math;
+
 
 package body b2_stack_Allocator
 is

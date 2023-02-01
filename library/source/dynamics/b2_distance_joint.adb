@@ -1,9 +1,11 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_draw.h"
---  #include "box2d/b2_distance_joint.h"
---  #include "box2d/b2_time_step.h"
+with
+     b2_Body,
+     b2_Draw,
+     b2_Distance_Joint,
+     b2_time_Step;
 
-package body b2_distance_Joint
+
+package body b2_Distance_Joint
 is
    procedure dummy is null;
 
@@ -403,4 +405,4 @@ is
 --       }
 --    }
 --  }
-end b2_distance_Joint;
+end b2_Distance_Joint;

@@ -1,6 +1,7 @@
---  #include "b2_api.h"
---  #include "b2_collision.h"
---  #include "b2_growable_stack.h"
+with
+     b2_Collision,
+     b2_growable_Stack;
+
 
 package b2_dynamic_Tree
 is

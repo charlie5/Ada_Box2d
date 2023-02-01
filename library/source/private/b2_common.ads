@@ -1,5 +1,6 @@
---  #include "b2_settings.h"
---
+with
+     b2_Settings;
+
 --  #include <stddef.h>
 --  #include <assert.h>
 --  #include <float.h>

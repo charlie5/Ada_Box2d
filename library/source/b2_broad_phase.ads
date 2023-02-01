@@ -1,7 +1,8 @@
---  #include "b2_api.h"
---  #include "b2_settings.h"
---  #include "b2_collision.h"
---  #include "b2_dynamic_tree.h"
+with
+     b2_Settings,
+     b2_Collision,
+     b2_dynamic_Tree;
+
 
 package b2_broad_Phase
 is

@@ -1,7 +1,7 @@
---  #include "box2d/b2_circle_shape.h"
---  #include "box2d/b2_block_allocator.h"
---
---  #include <new>
+with
+     b2_circle_Shape,
+     b2_block_Allocator;
+
 
 package body b2_circle_Shape
 is

@@ -1,14 +1,15 @@
---  #include "box2d/b2_body.h"
---  #include "box2d/b2_contact.h"
---  #include "box2d/b2_distance.h"
---  #include "box2d/b2_fixture.h"
---  #include "box2d/b2_joint.h"
---  #include "box2d/b2_stack_allocator.h"
---  #include "box2d/b2_timer.h"
---  #include "box2d/b2_world.h"
---
---  #include "b2_island.h"
---  #include "dynamics/b2_contact_solver.h"
+with
+     b2_Body,
+     b2_Contact,
+     b2_Distance,
+     b2_Fixture,
+     b2_Joint,
+     b2_stack_Allocator,
+     b2_Timer,
+     b2_World,
+     b2_Island,
+     b2_contact_Solver;
+
 
 package body b2_Island
 is
