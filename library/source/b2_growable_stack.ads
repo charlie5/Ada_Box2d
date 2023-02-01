@@ -20,39 +20,72 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef BOX2D_H
-#define BOX2D_H
+#ifndef B2_GROWABLE_STACK_H
+#define B2_GROWABLE_STACK_H
 
-// These include files constitute the main Box2D API
+#include <string.h>
 
 #include "b2_settings.h"
-#include "b2_draw.h"
-#include "b2_timer.h"
 
-#include "b2_chain_shape.h"
-#include "b2_circle_shape.h"
-#include "b2_edge_shape.h"
-#include "b2_polygon_shape.h"
+/// This is a growable LIFO stack with an initial capacity of N.
+/// If the stack size exceeds the initial capacity, the heap is used
+/// to increase the size of the stack.
+template <typename T, int32 N>
+class b2GrowableStack
+{
+public:
+	b2GrowableStack()
+	{
+		m_stack = m_array;
+		m_count = 0;
+		m_capacity = N;
+	}
 
-#include "b2_broad_phase.h"
-#include "b2_dynamic_tree.h"
+	~b2GrowableStack()
+	{
+		if (m_stack != m_array)
+		{
+			b2Free(m_stack);
+			m_stack = nullptr;
+		}
+	}
 
-#include "b2_body.h"
-#include "b2_contact.h"
-#include "b2_fixture.h"
-#include "b2_time_step.h"
-#include "b2_world.h"
-#include "b2_world_callbacks.h"
+	void Push(const T& element)
+	{
+		if (m_count == m_capacity)
+		{
+			T* old = m_stack;
+			m_capacity *= 2;
+			m_stack = (T*)b2Alloc(m_capacity * sizeof(T));
+			memcpy(m_stack, old, m_count * sizeof(T));
+			if (old != m_array)
+			{
+				b2Free(old);
+			}
+		}
 
-#include "b2_distance_joint.h"
-#include "b2_friction_joint.h"
-#include "b2_gear_joint.h"
-#include "b2_motor_joint.h"
-#include "b2_mouse_joint.h"
-#include "b2_prismatic_joint.h"
-#include "b2_pulley_joint.h"
-#include "b2_revolute_joint.h"
-#include "b2_weld_joint.h"
-#include "b2_wheel_joint.h"
+		m_stack[m_count] = element;
+		++m_count;
+	}
+
+	T Pop()
+	{
+		b2Assert(m_count > 0);
+		--m_count;
+		return m_stack[m_count];
+	}
+
+	int32 GetCount()
+	{
+		return m_count;
+	}
+
+private:
+	T* m_stack;
+	T m_array[N];
+	int32 m_count;
+	int32 m_capacity;
+};
+
 
 #endif

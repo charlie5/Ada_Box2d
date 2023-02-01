@@ -20,39 +20,41 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef BOX2D_H
-#define BOX2D_H
+#ifndef B2_BLOCK_ALLOCATOR_H
+#define B2_BLOCK_ALLOCATOR_H
 
-// These include files constitute the main Box2D API
-
+#include "b2_api.h"
 #include "b2_settings.h"
-#include "b2_draw.h"
-#include "b2_timer.h"
 
-#include "b2_chain_shape.h"
-#include "b2_circle_shape.h"
-#include "b2_edge_shape.h"
-#include "b2_polygon_shape.h"
+const int32 b2_blockSizeCount = 14;
 
-#include "b2_broad_phase.h"
-#include "b2_dynamic_tree.h"
+struct b2Block;
+struct b2Chunk;
 
-#include "b2_body.h"
-#include "b2_contact.h"
-#include "b2_fixture.h"
-#include "b2_time_step.h"
-#include "b2_world.h"
-#include "b2_world_callbacks.h"
+/// This is a small object allocator used for allocating small
+/// objects that persist for more than one time step.
+/// See: http://www.codeproject.com/useritems/Small_Block_Allocator.asp
+class B2_API b2BlockAllocator
+{
+public:
+	b2BlockAllocator();
+	~b2BlockAllocator();
 
-#include "b2_distance_joint.h"
-#include "b2_friction_joint.h"
-#include "b2_gear_joint.h"
-#include "b2_motor_joint.h"
-#include "b2_mouse_joint.h"
-#include "b2_prismatic_joint.h"
-#include "b2_pulley_joint.h"
-#include "b2_revolute_joint.h"
-#include "b2_weld_joint.h"
-#include "b2_wheel_joint.h"
+	/// Allocate memory. This will use b2Alloc if the size is larger than b2_maxBlockSize.
+	void* Allocate(int32 size);
+
+	/// Free memory. This will use b2Free if the size is larger than b2_maxBlockSize.
+	void Free(void* p, int32 size);
+
+	void Clear();
+
+private:
+
+	b2Chunk* m_chunks;
+	int32 m_chunkCount;
+	int32 m_chunkSpace;
+
+	b2Block* m_freeLists[b2_blockSizeCount];
+};
 
 #endif

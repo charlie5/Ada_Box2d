@@ -20,39 +20,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef BOX2D_H
-#define BOX2D_H
+#include "b2_edge_polygon_contact.h"
 
-// These include files constitute the main Box2D API
+#include "box2d/b2_block_allocator.h"
+#include "box2d/b2_fixture.h"
 
-#include "b2_settings.h"
-#include "b2_draw.h"
-#include "b2_timer.h"
+#include <new>
 
-#include "b2_chain_shape.h"
-#include "b2_circle_shape.h"
-#include "b2_edge_shape.h"
-#include "b2_polygon_shape.h"
+b2Contact* b2EdgeAndPolygonContact::Create(b2Fixture* fixtureA, int32, b2Fixture* fixtureB, int32, b2BlockAllocator* allocator)
+{
+	void* mem = allocator->Allocate(sizeof(b2EdgeAndPolygonContact));
+	return new (mem) b2EdgeAndPolygonContact(fixtureA, fixtureB);
+}
 
-#include "b2_broad_phase.h"
-#include "b2_dynamic_tree.h"
+void b2EdgeAndPolygonContact::Destroy(b2Contact* contact, b2BlockAllocator* allocator)
+{
+	((b2EdgeAndPolygonContact*)contact)->~b2EdgeAndPolygonContact();
+	allocator->Free(contact, sizeof(b2EdgeAndPolygonContact));
+}
 
-#include "b2_body.h"
-#include "b2_contact.h"
-#include "b2_fixture.h"
-#include "b2_time_step.h"
-#include "b2_world.h"
-#include "b2_world_callbacks.h"
+b2EdgeAndPolygonContact::b2EdgeAndPolygonContact(b2Fixture* fixtureA, b2Fixture* fixtureB)
+: b2Contact(fixtureA, 0, fixtureB, 0)
+{
+	b2Assert(m_fixtureA->GetType() == b2Shape::e_edge);
+	b2Assert(m_fixtureB->GetType() == b2Shape::e_polygon);
+}
 
-#include "b2_distance_joint.h"
-#include "b2_friction_joint.h"
-#include "b2_gear_joint.h"
-#include "b2_motor_joint.h"
-#include "b2_mouse_joint.h"
-#include "b2_prismatic_joint.h"
-#include "b2_pulley_joint.h"
-#include "b2_revolute_joint.h"
-#include "b2_weld_joint.h"
-#include "b2_wheel_joint.h"
-
-#endif
+void b2EdgeAndPolygonContact::Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB)
+{
+	b2CollideEdgeAndPolygon(	manifold,
+								(b2EdgeShape*)m_fixtureA->GetShape(), xfA,
+								(b2PolygonShape*)m_fixtureB->GetShape(), xfB);
+}

@@ -20,39 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef BOX2D_H
-#define BOX2D_H
+#include "box2d/b2_fixture.h"
+#include "box2d/b2_world_callbacks.h"
 
-// These include files constitute the main Box2D API
+// Return true if contact calculations should be performed between these two shapes.
+// If you implement your own collision filter you may want to build from this implementation.
+bool b2ContactFilter::ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB)
+{
+	const b2Filter& filterA = fixtureA->GetFilterData();
+	const b2Filter& filterB = fixtureB->GetFilterData();
 
-#include "b2_settings.h"
-#include "b2_draw.h"
-#include "b2_timer.h"
+	if (filterA.groupIndex == filterB.groupIndex && filterA.groupIndex != 0)
+	{
+		return filterA.groupIndex > 0;
+	}
 
-#include "b2_chain_shape.h"
-#include "b2_circle_shape.h"
-#include "b2_edge_shape.h"
-#include "b2_polygon_shape.h"
-
-#include "b2_broad_phase.h"
-#include "b2_dynamic_tree.h"
-
-#include "b2_body.h"
-#include "b2_contact.h"
-#include "b2_fixture.h"
-#include "b2_time_step.h"
-#include "b2_world.h"
-#include "b2_world_callbacks.h"
-
-#include "b2_distance_joint.h"
-#include "b2_friction_joint.h"
-#include "b2_gear_joint.h"
-#include "b2_motor_joint.h"
-#include "b2_mouse_joint.h"
-#include "b2_prismatic_joint.h"
-#include "b2_pulley_joint.h"
-#include "b2_revolute_joint.h"
-#include "b2_weld_joint.h"
-#include "b2_wheel_joint.h"
-
-#endif
+	bool collide = (filterA.maskBits & filterB.categoryBits) != 0 && (filterA.categoryBits & filterB.maskBits) != 0;
+	return collide;
+}

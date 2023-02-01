@@ -20,39 +20,46 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef BOX2D_H
-#define BOX2D_H
+#ifndef B2_STACK_ALLOCATOR_H
+#define B2_STACK_ALLOCATOR_H
 
-// These include files constitute the main Box2D API
-
+#include "b2_api.h"
 #include "b2_settings.h"
-#include "b2_draw.h"
-#include "b2_timer.h"
 
-#include "b2_chain_shape.h"
-#include "b2_circle_shape.h"
-#include "b2_edge_shape.h"
-#include "b2_polygon_shape.h"
+const int32 b2_stackSize = 100 * 1024;	// 100k
+const int32 b2_maxStackEntries = 32;
 
-#include "b2_broad_phase.h"
-#include "b2_dynamic_tree.h"
+struct B2_API b2StackEntry
+{
+	char* data;
+	int32 size;
+	bool usedMalloc;
+};
 
-#include "b2_body.h"
-#include "b2_contact.h"
-#include "b2_fixture.h"
-#include "b2_time_step.h"
-#include "b2_world.h"
-#include "b2_world_callbacks.h"
+// This is a stack allocator used for fast per step allocations.
+// You must nest allocate/free pairs. The code will assert
+// if you try to interleave multiple allocate/free pairs.
+class B2_API b2StackAllocator
+{
+public:
+	b2StackAllocator();
+	~b2StackAllocator();
 
-#include "b2_distance_joint.h"
-#include "b2_friction_joint.h"
-#include "b2_gear_joint.h"
-#include "b2_motor_joint.h"
-#include "b2_mouse_joint.h"
-#include "b2_prismatic_joint.h"
-#include "b2_pulley_joint.h"
-#include "b2_revolute_joint.h"
-#include "b2_weld_joint.h"
-#include "b2_wheel_joint.h"
+	void* Allocate(int32 size);
+	void Free(void* p);
+
+	int32 GetMaxAllocation() const;
+
+private:
+
+	char m_data[b2_stackSize];
+	int32 m_index;
+
+	int32 m_allocation;
+	int32 m_maxAllocation;
+
+	b2StackEntry m_entries[b2_maxStackEntries];
+	int32 m_entryCount;
+};
 
 #endif
