@@ -1,6 +1,3 @@
-#ifndef B2_POLYGON_AND_CIRCLE_CONTACT_H
-#define B2_POLYGON_AND_CIRCLE_CONTACT_H
-
 #include "box2d/b2_contact.h"
 
 class b2BlockAllocator;
@@ -17,4 +14,3 @@ public:
 	void Evaluate(b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB) override;
 };
 
-#endif

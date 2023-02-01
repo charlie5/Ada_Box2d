@@ -1,6 +1,3 @@
-#ifndef B2_CHAIN_SHAPE_H
-#define B2_CHAIN_SHAPE_H
-
 #include "b2_api.h"
 #include "b2_shape.h"
 
@@ -76,4 +73,3 @@ inline b2ChainShape::b2ChainShape()
 	m_count = 0;
 }
 
-#endif

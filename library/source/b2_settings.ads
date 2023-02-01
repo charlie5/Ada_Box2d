@@ -1,6 +1,3 @@
-#ifndef B2_SETTINGS_H
-#define B2_SETTINGS_H
-
 #include "b2_types.h"
 #include "b2_api.h"
 
@@ -102,4 +99,3 @@ inline void b2Log(const char* string, ...)
 
 #include "b2_common.h"
 
-#endif

@@ -1,6 +1,3 @@
-#ifndef B2_BODY_H
-#define B2_BODY_H
-
 #include "b2_api.h"
 #include "b2_math.h"
 #include "b2_shape.h"
@@ -856,4 +853,3 @@ inline const b2World* b2Body::GetWorld() const
 	return m_world;
 }
 
-#endif

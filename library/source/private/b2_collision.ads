@@ -1,6 +1,3 @@
-#ifndef B2_COLLISION_H
-#define B2_COLLISION_H
-
 #include <limits.h>
 
 #include "b2_api.h"
@@ -258,4 +255,3 @@ inline bool b2TestOverlap(const b2AABB& a, const b2AABB& b)
 	return true;
 }
 
-#endif

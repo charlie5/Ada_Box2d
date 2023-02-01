@@ -1,6 +1,3 @@
-#ifndef B2_PRISMATIC_JOINT_H
-#define B2_PRISMATIC_JOINT_H
-
 #include "b2_api.h"
 #include "b2_joint.h"
 
@@ -180,4 +177,3 @@ inline float b2PrismaticJoint::GetMotorSpeed() const
 	return m_motorSpeed;
 }
 
-#endif

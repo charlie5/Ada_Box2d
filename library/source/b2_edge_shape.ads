@@ -1,6 +1,3 @@
-#ifndef B2_EDGE_SHAPE_H
-#define B2_EDGE_SHAPE_H
-
 #include "b2_api.h"
 #include "b2_shape.h"
 
@@ -61,4 +58,3 @@ inline b2EdgeShape::b2EdgeShape()
 	m_oneSided = false;
 }
 
-#endif

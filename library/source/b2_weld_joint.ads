@@ -1,6 +1,3 @@
-#ifndef B2_WELD_JOINT_H
-#define B2_WELD_JOINT_H
-
 #include "b2_api.h"
 #include "b2_joint.h"
 
@@ -108,4 +105,3 @@ protected:
 	b2Mat33 m_mass;
 };
 
-#endif

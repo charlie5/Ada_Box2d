@@ -1,6 +1,3 @@
-#ifndef B2_MOUSE_JOINT_H
-#define B2_MOUSE_JOINT_H
-
 #include "b2_api.h"
 #include "b2_joint.h"
 
@@ -109,4 +106,3 @@ protected:
 	b2Vec2 m_C;
 };
 
-#endif

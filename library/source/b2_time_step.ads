@@ -1,6 +1,3 @@
-#ifndef B2_TIME_STEP_H
-#define B2_TIME_STEP_H
-
 #include "b2_api.h"
 #include "b2_math.h"
 
@@ -50,4 +47,3 @@ struct B2_API b2SolverData
 	b2Velocity* velocities;
 };
 
-#endif

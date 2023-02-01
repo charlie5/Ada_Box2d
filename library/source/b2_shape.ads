@@ -1,6 +1,3 @@
-#ifndef B2_SHAPE_H
-#define B2_SHAPE_H
-
 #include "b2_api.h"
 #include "b2_math.h"
 #include "b2_collision.h"
@@ -85,4 +82,3 @@ inline b2Shape::Type b2Shape::GetType() const
 	return m_type;
 }
 
-#endif

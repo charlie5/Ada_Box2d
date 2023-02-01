@@ -1,6 +1,3 @@
-#ifndef B2_COMMON_H
-#define B2_COMMON_H
-
 #include "b2_settings.h"
 
 #include <stddef.h>
@@ -113,4 +110,3 @@ struct b2Version
 /// Current version.
 extern B2_API b2Version b2_version;
 
-#endif

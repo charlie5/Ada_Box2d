@@ -1,6 +1,3 @@
-#ifndef B2_TIMER_H
-#define B2_TIMER_H
-
 #include "b2_api.h"
 #include "b2_settings.h"
 
@@ -30,4 +27,3 @@ private:
 #endif
 };
 
-#endif

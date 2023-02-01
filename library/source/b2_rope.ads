@@ -1,6 +1,3 @@
-#ifndef B2_ROPE_H
-#define B2_ROPE_H
-
 #include "b2_api.h"
 #include "b2_math.h"
 
@@ -128,4 +125,3 @@ private:
 	b2RopeTuning m_tuning;
 };
 
-#endif

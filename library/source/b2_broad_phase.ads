@@ -1,6 +1,3 @@
-#ifndef B2_BROAD_PHASE_H
-#define B2_BROAD_PHASE_H
-
 #include "b2_api.h"
 #include "b2_settings.h"
 #include "b2_collision.h"
@@ -213,4 +210,3 @@ inline void b2BroadPhase::ShiftOrigin(const b2Vec2& newOrigin)
 	m_tree.ShiftOrigin(newOrigin);
 }
 
-#endif

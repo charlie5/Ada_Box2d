@@ -1,6 +1,3 @@
-#ifndef B2_WORLD_H
-#define B2_WORLD_H
-
 #include "b2_api.h"
 #include "b2_block_allocator.h"
 #include "b2_contact_manager.h"
@@ -320,4 +317,3 @@ inline const b2Profile& b2World::GetProfile() const
 	return m_profile;
 }
 
-#endif

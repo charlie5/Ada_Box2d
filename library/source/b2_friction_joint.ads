@@ -1,6 +1,3 @@
-#ifndef B2_FRICTION_JOINT_H
-#define B2_FRICTION_JOINT_H
-
 #include "b2_api.h"
 #include "b2_joint.h"
 
@@ -99,4 +96,3 @@ protected:
 	float m_angularMass;
 };
 
-#endif

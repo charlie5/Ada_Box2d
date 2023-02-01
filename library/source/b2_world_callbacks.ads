@@ -1,6 +1,3 @@
-#ifndef B2_WORLD_CALLBACKS_H
-#define B2_WORLD_CALLBACKS_H
-
 #include "b2_api.h"
 #include "b2_settings.h"
 
@@ -136,4 +133,3 @@ public:
 									const b2Vec2& normal, float fraction) = 0;
 };
 
-#endif

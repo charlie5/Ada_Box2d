@@ -1,6 +1,3 @@
-#ifndef B2_GROWABLE_STACK_H
-#define B2_GROWABLE_STACK_H
-
 #include <string.h>
 
 #include "b2_settings.h"
@@ -65,5 +62,3 @@ private:
 	int32 m_capacity;
 };
 
-
-#endif

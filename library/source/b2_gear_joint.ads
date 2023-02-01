@@ -1,6 +1,3 @@
-#ifndef B2_GEAR_JOINT_H
-#define B2_GEAR_JOINT_H
-
 #include "b2_joint.h"
 
 /// Gear joint definition. This definition requires two existing
@@ -105,4 +102,3 @@ protected:
 	float m_mass;
 };
 
-#endif

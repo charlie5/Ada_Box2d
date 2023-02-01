@@ -1,6 +1,3 @@
-#ifndef B2_DYNAMIC_TREE_H
-#define B2_DYNAMIC_TREE_H
-
 #include "b2_api.h"
 #include "b2_collision.h"
 #include "b2_growable_stack.h"
@@ -283,4 +280,3 @@ inline void b2DynamicTree::RayCast(T* callback, const b2RayCastInput& input) con
 	}
 }
 
-#endif

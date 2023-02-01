@@ -1,6 +1,3 @@
-#ifndef B2_MATH_H
-#define B2_MATH_H
-
 #include <math.h>
 
 #include "b2_api.h"
@@ -690,4 +687,3 @@ inline void b2Sweep::Normalize()
 	a -= d;
 }
 
-#endif

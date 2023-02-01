@@ -1,6 +1,3 @@
-#ifndef B2_DRAW_H
-#define B2_DRAW_H
-
 #include "b2_api.h"
 #include "b2_math.h"
 
@@ -77,4 +74,3 @@ protected:
 	uint32 m_drawFlags;
 };
 
-#endif

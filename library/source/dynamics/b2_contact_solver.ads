@@ -1,6 +1,3 @@
-#ifndef B2_CONTACT_SOLVER_H
-#define B2_CONTACT_SOLVER_H
-
 #include "box2d/b2_collision.h"
 #include "box2d/b2_math.h"
 #include "box2d/b2_time_step.h"
@@ -73,6 +70,4 @@ public:
 	b2Contact** m_contacts;
 	int m_count;
 };
-
-#endif
 

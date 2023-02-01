@@ -1,6 +1,3 @@
-#ifndef B2_STACK_ALLOCATOR_H
-#define B2_STACK_ALLOCATOR_H
-
 #include "b2_api.h"
 #include "b2_settings.h"
 
@@ -40,4 +37,3 @@ private:
 	int32 m_entryCount;
 };
 
-#endif

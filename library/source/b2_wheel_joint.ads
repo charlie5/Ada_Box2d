@@ -1,6 +1,3 @@
-#ifndef B2_WHEEL_JOINT_H
-#define B2_WHEEL_JOINT_H
-
 #include "b2_api.h"
 #include "b2_joint.h"
 
@@ -215,4 +212,3 @@ inline float b2WheelJoint::GetMaxMotorTorque() const
 	return m_maxMotorTorque;
 }
 
-#endif

@@ -1,6 +1,3 @@
-#ifndef B2_CONTACT_H
-#define B2_CONTACT_H
-
 #include "b2_api.h"
 #include "b2_collision.h"
 #include "b2_fixture.h"
@@ -361,4 +358,3 @@ inline float b2Contact::GetTangentSpeed() const
 	return m_tangentSpeed;
 }
 
-#endif

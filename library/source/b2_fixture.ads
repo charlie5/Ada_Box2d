@@ -1,6 +1,3 @@
-#ifndef B2_FIXTURE_H
-#define B2_FIXTURE_H
-
 #include "b2_api.h"
 #include "b2_body.h"
 #include "b2_collision.h"
@@ -340,4 +337,3 @@ inline const b2AABB& b2Fixture::GetAABB(int32 childIndex) const
 	return m_proxies[childIndex].aabb;
 }
 
-#endif

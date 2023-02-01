@@ -1,6 +1,3 @@
-#ifndef B2_CONTACT_MANAGER_H
-#define B2_CONTACT_MANAGER_H
-
 #include "b2_api.h"
 #include "b2_broad_phase.h"
 
@@ -32,4 +29,3 @@ public:
 	b2BlockAllocator* m_allocator;
 };
 
-#endif

@@ -1,6 +1,3 @@
-#ifndef B2_CIRCLE_SHAPE_H
-#define B2_CIRCLE_SHAPE_H
-
 #include "b2_api.h"
 #include "b2_shape.h"
 
@@ -42,4 +39,3 @@ inline b2CircleShape::b2CircleShape()
 	m_p.SetZero();
 }
 
-#endif
