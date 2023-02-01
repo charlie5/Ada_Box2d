@@ -1,0 +1,26 @@
+with
+     "box2d_default",
+     "box2d";
+
+
+project hello_Box2d
+is
+
+   for Object_Dir   use "build";
+   for Source_Dirs  use ("source");
+   for Exec_Dir     use ".";
+   for Main         use ("launch_hello_box2d");
+   
+   -- Define the packages.
+   --
+
+   package Ide      renames Box2d_default.Ide;
+   package Builder  renames Box2d_default.Builder;
+   package Compiler renames Box2d_default.Compiler;
+   package Binder   renames Box2d_default.Binder;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-g");
+   end Linker;
+
+end hello_Box2d;

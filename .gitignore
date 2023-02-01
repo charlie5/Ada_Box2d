@@ -1,0 +1,40 @@
+## Alire
+#
+
+alire
+config
+
+
+
+## Editor backup files
+#
+
+*.bak
+*\~
+
+
+
+## Build artifacts
+#
+
+*.ali
+*.a
+*.o
+*-loc.xml
+.clang-format
+.clangd
+build
+
+
+
+## Binaries
+#
+
+launch_hello_box2d
+
+
+
+## Misc
+#
+
+attic
