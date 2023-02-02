@@ -17,11 +17,13 @@ is
    --
    --    #include "b2_user_settings"
    --
+   --
    -- #else
    --
    --    #include <stdarg.h>
    --    #include <stdint.h>
 
+   subtype Real is Float;
 
 
    -- Tunable Constants
