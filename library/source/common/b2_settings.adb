@@ -6,8 +6,10 @@ with
 package body b2_Settings
 is
 
-   --  b2Version b2_version = {2, 4, 0};
-   --
+   --  b2Version b2_version = {2, 4, 0};     (moved to b2_Common).
+
+
+
    --  // Memory allocators. Modify these to use your own allocator.
    --  void* b2Alloc_Default(int32 size)
    --  {
