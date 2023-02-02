@@ -1,10 +1,3 @@
-with
-     b2_Collision,
-     b2_circle_Shape,
-     b2_edge_Shape,
-     b2_polygon_Shape;
-
-
 package body b2_collide_Edge
 is
    procedure dummy is null;

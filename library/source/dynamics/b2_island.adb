@@ -1,5 +1,4 @@
 with
-     b2_Body,
      b2_Contact,
      b2_Distance,
      b2_Fixture,

@@ -10,9 +10,6 @@ with
      b2_Contact,
      b2_block_Allocator,
      b2_Body,
-     b2_Collision,
-     b2_Fixture,
-     b2_Shape,
      b2_Time_of_impact,
      b2_World;
 

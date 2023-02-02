@@ -4,7 +4,6 @@ with
      b2_broad_Phase,
      b2_chain_Shape,
      b2_circle_Shape,
-     b2_Collision,
      b2_Contact,
      b2_edge_Shape,
      b2_polygon_Shape,

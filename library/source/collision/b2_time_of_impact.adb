@@ -1,6 +1,5 @@
 with
      b2_Collision,
-     b2_Distance,
      b2_circle_Shape,
      b2_polygon_Shape,
      b2_Time_of_impact,

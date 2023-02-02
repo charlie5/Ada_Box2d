@@ -1,8 +1,3 @@
-with
-     b2_Collision,
-     b2_polygon_Shape;
-
-
 package body b2_collide_Polygon
 is
    procedure dummy is null;
