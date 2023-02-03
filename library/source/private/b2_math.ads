@@ -428,7 +428,7 @@ is
    --
    --    b2Vec2 Solve22(const b2Vec2& b) const;
 
-   function solve22 (Self : in b2Mat33;   b : in b2Vec2) return b2Vec3;
+   function solve22 (Self : in b2Mat33;   b : in b2Vec2) return b2Vec2;
 
 
    --    Get the inverse of this matrix as a 2-by-2.
@@ -444,7 +444,7 @@ is
    --
    --    void GetSymInverse33(b2Mat33* M) const;
 
-   procedure getSymInverse33 (Self : in b2Mat33;   M : in out b2Mat33);
+   procedure getSymInverse33 (Self : in b2Mat33;   M : out b2Mat33);
 
 
 
@@ -1098,6 +1098,8 @@ is
    --  {
    --    return b2Mat22(b2Abs(A.ex), b2Abs(A.ey));
    --  }
+
+   function b2Abs (A : in b2Mat22) return b2Mat22;
 
 
 
