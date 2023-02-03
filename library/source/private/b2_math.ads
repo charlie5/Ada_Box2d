@@ -10,7 +10,11 @@ package b2_Math
 is
    use b2_Types;
 
-   subtype Real      is b2_Settings.Real;
+
+   subtype Real  is b2_Settings.Real;
+   type    Reals is array (Natural range <>) of Real;
+
+
    package Functions is new ada.Numerics.generic_elementary_Functions (Real);
 
 
@@ -48,6 +52,8 @@ is
       record
          x, y : aliased Real;     -- Don't give these initial default vaues for performance.
       end record;
+
+   type b2Vec2s is array (Natural range <>) of b2Vec2;
 
 
    --    Construct using coordinates.
