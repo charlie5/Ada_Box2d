@@ -53,6 +53,14 @@ is
 --    /// Uses m_vertex0 and m_vertex3 to create smooth collision.
 --    bool m_oneSided;
 --  };
+
+
+   type b2edgeShape is
+      record
+         null;
+      end record;
+
+
 --
 --  inline b2EdgeShape::b2EdgeShape()
 --  {
