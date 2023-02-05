@@ -69,7 +69,7 @@ is
 
    --  void b2Free_Default (void* mem)
    --  {
-   --    free(mem);
+   --    free (mem);
    --  }
 
    procedure b2free_default (Mem : in out void_ptr)
@@ -86,13 +86,11 @@ is
    ----------------------------
    -- Default logging function.
    --
-   --  // You can modify this to use your logging facility.
-   --  void b2Log_Default(const char* string, va_list args)
+
+   --  void b2Log_Default (const char* string, va_list args)
    --  {
-   --    vprintf(string, args);
+   --    vprintf (string, args);
    --  }
-
-
 
    procedure b2Log_Default (Message : in String)
    is
@@ -119,6 +117,12 @@ is
    end b2Log;
 
 
+
+
+
+   --------
+   -- Dumps
+   --
 
    --  FILE*   b2_dumpFile = nullptr;
 
