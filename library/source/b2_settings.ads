@@ -8,6 +8,8 @@ package b2_Settings
 -- Settings that can be overriden for your application.
 --
 is
+   use b2_Types;
+
    DEBUG : constant Boolean := True;
 
 
@@ -46,6 +48,11 @@ is
    -- User Data
    --
 
+   type void_ptr is access all uint8;
+
+
+
+
    -- You can define this to inject whatever data you want in b2Body.
    --
    -- struct b2BodyUserData
@@ -61,7 +68,7 @@ is
 
    type b2BodyUserData is
       record
-         Pointer : system.Address := system.null_Address;
+         Pointer : void_ptr;
       end record;
 
 
@@ -81,7 +88,7 @@ is
 
    type b2FixtureUserData is
       record
-         Pointer : system.Address := system.null_Address;
+         Pointer : void_ptr;
       end record;
 
 
@@ -101,7 +108,7 @@ is
 
    type b2JointUserData is
       record
-         Pointer : system.Address := system.null_Address;
+         Pointer : void_ptr;
       end record;
 
 
