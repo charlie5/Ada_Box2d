@@ -8,6 +8,9 @@ package b2_Settings
 -- Settings that can be overriden for your application.
 --
 is
+   DEBUG : constant Boolean := True;
+
+
 
    -- Define this macro in your build if you want to override settings.
    --
