@@ -143,7 +143,8 @@ is
    --
    --    virtual bool TestPoint(const b2Transform& xf, const b2Vec2& p) const = 0;
 
-   function testPoint (Self : in b2Shape) return Boolean
+   function testPoint (Self : in b2Shape;   xf : in b2Transform;
+                                            p  : in b2Vec2) return Boolean
                        is abstract;
 
 
@@ -159,7 +160,7 @@ is
 
    function rayCast (Self : in b2Shape;   Output     :    out b2RayCastOutput;
                                           Input      : in     b2RayCastInput;
-                                          Transform  : in     b2RayCastInput;
+                                          Transform  : in     b2Transform;
                                           childIndex : in     int32)          return Boolean
                      is abstract;
 
@@ -173,7 +174,7 @@ is
    --    virtual void ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const = 0;
 
    procedure computeAABB (Self : in b2Shape;   aabb       :    out b2AABB;
-                                               xf         : in     b2Transform;
+                                               Transform  : in     b2Transform;
                                                childIndex : in     int32)
    is abstract;
 
