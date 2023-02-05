@@ -37,6 +37,12 @@ is
 --    /// Position
 --    b2Vec2 m_p;
 --  };
+
+   type b2circleShape is
+      record
+         null;
+      end record;
+
 --
 --  inline b2CircleShape::b2CircleShape()
 --  {
