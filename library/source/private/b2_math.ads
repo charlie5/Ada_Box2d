@@ -114,7 +114,8 @@ is
 
    --    Convert this vector into a unit vector. Returns the length.
    --
-   function Normalize (Self : in out b2Vec2) return Real;
+   function  normalize (Self : in out b2Vec2) return Real;
+   procedure normalize (Self : in out b2Vec2);
 
 
    --    Does this vector contain finite coordinates?

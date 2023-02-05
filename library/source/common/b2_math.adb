@@ -189,7 +189,7 @@ is
    --       return length;
    --    }
 
-   function Normalize (Self : in out b2Vec2) return Real
+   function normalize (Self : in out b2Vec2) return Real
    is
       use b2_Common;
 
@@ -209,6 +209,16 @@ is
 
       return l;
    end Normalize;
+
+
+
+   procedure normalize (Self : in out b2Vec2)
+   is
+      Unused : Real := normalize (Self)
+        with Unreferenced;
+   begin
+      null;
+   end normalize;
 
 
 
