@@ -66,6 +66,13 @@ is
 --    b2Vec2 m_normals[b2_maxPolygonVertices];
 --    int32 m_count;
 --  };
+
+
+   type b2polygonShape is
+      record
+         null;
+      end record;
+
 --
 --  inline b2PolygonShape::b2PolygonShape()
 --  {
