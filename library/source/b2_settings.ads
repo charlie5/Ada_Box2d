@@ -150,12 +150,16 @@ is
 
    procedure b2free (Mem : in out void_ptr)
      with Inline;
-   -- }
 
 
 
+
+   ----------------------------
    -- Default logging function.
    --
+
+   --  You can modify this to use your logging facility.
+
    -- void b2Log_Default (const char*   string,
    --                     va_list       args);
 
@@ -165,15 +169,9 @@ is
    -- Implement this to use your own logging.
    --
    -- inline void b2Log (const char*   string, ...)
-   -- {
-   --   va_list   args;
-   --
-   --   va_start (args, string);
-   --   b2Log_Default (string, args);
-   --   va_end (args);
-   -- }
 
-   procedure b2Log (Message : in String);
+   procedure b2Log (Message : in String)
+     with Inline;
 
 
    --
