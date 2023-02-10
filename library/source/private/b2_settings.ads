@@ -44,6 +44,10 @@ is
    b2_maxPolygonVertices  : constant := 8;
 
 
+   default_max_chain_Vertices : constant := 16;
+
+
+
 
    -- User Data
    --
