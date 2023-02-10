@@ -136,7 +136,7 @@ private
    type b2Chunks is array (Natural range <>) of aliased b2Chunk;
 
    null_b2Chunk : constant b2Chunk := (blockSize => 0,
-                                       blocks    => null);
+                                       Blocks    => null);
 
    package b2Chunk_Pointers is new interfaces.C.Pointers (Index              => Natural,
                                                           Element            => b2Chunk,
