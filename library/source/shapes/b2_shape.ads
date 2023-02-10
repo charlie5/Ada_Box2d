@@ -7,14 +7,13 @@ with
 
 package b2_Shape
 is
-
    --  class b2BlockAllocator;
    --
 
    use b2_Math,
-       b2_block_Allocator,
        b2_Collision,
-       b2_Types;
+       b2_Types,
+       b2_block_Allocator;
 
 
 
@@ -96,7 +95,7 @@ is
          m_Radius : Real;
       end record;
 
-   type b2Shape_view is access all b2Shape'Class;
+   type b2Shape_ptr is access all b2Shape'Class;
 
 
 
@@ -112,7 +111,7 @@ is
    --    virtual b2Shape* Clone(b2BlockAllocator* allocator) const = 0;
    --
 
-   function clone (Self : in b2Shape;   Allocator : in out b2BlockAllocator) return b2Shape_view
+   function clone (Self : in b2Shape;   Allocator : in out b2blockAllocator) return b2Shape_ptr
                    is abstract;
 
 
@@ -132,7 +131,7 @@ is
    --    virtual int32 GetChildCount() const = 0;
    --
 
-   function getChildCount (Self : in b2Shape) return int32
+   function getChildCount (Self : in b2Shape) return Natural
      is abstract;
 
 
@@ -161,7 +160,7 @@ is
    function rayCast (Self : in b2Shape;   Output     :    out b2RayCastOutput;
                                           Input      : in     b2RayCastInput;
                                           Transform  : in     b2Transform;
-                                          childIndex : in     int32)          return Boolean
+                                          childIndex : in     Natural)        return Boolean
                      is abstract;
 
 
@@ -175,7 +174,7 @@ is
 
    procedure computeAABB (Self : in b2Shape;   aabb       :    out b2AABB;
                                                Transform  : in     b2Transform;
-                                               childIndex : in     int32)
+                                               childIndex : in     Natural)
    is abstract;
 
 
