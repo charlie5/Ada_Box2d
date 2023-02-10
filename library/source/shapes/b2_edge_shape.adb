@@ -94,7 +94,7 @@ is
 
 
    overriding
-   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_view
+   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_ptr
    is
       use b2_Settings;
       use type int32;
@@ -118,7 +118,7 @@ is
    --
 
    overriding
-   function getChildCount (Self : in b2edgeShape) return int32
+   function getChildCount (Self : in b2edgeShape) return Natural
    is
    begin
       return 1;
@@ -221,10 +221,10 @@ is
    --
 
    overriding
-   function rayCast (Self : in b2edgeShape;   Output     :    out b2RayCastOutput;
+   function raycast (Self : in b2edgeShape;   Output     :    out b2RayCastOutput;
                                               Input      : in     b2RayCastInput;
                                               Transform  : in     b2Transform;
-                                              childIndex : in     int32) return Boolean
+                                              childIndex : in     Natural) return Boolean
    is
       xf : b2Transform renames Transform;
 
@@ -250,7 +250,7 @@ is
       s  : Real;
 
    begin
-      -- Normal points to the right, looking from v1 at v2
+      -- Normal points to the right, looking from v1 at v2.
       --
       normalize (Normal);
 
@@ -315,6 +315,8 @@ is
 
 
 
+
+
    --  void b2EdgeShape::ComputeAABB(b2AABB* aabb, const b2Transform& xf, int32 childIndex) const
    --  {
    --    B2_NOT_USED(childIndex);
@@ -334,20 +336,22 @@ is
    overriding
    procedure computeAABB (Self : in b2edgeShape;   aabb       :    out b2AABB;
                                                    Transform  : in     b2Transform;
-                                                   childIndex : in     int32)
+                                                   childIndex : in     Natural)
    is
-      v1 : constant b2Vec2 := b2Mul (Transform, Self.m_vertex1);
-      v2 : constant b2Vec2 := b2Mul (Transform, Self.m_vertex2);
+      v1    : constant b2Vec2 := b2Mul (Transform, Self.m_vertex1);
+      v2    : constant b2Vec2 := b2Mul (Transform, Self.m_vertex2);
 
       Lower : constant b2Vec2 := b2Min (v1, v2);
       Upper : constant b2Vec2 := b2Max (v1, v2);
 
-      r : constant b2Vec2 := (Self.m_radius,
-                              Self.m_radius);
+      r     : constant b2Vec2 := (Self.m_radius,
+                                  Self.m_radius);
    begin
       aabb.lowerBound := Lower - r;
       aabb.upperBound := Upper + r;
    end computeAABB;
+
+
 
 
 

@@ -82,7 +82,7 @@ is
    --
 
    overriding
-   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_view;
+   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_ptr;
 
 
 
@@ -92,7 +92,7 @@ is
    --
 
    overriding
-   function getChildCount (Self : in b2edgeShape) return int32;
+   function getChildCount (Self : in b2edgeShape) return Natural;
 
 
 
@@ -117,7 +117,7 @@ is
    function rayCast (Self : in b2edgeShape;   Output     :    out b2RayCastOutput;
                                               Input      : in     b2RayCastInput;
                                               Transform  : in     b2Transform;
-                                              childIndex : in     int32) return Boolean;
+                                              childIndex : in     Natural) return Boolean;
 
 
    --     @see b2Shape::ComputeAABB
@@ -128,7 +128,7 @@ is
    overriding
    procedure computeAABB (Self : in b2edgeShape;   aabb       :    out b2AABB;
                                                    Transform  : in     b2Transform;
-                                                   childIndex : in     int32);
+                                                   childIndex : in     Natural);
 
 
    --     @see b2Shape::ComputeMass
