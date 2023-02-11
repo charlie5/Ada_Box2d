@@ -1,8 +1,6 @@
 with
-     b2_block_Allocator,
      b2_contact_Manager,
      b2_Math,
-     b2_stack_Allocator,
      b2_time_Step,
      b2_world_Callbacks;
 

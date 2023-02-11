@@ -8,7 +8,6 @@ with
      b2_polygon_circle_Contact,
      b2_polygon_Contact,
      b2_Contact,
-     b2_block_Allocator,
      b2_Body,
      b2_Time_of_impact,
      b2_World;

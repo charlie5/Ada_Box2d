@@ -3,7 +3,6 @@ with
      b2_Body,
      b2_Contact,
      b2_Fixture,
-     b2_stack_Allocator,
      b2_World;
 
 

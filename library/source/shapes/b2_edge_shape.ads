@@ -2,8 +2,7 @@ with
      b2_Shape,
      b2_Collision,
      b2_Math,
-     b2_Types,
-     b2_block_Allocator;
+     b2_Types;
 
 
 package b2_edge_Shape
@@ -11,8 +10,7 @@ is
    use b2_Shape,
        b2_Collision,
        b2_Math,
-       b2_Types,
-       b2_block_Allocator;
+       b2_Types;
 
 
 
@@ -82,7 +80,7 @@ is
    --
 
    overriding
-   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_ptr;
+   function clone (Self : in b2edgeShape) return b2Shape_ptr;
 
 
 

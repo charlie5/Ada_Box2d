@@ -1,6 +1,5 @@
 with
      b2_chain_circle_Contact,
-     b2_block_Allocator,
      b2_Fixture,
      b2_chain_Shape,
      b2_edge_Shape;

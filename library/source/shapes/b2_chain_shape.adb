@@ -225,7 +225,7 @@ is
    type b2chainShape_ptr is access all b2chainShape;
 
    overriding
-   function clone (Self : in b2chainShape;   Allocator : in out b2blockAllocator) return b2Shape_ptr
+   function clone (Self : in b2chainShape) return b2Shape_ptr
    is
       Clone : constant b2chainShape_ptr := new b2chainShape;
    begin

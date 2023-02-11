@@ -94,15 +94,14 @@ is
 
 
    overriding
-   function clone (Self : in b2edgeShape;   Allocator : in out b2BlockAllocator) return b2Shape_ptr
+   function clone (Self : in b2edgeShape) return b2Shape_ptr
    is
       use b2_Settings;
       use type int32;
 
       function to_b2edgeShape_ptr is new ada.unchecked_Conversion (void_ptr, b2edgeShape_ptr);
 
-      Mem   : constant void_ptr        := allocate (Allocator, b2EdgeShape'Size / 8);
-      Clone : constant b2edgeShape_ptr := new (Mem) b2EdgeShape;
+      Clone : constant b2edgeShape_ptr := new b2EdgeShape;
    begin
       Clone.all := Self;
 

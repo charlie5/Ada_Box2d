@@ -3,7 +3,6 @@ with
      b2_Distance,
      b2_Fixture,
      b2_Joint,
-     b2_stack_Allocator,
      b2_Timer,
      b2_World,
      b2_Island,

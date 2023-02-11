@@ -1,8 +1,7 @@
 with
      b2_Math,
      b2_Collision,
-     b2_Types,
-     b2_block_Allocator;
+     b2_Types;
 
 
 package b2_Shape
@@ -12,8 +11,7 @@ is
 
    use b2_Math,
        b2_Collision,
-       b2_Types,
-       b2_block_Allocator;
+       b2_Types;
 
 
 
@@ -111,7 +109,7 @@ is
    --    virtual b2Shape* Clone(b2BlockAllocator* allocator) const = 0;
    --
 
-   function clone (Self : in b2Shape;   Allocator : in out b2blockAllocator) return b2Shape_ptr
+   function clone (Self : in b2Shape) return b2Shape_ptr
                    is abstract;
 
 
@@ -157,7 +155,7 @@ is
    --    virtual bool RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
    --                         const b2Transform& transform, int32 childIndex) const = 0;
 
-   function rayCast (Self : in b2Shape;   Output     :    out b2RayCastOutput;
+   function raycast (Self : in b2Shape;   Output     :    out b2RayCastOutput;
                                           Input      : in     b2RayCastInput;
                                           Transform  : in     b2Transform;
                                           childIndex : in     Natural)        return Boolean

@@ -1,6 +1,5 @@
 with
      b2_edge_circle_Contact,
-     b2_block_Allocator,
      b2_Fixture;
 
 

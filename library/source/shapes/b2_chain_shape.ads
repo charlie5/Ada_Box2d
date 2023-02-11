@@ -4,7 +4,6 @@ with
      b2_Collision,
      b2_Math,
      b2_Types,
-     b2_block_Allocator,
      b2_Settings;
 
 
@@ -23,7 +22,6 @@ is
        b2_Collision,
        b2_Math,
        b2_Types,
-       b2_block_Allocator,
        b2_Settings;
 
 
@@ -129,7 +127,7 @@ is
    --
 
    overriding
-   function clone (Self : in b2chainShape;   Allocator : in out b2blockAllocator) return b2Shape_ptr;     -- Implement b2Shape. Vertices are cloned using b2Alloc.
+   function clone (Self : in b2chainShape) return b2Shape_ptr;     -- Implement b2Shape. Vertices are cloned using b2Alloc.
 
 
 
