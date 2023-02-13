@@ -3,6 +3,7 @@ with
      b2_edge_Shape,
      b2_Collision,
      b2_Math,
+     b2_Pointers,
      b2_Types,
      b2_Settings;
 
@@ -21,12 +22,12 @@ is
        b2_edge_Shape,
        b2_Collision,
        b2_Math,
+       b2_Pointers,
        b2_Types,
        b2_Settings;
 
 
 
-   type b2Vec2_ptr      is access all b2Vec2;
    type b2EdgeShape_ptr is access all b2EdgeShape;
 
 
