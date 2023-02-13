@@ -26,7 +26,7 @@ is
 
    type b2circleShape is new b2Shape with
       record
-         m_p : b2Vec2;     -- Position.
+         m_p : aliased b2Vec2;     -- Position.
       end record;
 
 

@@ -34,13 +34,13 @@ is
 
    type b2edgeShape is new b2Shape with
       record
-         m_Vertex1,
-         m_Vertex2  : b2Vec2;      -- These are the edge vertices.
+         m_Vertex1  : aliased b2Vec2;      -- These are the edge vertices.
+         m_Vertex2  :         b2Vec2;
 
          m_Vertex0,
-         m_Vertex3  : b2Vec2;      -- Optional adjacent vertices. These are used for smooth collision.
+         m_Vertex3  :         b2Vec2;      -- Optional adjacent vertices. These are used for smooth collision.
 
-         m_oneSided : Boolean;     -- Uses m_vertex0 and m_vertex3 to create smooth collision.
+         m_oneSided :         Boolean;     -- Uses m_vertex0 and m_vertex3 to create smooth collision.
       end record;
 
 
