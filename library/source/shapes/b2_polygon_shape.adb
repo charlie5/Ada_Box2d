@@ -98,9 +98,9 @@ is
    function testPoint (Self : in b2polygonShape;   Transform : in b2Transform;
                                                    p         : in b2Vec2) return Boolean
    is
-      Dot    :          b2_Math.Real;
-      pLocal : constant b2Vec2      := b2MulT (Transform.q,
-                                               p - Transform.p);
+      Dot    :          Real;
+      pLocal : constant b2Vec2 := b2MulT (Transform.q,
+                                          p - Transform.p);
    begin
       for i in 0 .. Self.m_Count - 1
       loop
@@ -211,8 +211,8 @@ is
       p2    : constant b2Vec2  := b2MulT (Transform.q, input.p2 - Transform.p);
       d     : constant b2Vec2  := p2 - p1;
 
-      Lower : b2_Math.Real := 0.0;
-      Upper : b2_Math.Real := Input.maxFraction;
+      Lower : Real := 0.0;
+      Upper : Real := Input.maxFraction;
 
       Index : Integer := -1;
 
@@ -224,8 +224,8 @@ is
          -- dot(normal, p1 - v) + a * dot(normal, d) = 0
          --
          declare
-            Numerator   : constant b2_Math.Real := b2Dot (Self.m_Normals (i),  Self.m_Vertices (i) - p1);
-            Denominator : constant b2_Math.Real := b2Dot (Self.m_Normals (i),  d);
+            Numerator   : constant Real := b2Dot (Self.m_Normals (i),  Self.m_Vertices (i) - p1);
+            Denominator : constant Real := b2Dot (Self.m_Normals (i),  d);
          begin
             if Denominator = 0.0
             then
@@ -418,7 +418,7 @@ is
 
    overriding
    procedure computeMass (Self : in b2polygonShape;   massData :    out b2MassData;
-                                                      Density  : in     b2_Math.Real)
+                                                      Density  : in     Real)
    is
       --    Polygon mass, centroid, and inertia.
       --    Let rho be the polygon density in mass per unit area.
@@ -448,14 +448,14 @@ is
       pragma assert (Self.m_Count >= 3);
 
       Center  : b2Vec2       := (0.0, 0.0);
-      Area    : b2_Math.Real := 0.0;
-      Inertia : b2_Math.Real := 0.0;
+      Area    : Real := 0.0;
+      Inertia : Real := 0.0;
 
       -- Get a reference point for forming triangles.
       -- Use the first vertex to reduce round-off errors.
       --
       s      : constant b2Vec2       := Self.m_Vertices (0);
-      k_inv3 : constant b2_Math.Real := 1.0 / 3.0;
+      k_inv3 : constant Real := 1.0 / 3.0;
 
    begin
       for i in 0 .. Self.m_Count - 1
@@ -467,21 +467,21 @@ is
             e2 : constant b2Vec2 := (if i + 1 < Self.m_Count then Self.m_Vertices (i + 1) - s
                                                              else Self.m_Vertices (0)     - s);
 
-            D            : constant b2_Math.Real := b2Cross (e1, e2);
-            triangleArea : constant b2_Math.Real := 0.5 * D;
+            D            : constant Real := b2Cross (e1, e2);
+            triangleArea : constant Real := 0.5 * D;
          begin
             Area := Area + triangleArea;
 
             Center := Center +  triangleArea * k_inv3 * (e1 + e2);     -- Area weighted centroid.
 
             declare
-               ex1 : constant b2_Math.Real := e1.x;
-               ey1 : constant b2_Math.Real := e1.y;
-               ex2 : constant b2_Math.Real := e2.x;
-               ey2 : constant b2_Math.Real := e2.y;
+               ex1 : constant Real := e1.x;
+               ey1 : constant Real := e1.y;
+               ex2 : constant Real := e2.x;
+               ey2 : constant Real := e2.y;
 
-               intx2 : constant b2_Math.Real := ex1*ex1 + ex2*ex1 + ex2*ex2;
-               inty2 : constant b2_Math.Real := ey1*ey1 + ey2*ey1 + ey2*ey2;
+               intx2 : constant Real := ex1*ex1 + ex2*ex1 + ex2*ex2;
+               inty2 : constant Real := ey1*ey1 + ey2*ey1 + ey2*ey2;
             begin
                Inertia := Inertia  +  (0.25 * k_inv3 * D)  *  (intx2 + inty2);
             end;
@@ -553,13 +553,13 @@ is
       pragma assert (Count >= 3);
 
       c    : b2Vec2       := (0.0, 0.0);
-      Area : b2_Math.Real :=  0.0;
+      Area : Real :=  0.0;
 
       -- Get a reference point for forming triangles.
       -- Use the first vertex to reduce round-off errors.
       --
       s    : constant b2Vec2       := vs (0);
-      inv3 : constant b2_Math.Real := 1.0 / 3.0;
+      inv3 : constant Real := 1.0 / 3.0;
    begin
       for i in 0 .. Count - 1
       loop
@@ -573,8 +573,8 @@ is
             e1 : constant b2Vec2 := p2 - p1;
             e2 : constant b2Vec2 := p3 - p1;
 
-            D            : constant b2_Math.Real := b2Cross (e1, e2);
-            triangleArea : constant b2_Math.Real := 0.5 * D;
+            D            : constant Real := b2Cross (e1, e2);
+            triangleArea : constant Real := 0.5 * D;
          begin
             Area := Area + triangleArea;
             c    := c    + triangleArea * inv3 * (p1 + p2 + p3);     -- Area weighted centroid.
@@ -798,8 +798,8 @@ is
       --
       declare
          i0 : Natural      := 0;
-         x0 : b2_Math.Real := ps (0).x;
-         x  : b2_Math.Real;
+         x0 : Real := ps (0).x;
+         x  : Real;
       begin
          for i in 1 .. n - 1
          loop
@@ -833,9 +833,9 @@ is
                      ie := j;
                   else
                      declare
-                        r : constant b2Vec2       := ps (ie) - ps (Hull (m));
-                        v : constant b2Vec2       := ps (j)  - ps (hull (m));
-                        c : constant b2_Math.Real := b2Cross (r, v);
+                        r : constant b2Vec2 := ps (ie) - ps (Hull (m));
+                        v : constant b2Vec2 := ps (j)  - ps (hull (m));
+                        c : constant Real   := b2Cross (r, v);
                      begin
                         if c < 0.0
                         then
@@ -929,7 +929,7 @@ is
    --  }
    --
 
-   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in b2_Math.Real)
+   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in Real)
    is
    begin
       Self.m_Count := 4;
@@ -983,9 +983,9 @@ is
    --  }
    --
 
-   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in b2_Math.Real;
+   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in Real;
                                                        Center : in b2Vec2;
-                                                       Angle  : in b2_Math.Real)
+                                                       Angle  : in Real)
    is
       Transform : b2Transform;
    begin
@@ -1068,7 +1068,7 @@ is
                then
                   declare
                      v : constant b2Vec2       := Self.m_Vertices (j) - p;
-                     c : constant b2_Math.Real := b2Cross (e, v);
+                     c : constant Real := b2Cross (e, v);
                   begin
                      if c < 0.0
                      then

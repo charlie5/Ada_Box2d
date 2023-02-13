@@ -206,7 +206,7 @@ is
 
    overriding
    procedure computeMass (Self : in b2chainShape;   massData :    out b2MassData;
-                                                    Density  : in     b2_Math.Real);
+                                                    Density  : in     Real);
 
 
 

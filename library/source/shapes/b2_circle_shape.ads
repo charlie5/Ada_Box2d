@@ -2,7 +2,8 @@ with
      b2_Shape,
      b2_Collision,
      b2_Math,
-     b2_Types;
+     b2_Types,
+     b2_Settings;
 
 
 package b2_circle_Shape
@@ -10,7 +11,8 @@ is
    use b2_Shape,
        b2_Collision,
        b2_Math,
-       b2_Types;
+       b2_Types,
+       b2_Settings;
 
 
 

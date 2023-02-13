@@ -2,6 +2,7 @@ with
      b2_Math,
      b2_Types,
      b2_Common,
+     b2_Settings,
 
      interfaces.C;
 
@@ -14,7 +15,8 @@ package b2_Collision
 is
    use b2_Math,
        b2_Types,
-       b2_Common;
+       b2_Common,
+       b2_Settings;
 
    procedure dummy;
 

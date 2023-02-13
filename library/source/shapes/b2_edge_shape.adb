@@ -1,7 +1,6 @@
 with
      b2_edge_Shape,
      b2_Common,
-     b2_Settings,
      ada.unchecked_Conversion;
 
 
@@ -96,7 +95,6 @@ is
    overriding
    function clone (Self : in b2edgeShape) return b2Shape_ptr
    is
-      use b2_Settings;
       use type int32;
 
       function to_b2edgeShape_ptr is new ada.unchecked_Conversion (void_ptr, b2edgeShape_ptr);

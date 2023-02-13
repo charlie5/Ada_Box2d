@@ -115,7 +115,7 @@ is
 
    overriding
    procedure computeMass (Self : in b2polygonShape;   massData :    out b2MassData;
-                                                      Density  : in     b2_Math.Real);
+                                                      Density  : in     Real);
 
 
 
@@ -141,7 +141,7 @@ is
    --    void SetAsBox (float hx, float hy);
    --
 
-   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in b2_Math.Real);
+   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in Real);
 
 
 
@@ -156,9 +156,9 @@ is
    --    void SetAsBox(float hx, float hy, const b2Vec2& center, float angle);
    --
 
-   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in b2_Math.Real;
+   procedure setAsBox (Self : in out b2polygonShape;   hx, hy : in Real;
                                                        Center : in b2Vec2;
-                                                       Angle  : in b2_Math.Real);
+                                                       Angle  : in Real);
 
 
 

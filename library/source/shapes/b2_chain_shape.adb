@@ -7,9 +7,6 @@ with
 
 package body b2_chain_Shape
 is
-   --  use b2_Settings;
-
-
 
    --  inline b2chainShape::b2chainShape()
    --  {
@@ -482,7 +479,7 @@ is
 
    overriding
    procedure computeMass (Self : in b2chainShape;   massData :    out b2MassData;
-                                                    Density  : in     b2_Math.Real)
+                                                    Density  : in     Real)
    is
       pragma Unreferenced (Density);
    begin
