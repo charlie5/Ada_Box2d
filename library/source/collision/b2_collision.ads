@@ -18,10 +18,6 @@ is
        b2_Common,
        b2_Settings;
 
-   procedure dummy;
-
-
-
 
    --  class b2Shape;
    --  class b2CircleShape;
@@ -92,11 +88,10 @@ is
       record
          case null_Discriminant is
             when True  => cF  : b2ContactFeature;
-            when False => Key : uint32;               -- Used to quickly compare contact ids.
+            when False => Key : Natural;               -- Used to quickly compare contact ids.
          end case;
       end record
-
-     with unchecked_Union;
+      with unchecked_Union;
 
 
 
@@ -195,7 +190,7 @@ is
         localNormal : b2Vec2;                                           -- Not use for Type::e_points.
         localPoint  : b2Vec2;                                           -- Usage depends on manifold type.
         Kind        : b2manifold_Type;
-        pointCount  : int32;                                            -- The number of manifold points.
+        pointCount  : Natural;                                            -- The number of manifold points.
       end record;
 
 
@@ -233,8 +228,8 @@ is
    --                    const b2Transform&   xfB, float radiusB);
    --
    procedure initialize (Self : out b2WorldManifold;   Manifold : in b2Manifold;
-                                                       xfA      : in b2Transform;   radiusA  : in Real;
-                                                       xfB      : in b2Transform;   radiusB  : in Real);
+                                                       xfA      : in b2Transform;   radiusA : in Real;
+                                                       xfB      : in b2Transform;   radiusB : in Real);
 
 
 
@@ -348,8 +343,8 @@ is
 
    type b2AABB is
       record
-           lowerBound : b2Vec2;     -- The lower vertex.
-           upperBound : b2Vec2;     -- The upper vertex.
+         lowerBound : b2Vec2;     -- The lower vertex.
+         upperBound : b2Vec2;     -- The upper vertex.
       end record;
 
 
@@ -460,7 +455,7 @@ is
    --    return true;
    --  }
 
-   function b2TestOverlap (a, b : in b2AABB) return Boolean;
+   function b2testOverlap (a, b : in b2AABB) return Boolean;
 
 
 
@@ -531,7 +526,7 @@ is
                                  vIn          : in     b2ClipVertex_Pair;
                                  Normal       : in     b2Vec2;
                                  Offset       : in     Real;
-                                 vertexIndexA : in     int32) return int32;
+                                 vertexIndexA : in     int32) return Natural;
 
 
    --  Determine if two generic shapes overlap.
