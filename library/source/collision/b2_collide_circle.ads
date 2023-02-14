@@ -7,8 +7,6 @@ with
 
 package b2_collide_Circle
 is
-   procedure dummy;
-
    use b2_Collision,
        b2_circle_Shape,
        b2_polygon_Shape,
