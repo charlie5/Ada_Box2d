@@ -79,12 +79,12 @@ is
 
    -- Read from an indexed element.
    --
-   function Element (Self : in b2Vec2;   Index : int32) return Real;
+   function Element (Self : in b2Vec2;   Index : Natural) return Real;
 
 
    --    Write to an indexed element.
    --
-   function Element (Self : access b2Vec2;   Index : int32) return access Real;
+   function Element (Self : access b2Vec2;   Index : Natural) return access Real;
 
 
    --    Add a vector to this vector.

@@ -76,7 +76,7 @@ is
    --       return (&x)[i];
    --    }
 
-   function Element (Self : in b2Vec2;   Index : int32) return Real
+   function Element (Self : in b2Vec2;   Index : Natural) return Real
    is
       pragma assert (   Index = 0
                      or Index = 1);
@@ -93,7 +93,7 @@ is
    --       return (&x)[i];
    --    }
 
-   function Element (Self : access b2Vec2;   Index : int32) return access Real
+   function Element (Self : access b2Vec2;   Index : Natural) return access Real
    is
       pragma assert (   Index = 0
                      or Index = 1);
