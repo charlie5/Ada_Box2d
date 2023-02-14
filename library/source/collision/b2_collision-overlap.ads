@@ -20,8 +20,8 @@ is
    --                      const b2Shape* shapeB, int32 indexB,
    --                      const b2Transform& xfA, const b2Transform& xfB);
 
-   function b2TestOverlap (shapeA : in b2Shape;   indexA : in int32;   xfA : in b2Transform;
-                           shapeB : in b2Shape;   indexB : in int32;   xfB : in b2Transform) return Boolean;
+   function b2TestOverlap (shapeA : access b2Shape;   indexA : in Natural;   xfA : in b2Transform;
+                           shapeB : access b2Shape;   indexB : in Natural;   xfB : in b2Transform) return Boolean;
 
 
 end b2_Collision.overlap;

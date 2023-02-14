@@ -117,7 +117,7 @@ is
    type b2SimplexCache is
       record
          Metric : Real;     -- Length or area.
-         Count  : Positive;
+         Count  : Natural;
          indexA : Naturals (0 .. 3);  -- Vertices on shape A.
          indexB : Naturals (0 .. 3);  -- Vertices on shape B.
       end record;
@@ -142,8 +142,8 @@ is
 
    type b2DistanceInput is
       record
-         proxyA     : b2DistanceProxy;
-         proxyB     : b2DistanceProxy;
+         proxyA     : aliased b2DistanceProxy;
+         proxyB     : aliased b2DistanceProxy;
 
          transformA : b2Transform;
          transformB : b2Transform;
