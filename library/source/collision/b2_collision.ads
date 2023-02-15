@@ -60,8 +60,8 @@ is
 
    type b2contactFeature is
       record
-         indexA : uint8;            -- Feature index on shapeA
-         indexB : uint8;            -- Feature index on shapeB
+         indexA : Natural;          -- Feature index on shapeA
+         indexB : Natural;          -- Feature index on shapeB
          typeA  : feature_Type;     -- The feature type on shapeA
          typeB  : feature_Type;     -- The feature type on shapeB
       end record;

@@ -919,13 +919,13 @@ is
                begin
                   clipPoints (0).v            := tempPolygonB.vertices (i1);
                   clipPoints (0).id.cf.indexA := 0;
-                  clipPoints (0).id.cf.indexB := uint8 (i1);
+                  clipPoints (0).id.cf.indexB := i1;
                   clipPoints (0).id.cf.typeA  := e_face;
                   clipPoints (0).id.cf.typeB  := e_vertex;
 
                   clipPoints (1).v            := tempPolygonB.vertices (i2);
                   clipPoints (1).id.cf.indexA := 0;
-                  clipPoints (1).id.cf.indexB := uint8 (i2);
+                  clipPoints (1).id.cf.indexB := i2;
                   clipPoints (1).id.cf.typeA  := e_face;
                   clipPoints (1).id.cf.typeB  := e_vertex;
 
@@ -942,13 +942,13 @@ is
 
                clipPoints (0).v            := v2;
                clipPoints (0).id.cf.indexA := 1;
-               clipPoints (0).id.cf.indexB := uint8 (primaryAxis.index);
+               clipPoints (0).id.cf.indexB := primaryAxis.index;
                clipPoints (0).id.cf.typeA  := e_vertex;
                clipPoints (0).id.cf.typeB  := e_face;
 
                clipPoints (1).v            := v1;
                clipPoints (1).id.cf.indexA := 0;
-               clipPoints (1).id.cf.indexB := uint8 (primaryAxis.index);
+               clipPoints (1).id.cf.indexB := primaryAxis.index;
                clipPoints (1).id.cf.typeA  := e_vertex;
                clipPoints (1).id.cf.typeB  := e_face;
 
