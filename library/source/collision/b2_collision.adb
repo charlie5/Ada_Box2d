@@ -641,7 +641,7 @@ is
                                  vIn          : in     b2ClipVertex_Pair;
                                  Normal       : in     b2Vec2;
                                  Offset       : in     Real;
-                                 vertexIndexA : in     int32) return Natural
+                                 vertexIndexA : in     Natural) return Natural
    is
       --  Start with no output points.
       --

@@ -132,7 +132,7 @@ is
          Id             : b2ContactID;     -- Uniquely identifies a contact point between two shapes.
       end record;
 
-   type b2manifoldPoints is array (Natural range <>) of b2manifoldPoint;
+   type b2manifoldPoints is array (Natural range <>) of aliased b2manifoldPoint;
 
 
 
@@ -526,7 +526,7 @@ is
                                  vIn          : in     b2ClipVertex_Pair;
                                  Normal       : in     b2Vec2;
                                  Offset       : in     Real;
-                                 vertexIndexA : in     int32) return Natural;
+                                 vertexIndexA : in     Natural) return Natural;
 
 
    --  Determine if two generic shapes overlap.
