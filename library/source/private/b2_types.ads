@@ -21,4 +21,7 @@ is
    subtype uint16 is interfaces.Unsigned_16;
    subtype uint32 is interfaces.Unsigned_32;
 
+
+   type Naturals is array (Natural range <>) of Natural;
+
 end b2_Types;

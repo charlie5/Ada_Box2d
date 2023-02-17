@@ -112,7 +112,6 @@ is
    --
 
    type uint8s   is array (Natural range <>) of uint8;
-   type Naturals is array (Natural range <>) of Natural;
 
    type b2SimplexCache is
       record

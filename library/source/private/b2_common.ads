@@ -9,9 +9,7 @@ is
    use b2_Settings;
 
 
-   --  #if !defined(NDEBUG)
-   --    #define b2DEBUG
-   --  #endif
+   b2DEBUG : Boolean := True;
 
 
    --  #define B2_NOT_USED(x) ((void)(x))
