@@ -390,9 +390,8 @@ is
 
    function contains (Self : in b2AABB;   aabb : in b2AABB) return Boolean
    is
-      result : Boolean := True;
+      result : Boolean := Self.lowerBound.x <= aabb.lowerBound.x;
    begin
-      result := result and Self.lowerBound.x <= aabb.lowerBound.x;
       result := result and Self.lowerBound.y <= aabb.lowerBound.y;
 
       result := result and aabb.upperBound.x <= Self.upperBound.x;

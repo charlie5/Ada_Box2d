@@ -50,7 +50,7 @@ is
                                      normal1  : in b2Vec2) return b2EPAxis
    is
       axis : b2EPAxis;
-      axes : constant b2Vec2s (0 .. 1) := (normal1, -normal1);
+      axes : constant b2Vec2s (0 .. 1) := [normal1, -normal1];
    begin
       axis.Kind       := e_edgeA;
       axis.index      := -1;

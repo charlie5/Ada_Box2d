@@ -23,5 +23,6 @@ is
 
 
    type Naturals is array (Natural range <>) of Natural;
+   type Integers is array (Natural range <>) of Integer;
 
 end b2_Types;

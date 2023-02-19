@@ -190,7 +190,7 @@ is
    --    bool WasMoved(int32 proxyId) const;
    --
 
-   function WasMoved (Self : in b2DynamicTree;   proxyId : in Natural) return Boolean
+   function wasMoved (Self : in b2DynamicTree;   proxyId : in Natural) return Boolean
      with inline;
 
 
@@ -275,10 +275,10 @@ is
    generic
       type Callback_t is private;
 
-      with function queryCallback (Callback : access Callback_t;
+      with function queryCallback (Callback : in out Callback_t;
                                    nodeId   : in     Natural) return Boolean;
 
-   procedure query (Self : in b2DynamicTree;   Callback : access Callback_t;
+   procedure query (Self : in b2DynamicTree;   Callback : in out Callback_t;
                                                aabb     : in     b2AABB)
      with inline;
 
@@ -387,11 +387,11 @@ is
    generic
       type Callback_t is private;
 
-      with function raycastCallback (Callback : access Callback_t;
+      with function raycastCallback (Callback : in out Callback_t;
                                      subInput : in     b2RayCastInput;
                                      nodeId   : in     Natural) return Real;
 
-   procedure raycast (Self : in b2DynamicTree;   Callback : access Callback_t;
+   procedure raycast (Self : in b2DynamicTree;   Callback : in out Callback_t;
                                                  input    : in     b2RayCastInput)
      with inline;
 

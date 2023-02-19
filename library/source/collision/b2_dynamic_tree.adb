@@ -471,20 +471,19 @@ is
    --  }
    --
 
-   procedure query (Self : in b2DynamicTree;   Callback : access Callback_t;
+   procedure query (Self : in b2DynamicTree;   Callback : in out Callback_t;
                                                aabb     : in     b2AABB)
    is
       stack : natural_Stack;
    begin
-
       push (stack, Self.m_root);
 
       while getCount (stack) > 0
       loop
          declare
             nodeId  : constant Integer   := pop (stack);
-            node    : access b2TreeNode;
-            proceed :        Boolean;
+            node    : access   b2TreeNode;
+            proceed :          Boolean;
          begin
             if nodeId /= b2_nullNode
             then
@@ -613,7 +612,7 @@ is
    --  }
    --
 
-   procedure raycast (Self : in b2DynamicTree;   Callback : access Callback_t;
+   procedure raycast (Self : in b2DynamicTree;   Callback : in out Callback_t;
                                                  input    : in     b2RayCastInput)
    is
       p1 : constant b2Vec2 := input.p1;
