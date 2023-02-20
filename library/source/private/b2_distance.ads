@@ -28,7 +28,7 @@ is
    --  };
    --
 
-   type b2DistanceProxy is
+   type b2DistanceProxy is tagged
       record
          m_Buffer   : b2Vec2s (0 .. 1);
          m_Vertices : b2Vec2_ptr;

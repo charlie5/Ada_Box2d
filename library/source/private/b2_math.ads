@@ -411,7 +411,7 @@ is
    --    float  a0, a;      ///< world angles
    --  };
 
-   type b2Sweep is
+   type b2Sweep is tagged
       record
          alpha0      : Real;
          localCenter : b2Vec2;     -- Local center of mass position.
