@@ -118,39 +118,4 @@ is
 
 
 
-
-
-   --------
-   -- Dumps
-   --
-
-   --  FILE*   b2_dumpFile = nullptr;
-
-   --  void b2OpenDump(const char* fileName)
-   --  {
-   --    b2Assert(b2_dumpFile == nullptr);
-   --    b2_dumpFile = fopen(fileName, "w");
-   --  }
-
-
-   --  void b2Dump(const char* string, ...)
-   --  {
-   --    if (b2_dumpFile == nullptr)
-   --    {
-   --       return;
-   --    }
-   --
-   --    va_list args;
-   --    va_start(args, string);
-   --    vfprintf(b2_dumpFile, string, args);
-   --    va_end(args);
-   --  }
-
-
-   --  void b2CloseDump()
-   --  {
-   --    fclose(b2_dumpFile);
-   --    b2_dumpFile = nullptr;
-   --  }
-
 end b2_Settings;
