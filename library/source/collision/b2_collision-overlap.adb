@@ -27,8 +27,9 @@ is
 --  }
 --
 
-   function b2TestOverlap (shapeA : access b2Shape;   indexA : in Natural;   xfA : in b2Transform;
-                           shapeB : access b2Shape;   indexB : in Natural;   xfB : in b2Transform) return Boolean
+   function b2TestOverlap (shapeA : access b2Shape;       indexA : in Natural;
+                           shapeB : access b2Shape;       indexB : in Natural;
+                           xfA    : in     b2Transform;   xfB    : in b2Transform) return Boolean
    is
       use b2_Distance;
 
