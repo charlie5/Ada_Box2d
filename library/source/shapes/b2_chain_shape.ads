@@ -150,8 +150,8 @@ is
    --    void GetChildEdge (b2EdgeShape* edge, int32 index) const;
    --
 
-   procedure getChildEdge (Self  : in b2chainShape;   Edge  : in b2EdgeShape_ptr;     --  Get a child edge.
-                                                      Index : in Natural);
+   procedure getChildEdge (Self  : in b2chainShape;   Edge  :    out b2EdgeShape;     --  Get a child edge.
+                                                      Index : in     Natural);
 
 
 

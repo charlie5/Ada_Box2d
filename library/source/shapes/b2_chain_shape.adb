@@ -289,18 +289,18 @@ is
    --  }
    --
 
-   procedure getChildEdge (Self  : in b2chainShape;   Edge  : in b2EdgeShape_ptr;     --  Get a child edge.
-                                                      Index : in Natural)
+   procedure getChildEdge (Self  : in b2chainShape;   Edge  :    out b2EdgeShape;     --  Get a child edge.
+                                                      Index : in     Natural)
 
    is
       pragma assert (0 <= Index and Index < Self.m_Count - 1);
    begin
-        Edge.m_Type   := b2_Shape.e_Edge;
-        Edge.m_Radius := Self.m_Radius;
+      Edge.m_Type   := b2_Shape.e_Edge;
+      Edge.m_Radius := Self.m_Radius;
 
-        Edge.m_Vertex1  := Self.m_vertices (Index + 0);
-        Edge.m_Vertex2  := Self.m_vertices (Index + 1);
-        Edge.m_oneSided := True;
+      Edge.m_Vertex1  := Self.m_vertices (Index + 0);
+      Edge.m_Vertex2  := Self.m_vertices (Index + 1);
+      Edge.m_oneSided := True;
 
 
       if index > 0
