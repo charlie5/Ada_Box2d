@@ -27,7 +27,7 @@ is
    --
    --  struct b2TreeNode
    --  {
-   --    /// Enlarged AABB
+   --    Enlarged AABB
    --    b2AABB aabb;
    --
    --    void* userData;
@@ -89,14 +89,14 @@ is
 
 
 
-   --  /// A dynamic AABB tree broad-phase, inspired by Nathanael Presson's btDbvt.
-   --  /// A dynamic tree arranges data in a binary tree to accelerate
-   --  /// queries such as volume queries and ray casts. Leafs are proxies
-   --  /// with an AABB. In the tree we expand the proxy AABB by b2_fatAABBFactor
-   --  /// so that the proxy AABB is bigger than the client object. This allows the client
-   --  /// object to move by small amounts without triggering a tree update.
+   --  A dynamic AABB tree broad-phase, inspired by Nathanael Presson's btDbvt.
+   --  A dynamic tree arranges data in a binary tree to accelerate
+   --  queries such as volume queries and ray casts. Leafs are proxies
+   --  with an AABB. In the tree we expand the proxy AABB by b2_fatAABBFactor
+   --  so that the proxy AABB is bigger than the client object. This allows the client
+   --  object to move by small amounts without triggering a tree update.
    --  ///
-   --  /// Nodes are pooled and relocatable, so we use node indices rather than pointers.
+   --  Nodes are pooled and relocatable, so we use node indices rather than pointers.
    --
 
    type b2DynamicTree is tagged private;
@@ -108,8 +108,8 @@ is
 
 
 
-   --    /// Get proxy user data.
-   --    /// @return the proxy user data or 0 if the id is invalid.
+   --    Get proxy user data.
+   --    @return the proxy user data or 0 if the id is invalid.
    --
 
    --  inline void* b2DynamicTree::GetUserData(int32 proxyId) const
@@ -125,7 +125,7 @@ is
 
 
 
-   --    /// Constructing the tree initializes the node pool.
+   --    Constructing the tree initializes the node pool.
    --
    --    b2DynamicTree();
    --
@@ -135,7 +135,7 @@ is
 
 
 
-   --    /// Destroy the tree, freeing the node pool.
+   --    Destroy the tree, freeing the node pool.
    --
    --    ~b2DynamicTree();
    --
@@ -145,7 +145,7 @@ is
 
 
 
-   --    /// Create a proxy. Provide a tight fitting AABB and a userData pointer.
+   --    Create a proxy. Provide a tight fitting AABB and a userData pointer.
    --
    --    int32 CreateProxy(const b2AABB& aabb, void* userData);
    --
@@ -156,7 +156,7 @@ is
 
 
 
-   --    /// Destroy a proxy. This asserts if the id is invalid.
+   --    Destroy a proxy. This asserts if the id is invalid.
    --
    --    void DestroyProxy(int32 proxyId);
    --
@@ -166,10 +166,10 @@ is
 
 
 
-   --    /// Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB,
-   --    /// then the proxy is removed from the tree and re-inserted. Otherwise
-   --    /// the function returns immediately.
-   --    /// @return true if the proxy was re-inserted.
+   --    Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB,
+   --    then the proxy is removed from the tree and re-inserted. Otherwise
+   --    the function returns immediately.
+   --    @return true if the proxy was re-inserted.
    --
    --    bool MoveProxy(int32 proxyId, const b2AABB& aabb1, const b2Vec2& displacement);
    --
@@ -211,7 +211,7 @@ is
 
 
 
-   --    /// Get the fat AABB for a proxy.
+   --    Get the fat AABB for a proxy.
    --
    --    const b2AABB& GetFatAABB(int32 proxyId) const;
    --
@@ -228,8 +228,8 @@ is
 
 
 
-   --    /// Query an AABB for overlapping proxies. The callback class
-   --    /// is called for each proxy that overlaps the supplied AABB.
+   --    Query an AABB for overlapping proxies. The callback class
+   --    is called for each proxy that overlaps the supplied AABB.
    --
    --    template <typename T>
    --    void Query(T* callback, const b2AABB& aabb) const;
@@ -286,13 +286,13 @@ is
 
 
 
-   --    /// Ray-cast against the proxies in the tree. This relies on the callback
-   --    /// to perform a exact ray-cast in the case were the proxy contains a shape.
-   --    /// The callback also performs the any collision filtering. This has performance
-   --    /// roughly equal to k * log(n), where k is the number of collisions and n is the
-   --    /// number of proxies in the tree.
-   --    /// @param input the ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
-   --    /// @param callback a callback class that is called for each proxy that is hit by the ray.
+   --    Ray-cast against the proxies in the tree. This relies on the callback
+   --    to perform a exact ray-cast in the case were the proxy contains a shape.
+   --    The callback also performs the any collision filtering. This has performance
+   --    roughly equal to k * log(n), where k is the number of collisions and n is the
+   --    number of proxies in the tree.
+   --    @param input the ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
+   --    @param callback a callback class that is called for each proxy that is hit by the ray.
    --
    --    template <typename T>
    --    void RayCast(T* callback, const b2RayCastInput& input) const;
@@ -398,7 +398,7 @@ is
 
 
 
-   --    /// Validate this tree. For testing.
+   --    Validate this tree. For testing.
    --
    --    void Validate() const;
    --
@@ -408,8 +408,8 @@ is
 
 
 
-   --    /// Compute the height of the binary tree in O(N) time. Should not be
-   --    /// called often.
+   --    Compute the height of the binary tree in O(N) time. Should not be
+   --    called often.
    --
    --    int32 GetHeight() const;
    --
@@ -419,8 +419,8 @@ is
 
 
 
-   --    /// Get the maximum balance of an node in the tree. The balance is the difference
-   --    /// in height of the two children of a node.
+   --    Get the maximum balance of an node in the tree. The balance is the difference
+   --    in height of the two children of a node.
    --
    --    int32 GetMaxBalance() const;
    --
@@ -430,7 +430,7 @@ is
 
 
 
-   --    /// Get the ratio of the sum of the node areas to the root area.
+   --    Get the ratio of the sum of the node areas to the root area.
    --
    --    float GetAreaRatio() const;
    --
@@ -440,7 +440,7 @@ is
 
 
 
-   --    /// Build an optimal tree. Very expensive. For testing.
+   --    Build an optimal tree. Very expensive. For testing.
    --
    --    void RebuildBottomUp();
    --
@@ -450,9 +450,9 @@ is
 
 
 
-   --    /// Shift the world origin. Useful for large worlds.
-   --    /// The shift formula is: position -= newOrigin
-   --    /// @param newOrigin the new origin with respect to the old origin
+   --    Shift the world origin. Useful for large worlds.
+   --    The shift formula is: position -= newOrigin
+   --    @param newOrigin the new origin with respect to the old origin
    --
    --    void ShiftOrigin(const b2Vec2& newOrigin);
 

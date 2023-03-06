@@ -22,7 +22,7 @@ is
    --  {
    --  public:
    --
-   --    /// Position
+   --    Position
    --    b2Vec2 m_p;
    --  };
 

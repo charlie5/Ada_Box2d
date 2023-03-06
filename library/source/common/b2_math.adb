@@ -715,7 +715,7 @@ is
 
    --    explicit b2Rot(float angle)
    --    {
-   --       /// TODO_ERIN optimize
+   --       TODO_ERIN optimize
    --       s = sinf(angle);
    --       c = cosf(angle);
    --    }
@@ -732,7 +732,7 @@ is
 
    --    void Set(float angle)
    --    {
-   --       /// TODO_ERIN optimize
+   --       TODO_ERIN optimize
    --       s = sinf(angle);
    --       c = cosf(angle);
    --    }

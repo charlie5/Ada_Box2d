@@ -8,10 +8,10 @@ is
 
 
    --
---  /// Distance joint definition. This requires defining an anchor point on both
---  /// bodies and the non-zero distance of the distance joint. The definition uses
---  /// local anchor points so that the initial configuration can violate the
---  /// constraint slightly. This helps when saving and loading a game.
+--  Distance joint definition. This requires defining an anchor point on both
+--  bodies and the non-zero distance of the distance joint. The definition uses
+--  local anchor points so that the initial configuration can violate the
+--  constraint slightly. This helps when saving and loading a game.
 --  struct b2DistanceJointDef : public b2JointDef
 --  {
 --    b2DistanceJointDef()
@@ -26,35 +26,35 @@ is
 --       damping = 0.0f;
 --    }
 --
---    /// Initialize the bodies, anchors, and rest length using world space anchors.
---    /// The minimum and maximum lengths are set to the rest length.
+--    Initialize the bodies, anchors, and rest length using world space anchors.
+--    The minimum and maximum lengths are set to the rest length.
 --    void Initialize(b2Body* bodyA, b2Body* bodyB,
 --                const b2Vec2& anchorA, const b2Vec2& anchorB);
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    b2Vec2 localAnchorA;
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    b2Vec2 localAnchorB;
 --
---    /// The rest length of this joint. Clamped to a stable minimum value.
+--    The rest length of this joint. Clamped to a stable minimum value.
 --    float length;
 --
---    /// Minimum length. Clamped to a stable minimum value.
+--    Minimum length. Clamped to a stable minimum value.
 --    float minLength;
 --
---    /// Maximum length. Must be greater than or equal to the minimum length.
+--    Maximum length. Must be greater than or equal to the minimum length.
 --    float maxLength;
 --
---    /// The linear stiffness in N/m.
+--    The linear stiffness in N/m.
 --    float stiffness;
 --
---    /// The linear damping in N*s/m.
+--    The linear damping in N*s/m.
 --    float damping;
 --  };
 --
---  /// A distance joint constrains two points on two bodies to remain at a fixed
---  /// distance from each other. You can view this as a massless, rigid rod.
+--  A distance joint constrains two points on two bodies to remain at a fixed
+--  distance from each other. You can view this as a massless, rigid rod.
 --  class b2DistanceJoint : public b2Joint
 --  {
 --  public:
@@ -62,53 +62,53 @@ is
 --    b2Vec2 GetAnchorA() const override;
 --    b2Vec2 GetAnchorB() const override;
 --
---    /// Get the reaction force given the inverse time step.
---    /// Unit is N.
+--    Get the reaction force given the inverse time step.
+--    Unit is N.
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --
---    /// Get the reaction torque given the inverse time step.
---    /// Unit is N*m. This is always zero for a distance joint.
+--    Get the reaction torque given the inverse time step.
+--    Unit is N*m. This is always zero for a distance joint.
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 --
---    /// Get the rest length
+--    Get the rest length
 --    float GetLength() const { return m_length; }
 --
---    /// Set the rest length
---    /// @returns clamped rest length
+--    Set the rest length
+--    @returns clamped rest length
 --    float SetLength(float length);
 --
---    /// Get the minimum length
+--    Get the minimum length
 --    float GetMinLength() const { return m_minLength; }
 --
---    /// Set the minimum length
---    /// @returns the clamped minimum length
+--    Set the minimum length
+--    @returns the clamped minimum length
 --    float SetMinLength(float minLength);
 --
---    /// Get the maximum length
+--    Get the maximum length
 --    float GetMaxLength() const { return m_maxLength; }
 --
---    /// Set the maximum length
---    /// @returns the clamped maximum length
+--    Set the maximum length
+--    @returns the clamped maximum length
 --    float SetMaxLength(float maxLength);
 --
---    /// Get the current length
+--    Get the current length
 --    float GetCurrentLength() const;
 --
---    /// Set/get the linear stiffness in N/m
+--    Set/get the linear stiffness in N/m
 --    void SetStiffness(float stiffness) { m_stiffness = stiffness; }
 --    float GetStiffness() const { return m_stiffness; }
 --
---    /// Set/get linear damping in N*s/m
+--    Set/get linear damping in N*s/m
 --    void SetDamping(float damping) { m_damping = damping; }
 --    float GetDamping() const { return m_damping; }
 --
---    /// Dump joint to dmLog
+--    Dump joint to dmLog
 --    void Dump() override;
 --
 --    ///

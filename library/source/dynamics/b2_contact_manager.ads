@@ -13,7 +13,7 @@ is
 --  class b2ContactListener;
 --  class b2BlockAllocator;
 --
---  // Delegate of b2World.
+   --  Delegate of b2World.
 --  class b2ContactManager
 --  {
 --  public:

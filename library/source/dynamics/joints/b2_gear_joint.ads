@@ -8,9 +8,9 @@ is
 
 
    --
---  /// Gear joint definition. This definition requires two existing
---  /// revolute or prismatic joints (any combination will work).
---  /// @warning bodyB on the input joints must both be dynamic
+--  Gear joint definition. This definition requires two existing
+--  revolute or prismatic joints (any combination will work).
+--  @warning bodyB on the input joints must both be dynamic
 --  struct b2GearJointDef : public b2JointDef
 --  {
 --    b2GearJointDef()
@@ -21,26 +21,26 @@ is
 --       ratio = 1.0f;
 --    }
 --
---    /// The first revolute/prismatic joint attached to the gear joint.
+--    The first revolute/prismatic joint attached to the gear joint.
 --    b2Joint* joint1;
 --
---    /// The second revolute/prismatic joint attached to the gear joint.
+--    The second revolute/prismatic joint attached to the gear joint.
 --    b2Joint* joint2;
 --
---    /// The gear ratio.
---    /// @see b2GearJoint for explanation.
+--    The gear ratio.
+--    @see b2GearJoint for explanation.
 --    float ratio;
 --  };
 --
---  /// A gear joint is used to connect two joints together. Either joint
---  /// can be a revolute or prismatic joint. You specify a gear ratio
---  /// to bind the motions together:
---  /// coordinate1 + ratio * coordinate2 = constant
---  /// The ratio can be negative or positive. If one joint is a revolute joint
---  /// and the other joint is a prismatic joint, then the ratio will have units
---  /// of length or units of 1/length.
---  /// @warning You have to manually destroy the gear joint if joint1 or joint2
---  /// is destroyed.
+--  A gear joint is used to connect two joints together. Either joint
+--  can be a revolute or prismatic joint. You specify a gear ratio
+--  to bind the motions together:
+--  coordinate1 + ratio * coordinate2 = constant
+--  The ratio can be negative or positive. If one joint is a revolute joint
+--  and the other joint is a prismatic joint, then the ratio will have units
+--  of length or units of 1/length.
+--  @warning You have to manually destroy the gear joint if joint1 or joint2
+--  is destroyed.
 --  class b2GearJoint : public b2Joint
 --  {
 --  public:
@@ -50,17 +50,17 @@ is
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// Get the first joint.
+--    Get the first joint.
 --    b2Joint* GetJoint1() { return m_joint1; }
 --
---    /// Get the second joint.
+--    Get the second joint.
 --    b2Joint* GetJoint2() { return m_joint2; }
 --
---    /// Set/Get the gear ratio.
+--    Set/Get the gear ratio.
 --    void SetRatio(float ratio);
 --    float GetRatio() const;
 --
---    /// Dump joint to dmLog
+--    Dump joint to dmLog
 --    void Dump() override;
 --
 --  protected:

@@ -8,12 +8,12 @@ is
 
 
    --
---  /// Prismatic joint definition. This requires defining a line of
---  /// motion using an axis and an anchor point. The definition uses local
---  /// anchor points and a local axis so that the initial configuration
---  /// can violate the constraint slightly. The joint translation is zero
---  /// when the local anchor points coincide in world space. Using local
---  /// anchors and a local axis helps when saving and loading a game.
+--  Prismatic joint definition. This requires defining a line of
+--  motion using an axis and an anchor point. The definition uses local
+--  anchor points and a local axis so that the initial configuration
+--  can violate the constraint slightly. The joint translation is zero
+--  when the local anchor points coincide in world space. Using local
+--  anchors and a local axis helps when saving and loading a game.
 --  struct b2PrismaticJointDef : public b2JointDef
 --  {
 --    b2PrismaticJointDef()
@@ -31,45 +31,45 @@ is
 --       motorSpeed = 0.0f;
 --    }
 --
---    /// Initialize the bodies, anchors, axis, and reference angle using the world
---    /// anchor and unit world axis.
+--    Initialize the bodies, anchors, axis, and reference angle using the world
+--    anchor and unit world axis.
 --    void Initialize(b2Body* bodyA, b2Body* bodyB, const b2Vec2& anchor, const b2Vec2& axis);
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    b2Vec2 localAnchorA;
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    b2Vec2 localAnchorB;
 --
---    /// The local translation unit axis in bodyA.
+--    The local translation unit axis in bodyA.
 --    b2Vec2 localAxisA;
 --
---    /// The constrained angle between the bodies: bodyB_angle - bodyA_angle.
+--    The constrained angle between the bodies: bodyB_angle - bodyA_angle.
 --    float referenceAngle;
 --
---    /// Enable/disable the joint limit.
+--    Enable/disable the joint limit.
 --    bool enableLimit;
 --
---    /// The lower translation limit, usually in meters.
+--    The lower translation limit, usually in meters.
 --    float lowerTranslation;
 --
---    /// The upper translation limit, usually in meters.
+--    The upper translation limit, usually in meters.
 --    float upperTranslation;
 --
---    /// Enable/disable the joint motor.
+--    Enable/disable the joint motor.
 --    bool enableMotor;
 --
---    /// The maximum motor torque, usually in N-m.
+--    The maximum motor torque, usually in N-m.
 --    float maxMotorForce;
 --
---    /// The desired motor speed in radians per second.
+--    The desired motor speed in radians per second.
 --    float motorSpeed;
 --  };
 --
---  /// A prismatic joint. This joint provides one degree of freedom: translation
---  /// along an axis fixed in bodyA. Relative rotation is prevented. You can
---  /// use a joint limit to restrict the range of motion and a joint motor to
---  /// drive the motion or to model joint friction.
+--  A prismatic joint. This joint provides one degree of freedom: translation
+--  along an axis fixed in bodyA. Relative rotation is prevented. You can
+--  use a joint limit to restrict the range of motion and a joint motor to
+--  drive the motion or to model joint friction.
 --  class b2PrismaticJoint : public b2Joint
 --  {
 --  public:
@@ -79,59 +79,59 @@ is
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 --
---    /// The local joint axis relative to bodyA.
+--    The local joint axis relative to bodyA.
 --    const b2Vec2& GetLocalAxisA() const { return m_localXAxisA; }
 --
---    /// Get the reference angle.
+--    Get the reference angle.
 --    float GetReferenceAngle() const { return m_referenceAngle; }
 --
---    /// Get the current joint translation, usually in meters.
+--    Get the current joint translation, usually in meters.
 --    float GetJointTranslation() const;
 --
---    /// Get the current joint translation speed, usually in meters per second.
+--    Get the current joint translation speed, usually in meters per second.
 --    float GetJointSpeed() const;
 --
---    /// Is the joint limit enabled?
+--    Is the joint limit enabled?
 --    bool IsLimitEnabled() const;
 --
---    /// Enable/disable the joint limit.
+--    Enable/disable the joint limit.
 --    void EnableLimit(bool flag);
 --
---    /// Get the lower joint limit, usually in meters.
+--    Get the lower joint limit, usually in meters.
 --    float GetLowerLimit() const;
 --
---    /// Get the upper joint limit, usually in meters.
+--    Get the upper joint limit, usually in meters.
 --    float GetUpperLimit() const;
 --
---    /// Set the joint limits, usually in meters.
+--    Set the joint limits, usually in meters.
 --    void SetLimits(float lower, float upper);
 --
---    /// Is the joint motor enabled?
+--    Is the joint motor enabled?
 --    bool IsMotorEnabled() const;
 --
---    /// Enable/disable the joint motor.
+--    Enable/disable the joint motor.
 --    void EnableMotor(bool flag);
 --
---    /// Set the motor speed, usually in meters per second.
+--    Set the motor speed, usually in meters per second.
 --    void SetMotorSpeed(float speed);
 --
---    /// Get the motor speed, usually in meters per second.
+--    Get the motor speed, usually in meters per second.
 --    float GetMotorSpeed() const;
 --
---    /// Set the maximum motor force, usually in N.
+--    Set the maximum motor force, usually in N.
 --    void SetMaxMotorForce(float force);
 --    float GetMaxMotorForce() const { return m_maxMotorForce; }
 --
---    /// Get the current motor force given the inverse time step, usually in N.
+--    Get the current motor force given the inverse time step, usually in N.
 --    float GetMotorForce(float inv_dt) const;
 --
---    /// Dump to b2Log
+--    Dump to b2Log
 --    void Dump() override;
 --
 --    ///

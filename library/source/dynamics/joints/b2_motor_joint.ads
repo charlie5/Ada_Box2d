@@ -8,7 +8,7 @@ is
 
 
    --
---  /// Motor joint definition.
+--  Motor joint definition.
 --  struct b2MotorJointDef : public b2JointDef
 --  {
 --    b2MotorJointDef()
@@ -21,28 +21,28 @@ is
 --       correctionFactor = 0.3f;
 --    }
 --
---    /// Initialize the bodies and offsets using the current transforms.
+--    Initialize the bodies and offsets using the current transforms.
 --    void Initialize(b2Body* bodyA, b2Body* bodyB);
 --
---    /// Position of bodyB minus the position of bodyA, in bodyA's frame, in meters.
+--    Position of bodyB minus the position of bodyA, in bodyA's frame, in meters.
 --    b2Vec2 linearOffset;
 --
---    /// The bodyB angle minus bodyA angle in radians.
+--    The bodyB angle minus bodyA angle in radians.
 --    float angularOffset;
 --
---    /// The maximum motor force in N.
+--    The maximum motor force in N.
 --    float maxForce;
 --
---    /// The maximum motor torque in N-m.
+--    The maximum motor torque in N-m.
 --    float maxTorque;
 --
---    /// Position correction factor in the range [0,1].
+--    Position correction factor in the range [0,1].
 --    float correctionFactor;
 --  };
 --
---  /// A motor joint is used to control the relative motion
---  /// between two bodies. A typical usage is to control the movement
---  /// of a dynamic body with respect to the ground.
+--  A motor joint is used to control the relative motion
+--  between two bodies. A typical usage is to control the movement
+--  of a dynamic body with respect to the ground.
 --  class b2MotorJoint : public b2Joint
 --  {
 --  public:
@@ -52,33 +52,33 @@ is
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// Set/get the target linear offset, in frame A, in meters.
+--    Set/get the target linear offset, in frame A, in meters.
 --    void SetLinearOffset(const b2Vec2& linearOffset);
 --    const b2Vec2& GetLinearOffset() const;
 --
---    /// Set/get the target angular offset, in radians.
+--    Set/get the target angular offset, in radians.
 --    void SetAngularOffset(float angularOffset);
 --    float GetAngularOffset() const;
 --
---    /// Set the maximum friction force in N.
+--    Set the maximum friction force in N.
 --    void SetMaxForce(float force);
 --
---    /// Get the maximum friction force in N.
+--    Get the maximum friction force in N.
 --    float GetMaxForce() const;
 --
---    /// Set the maximum friction torque in N*m.
+--    Set the maximum friction torque in N*m.
 --    void SetMaxTorque(float torque);
 --
---    /// Get the maximum friction torque in N*m.
+--    Get the maximum friction torque in N*m.
 --    float GetMaxTorque() const;
 --
---    /// Set the position correction factor in the range [0,1].
+--    Set the position correction factor in the range [0,1].
 --    void SetCorrectionFactor(float factor);
 --
---    /// Get the position correction factor in the range [0,1].
+--    Get the position correction factor in the range [0,1].
 --    float GetCorrectionFactor() const;
 --
---    /// Dump to b2Log
+--    Dump to b2Log
 --    void Dump() override;
 --
 --  protected:

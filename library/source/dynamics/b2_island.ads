@@ -17,7 +17,7 @@ is
 --  struct b2ContactVelocityConstraint;
 --  struct b2Profile;
 --
---  /// This is an internal class.
+--  This is an internal class.
 --  class b2Island
 --  {
 --  public:

@@ -307,7 +307,7 @@ is
 
    --  struct b2Rot
    --  {
-   --    /// Sine and cosine
+   --    Sine and cosine
    --    float s, c;
    --  };
 
@@ -402,8 +402,8 @@ is
 
    --  struct b2Sweep
    --  {
-   --    /// Fraction of the current time step in the range [0,1]
-   --    /// c0 and a0 are the positions at alpha0.
+   --    Fraction of the current time step in the range [0,1]
+   --    c0 and a0 are the positions at alpha0.
    --    float  alpha0;
    --
    --    b2Vec2 localCenter;  ///< local center of mass position

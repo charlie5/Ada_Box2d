@@ -66,7 +66,7 @@ is
    --      pointer = 0;
    --   }
    --
-   --   /// For legacy compatibility
+   --   For legacy compatibility
    --   uintptr_t pointer;
    -- };
 
@@ -86,7 +86,7 @@ is
    --      pointer = 0;
    --   }
    --
-   --   /// For legacy compatibility
+   --   For legacy compatibility
    --   uintptr_t pointer;
    -- };
 
@@ -106,7 +106,7 @@ is
    --      pointer = 0;
    --   }
    --
-   --   /// For legacy compatibility
+   --   For legacy compatibility
    --   uintptr_t pointer;
    -- };
 

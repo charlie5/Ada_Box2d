@@ -37,11 +37,11 @@ is
 --    float angularB;
 --  };
 --
---  /// A joint edge is used to connect bodies and joints together
---  /// in a joint graph where each body is a node and each joint
---  /// is an edge. A joint edge belongs to a doubly linked list
---  /// maintained in each attached body. Each joint has two joint
---  /// nodes, one for each attached body.
+--  A joint edge is used to connect bodies and joints together
+--  in a joint graph where each body is a node and each joint
+--  is an edge. A joint edge belongs to a doubly linked list
+--  maintained in each attached body. Each joint has two joint
+--  nodes, one for each attached body.
 --  struct b2JointEdge
 --  {
 --    b2Body* other;       ///< provides quick access to the other body attached.
@@ -50,7 +50,11 @@ is
 --    b2JointEdge* next;      ///< the next joint edge in the body's joint list
 --  };
 --
---  /// Joint definitions are used to construct joints.
+
+   type b2JointEdge is null record;
+
+
+--  Joint definitions are used to construct joints.
 --  struct b2JointDef
 --  {
 --    b2JointDef()
@@ -61,81 +65,87 @@ is
 --       collideConnected = false;
 --    }
 --
---    /// The joint type is set automatically for concrete joint types.
+--    The joint type is set automatically for concrete joint types.
 --    b2JointType type;
 --
---    /// Use this to attach application specific data to your joints.
+--    Use this to attach application specific data to your joints.
 --    b2JointUserData userData;
 --
---    /// The first attached body.
+--    The first attached body.
 --    b2Body* bodyA;
 --
---    /// The second attached body.
+--    The second attached body.
 --    b2Body* bodyB;
 --
---    /// Set this flag to true if the attached bodies should collide.
+--    Set this flag to true if the attached bodies should collide.
 --    bool collideConnected;
 --  };
 --
---  /// Utility to compute linear stiffness values from frequency and damping ratio
+--  Utility to compute linear stiffness values from frequency and damping ratio
 --  void b2LinearStiffness(float& stiffness, float& damping,
 --    float frequencyHertz, float dampingRatio,
 --    const b2Body* bodyA, const b2Body* bodyB);
 --
---  /// Utility to compute rotational stiffness values frequency and damping ratio
+--  Utility to compute rotational stiffness values frequency and damping ratio
 --  void b2AngularStiffness(float& stiffness, float& damping,
 --    float frequencyHertz, float dampingRatio,
 --    const b2Body* bodyA, const b2Body* bodyB);
 --
---  /// The base joint class. Joints are used to constraint two bodies together in
---  /// various fashions. Some joints also feature limits and motors.
+
+
+
+
+
+--  The base joint class. Joints are used to constraint two bodies together in
+--  various fashions. Some joints also feature limits and motors.
+--
 --  class b2Joint
 --  {
 --  public:
 --
---    /// Get the type of the concrete joint.
+--    Get the type of the concrete joint.
 --    b2JointType GetType() const;
 --
---    /// Get the first body attached to this joint.
+--    Get the first body attached to this joint.
 --    b2Body* GetBodyA();
 --
---    /// Get the second body attached to this joint.
+--    Get the second body attached to this joint.
 --    b2Body* GetBodyB();
 --
---    /// Get the anchor point on bodyA in world coordinates.
+--    Get the anchor point on bodyA in world coordinates.
 --    virtual b2Vec2 GetAnchorA() const = 0;
 --
---    /// Get the anchor point on bodyB in world coordinates.
+--    Get the anchor point on bodyB in world coordinates.
 --    virtual b2Vec2 GetAnchorB() const = 0;
 --
---    /// Get the reaction force on bodyB at the joint anchor in Newtons.
+--    Get the reaction force on bodyB at the joint anchor in Newtons.
 --    virtual b2Vec2 GetReactionForce(float inv_dt) const = 0;
 --
---    /// Get the reaction torque on bodyB in N*m.
+--    Get the reaction torque on bodyB in N*m.
 --    virtual float GetReactionTorque(float inv_dt) const = 0;
 --
---    /// Get the next joint the world joint list.
+--    Get the next joint the world joint list.
 --    b2Joint* GetNext();
 --    const b2Joint* GetNext() const;
 --
---    /// Get the user data pointer.
+--    Get the user data pointer.
 --    b2JointUserData& GetUserData();
 --
---    /// Short-cut function to determine if either body is enabled.
+--    Short-cut function to determine if either body is enabled.
 --    bool IsEnabled() const;
 --
---    /// Get collide connected.
---    /// Note: modifying the collide connect flag won't work correctly because
---    /// the flag is only checked when fixture AABBs begin to overlap.
+--    Get collide connected.
+--    Note: modifying the collide connect flag won't work correctly because
+--    the flag is only checked when fixture AABBs begin to overlap.
 --    bool GetCollideConnected() const;
 --
---    /// Dump this joint to the log file.
+--    Dump this joint to the log file.
 --    virtual void Dump() { b2Dump("// Dump is not supported for this joint type.\n"); }
 --
---    /// Shift the origin for any points stored in world coordinates.
+--    Shift the origin for any points stored in world coordinates.
 --    virtual void ShiftOrigin(const b2Vec2& newOrigin) { B2_NOT_USED(newOrigin);  }
 --
---    /// Debug draw this joint
+--    Debug draw this joint
 --    virtual void Draw(b2Draw* draw) const;
 --
 --  protected:
@@ -172,6 +182,11 @@ is
 --    b2JointUserData m_userData;
 --  };
 --
+
+   type b2Joint is tagged null record;
+
+
+
 --  inline b2JointType b2Joint::GetType() const
 --  {
 --    return m_type;

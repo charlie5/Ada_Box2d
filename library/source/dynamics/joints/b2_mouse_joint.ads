@@ -8,8 +8,8 @@ is
 
 
    --
---  /// Mouse joint definition. This requires a world target point,
---  /// tuning parameters, and the time step.
+--  Mouse joint definition. This requires a world target point,
+--  tuning parameters, and the time step.
 --  struct b2MouseJointDef : public b2JointDef
 --  {
 --    b2MouseJointDef()
@@ -21,65 +21,65 @@ is
 --       damping = 0.0f;
 --    }
 --
---    /// The initial world target point. This is assumed
---    /// to coincide with the body anchor initially.
+--    The initial world target point. This is assumed
+--    to coincide with the body anchor initially.
 --    b2Vec2 target;
 --
---    /// The maximum constraint force that can be exerted
---    /// to move the candidate body. Usually you will express
---    /// as some multiple of the weight (multiplier * mass * gravity).
+--    The maximum constraint force that can be exerted
+--    to move the candidate body. Usually you will express
+--    as some multiple of the weight (multiplier * mass * gravity).
 --    float maxForce;
 --
---    /// The linear stiffness in N/m
+--    The linear stiffness in N/m
 --    float stiffness;
 --
---    /// The linear damping in N*s/m
+--    The linear damping in N*s/m
 --    float damping;
 --  };
 --
---  /// A mouse joint is used to make a point on a body track a
---  /// specified world point. This a soft constraint with a maximum
---  /// force. This allows the constraint to stretch and without
---  /// applying huge forces.
---  /// NOTE: this joint is not documented in the manual because it was
---  /// developed to be used in the testbed. If you want to learn how to
---  /// use the mouse joint, look at the testbed.
+--  A mouse joint is used to make a point on a body track a
+--  specified world point. This a soft constraint with a maximum
+--  force. This allows the constraint to stretch and without
+--  applying huge forces.
+--  NOTE: this joint is not documented in the manual because it was
+--  developed to be used in the testbed. If you want to learn how to
+--  use the mouse joint, look at the testbed.
 --  class b2MouseJoint : public b2Joint
 --  {
 --  public:
 --
---    /// Implements b2Joint.
+--    Implements b2Joint.
 --    b2Vec2 GetAnchorA() const override;
 --
---    /// Implements b2Joint.
+--    Implements b2Joint.
 --    b2Vec2 GetAnchorB() const override;
 --
---    /// Implements b2Joint.
+--    Implements b2Joint.
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --
---    /// Implements b2Joint.
+--    Implements b2Joint.
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// Use this to update the target point.
+--    Use this to update the target point.
 --    void SetTarget(const b2Vec2& target);
 --    const b2Vec2& GetTarget() const;
 --
---    /// Set/get the maximum force in Newtons.
+--    Set/get the maximum force in Newtons.
 --    void SetMaxForce(float force);
 --    float GetMaxForce() const;
 --
---    /// Set/get the linear stiffness in N/m
+--    Set/get the linear stiffness in N/m
 --    void SetStiffness(float stiffness) { m_stiffness = stiffness; }
 --    float GetStiffness() const { return m_stiffness; }
 --
---    /// Set/get linear damping in N*s/m
+--    Set/get linear damping in N*s/m
 --    void SetDamping(float damping) { m_damping = damping; }
 --    float GetDamping() const { return m_damping; }
 --
---    /// The mouse joint does not support dumping.
+--    The mouse joint does not support dumping.
 --    void Dump() override { b2Log("Mouse joint dumping is not supported.\n"); }
 --
---    /// Implement b2Joint::ShiftOrigin
+--    Implement b2Joint::ShiftOrigin
 --    void ShiftOrigin(const b2Vec2& newOrigin) override;
 --
 --  protected:

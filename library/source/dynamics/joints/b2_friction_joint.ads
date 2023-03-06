@@ -8,7 +8,7 @@ is
 
 
    --
---  /// Friction joint definition.
+--  Friction joint definition.
 --  struct b2FrictionJointDef : public b2JointDef
 --  {
 --    b2FrictionJointDef()
@@ -20,25 +20,25 @@ is
 --       maxTorque = 0.0f;
 --    }
 --
---    /// Initialize the bodies, anchors, axis, and reference angle using the world
---    /// anchor and world axis.
+--    Initialize the bodies, anchors, axis, and reference angle using the world
+--    anchor and world axis.
 --    void Initialize(b2Body* bodyA, b2Body* bodyB, const b2Vec2& anchor);
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    b2Vec2 localAnchorA;
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    b2Vec2 localAnchorB;
 --
---    /// The maximum friction force in N.
+--    The maximum friction force in N.
 --    float maxForce;
 --
---    /// The maximum friction torque in N-m.
+--    The maximum friction torque in N-m.
 --    float maxTorque;
 --  };
 --
---  /// Friction joint. This is used for top-down friction.
---  /// It provides 2D translational friction and angular friction.
+--  Friction joint. This is used for top-down friction.
+--  It provides 2D translational friction and angular friction.
 --  class b2FrictionJoint : public b2Joint
 --  {
 --  public:
@@ -48,25 +48,25 @@ is
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --    float GetReactionTorque(float inv_dt) const override;
 --
---    /// The local anchor point relative to bodyA's origin.
+--    The local anchor point relative to bodyA's origin.
 --    const b2Vec2& GetLocalAnchorA() const { return m_localAnchorA; }
 --
---    /// The local anchor point relative to bodyB's origin.
+--    The local anchor point relative to bodyB's origin.
 --    const b2Vec2& GetLocalAnchorB() const  { return m_localAnchorB; }
 --
---    /// Set the maximum friction force in N.
+--    Set the maximum friction force in N.
 --    void SetMaxForce(float force);
 --
---    /// Get the maximum friction force in N.
+--    Get the maximum friction force in N.
 --    float GetMaxForce() const;
 --
---    /// Set the maximum friction torque in N*m.
+--    Set the maximum friction torque in N*m.
 --    void SetMaxTorque(float torque);
 --
---    /// Get the maximum friction torque in N*m.
+--    Get the maximum friction torque in N*m.
 --    float GetMaxTorque() const;
 --
---    /// Dump joint to dmLog
+--    Dump joint to dmLog
 --    void Dump() override;
 --
 --  protected:

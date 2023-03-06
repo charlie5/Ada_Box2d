@@ -6,7 +6,7 @@ package b2_time_Step
 is
 
    --
---  /// Profiling data. Times are in milliseconds.
+--  Profiling data. Times are in milliseconds.
 --  struct b2Profile
 --  {
 --    float step;
@@ -19,7 +19,13 @@ is
 --    float solveTOI;
 --  };
 --
---  /// This is an internal structure.
+
+   type b2Profile is tagged null record;
+
+
+
+
+--  This is an internal structure.
 --  struct b2TimeStep
 --  {
 --    float dt;         // time step
@@ -30,21 +36,21 @@ is
 --    bool warmStarting;
 --  };
 --
---  /// This is an internal structure.
+--  This is an internal structure.
 --  struct b2Position
 --  {
 --    b2Vec2 c;
 --    float a;
 --  };
 --
---  /// This is an internal structure.
+--  This is an internal structure.
 --  struct b2Velocity
 --  {
 --    b2Vec2 v;
 --    float w;
 --  };
 --
---  /// Solver Data
+--  Solver Data
 --  struct b2SolverData
 --  {
 --    b2TimeStep step;
