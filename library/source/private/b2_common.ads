@@ -147,15 +147,35 @@ is
 
 
 
+
+   --------
+   -- Dumps
+   --
+
    --  Dump to a file. Only one dump file allowed at a time.
    --
+
    --  void b2OpenDump (const char* fileName);
+   --
+   procedure b2OpenDump (fileName : in String);
+
+
    --  void b2Dump     (const char* string, ...);
+   --
+   procedure b2Dump (Message : in String);
+
+
    --  void b2CloseDump();
+   --
+   procedure b2CloseDump;
 
 
 
+
+   -----------------------------
    --  Version numbering scheme.
+   --
+
    --  See http://en.wikipedia.org/wiki/Software_versioning.
    --
    --  struct b2Version
