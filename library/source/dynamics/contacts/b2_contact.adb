@@ -618,13 +618,13 @@ is
    procedure initializeRegisters
    is
    begin
-      addType (b2_circle_Contact        .create,  b2_circle_Contact        .destroy,  b2_Shape.e_circle,   b2_Shape.e_circle);
-      addType (b2_polygon_circle_Contact.create,  b2_polygon_circle_Contact.destroy,  b2_Shape.e_polygon,  b2_Shape.e_circle);
-      addType (b2_polygon_Contact       .create,  b2_polygon_Contact       .destroy,  b2_Shape.e_polygon,  b2_Shape.e_polygon);
-      addType (b2_edge_circle_Contact   .create,  b2_edge_circle_Contact   .destroy,  b2_Shape.e_edge,     b2_Shape.e_circle);
-      addType (b2_edge_polygon_Contact  .create,  b2_edge_polygon_Contact  .destroy,  b2_Shape.e_edge,     b2_Shape.e_polygon);
-      addType (b2_chain_circle_Contact  .create,  b2_chain_circle_Contact  .destroy,  b2_Shape.e_chain,    b2_Shape.e_circle);
-      addType (b2_chain_polygon_Contact .create,  b2_chain_polygon_Contact .destroy,  b2_Shape.e_chain,    b2_Shape.e_polygon);
+      addType (b2_circle_Contact        .create'Access,  b2_circle_Contact        .destroy'Access,  b2_Shape.e_circle,   b2_Shape.e_circle);
+      addType (b2_polygon_circle_Contact.create'Access,  b2_polygon_circle_Contact.destroy'Access,  b2_Shape.e_polygon,  b2_Shape.e_circle);
+      addType (b2_polygon_Contact       .create'Access,  b2_polygon_Contact       .destroy'Access,  b2_Shape.e_polygon,  b2_Shape.e_polygon);
+      addType (b2_edge_circle_Contact   .create'Access,  b2_edge_circle_Contact   .destroy'Access,  b2_Shape.e_edge,     b2_Shape.e_circle);
+      addType (b2_edge_polygon_Contact  .create'Access,  b2_edge_polygon_Contact  .destroy'Access,  b2_Shape.e_edge,     b2_Shape.e_polygon);
+      addType (b2_chain_circle_Contact  .create'Access,  b2_chain_circle_Contact  .destroy'Access,  b2_Shape.e_chain,    b2_Shape.e_circle);
+      addType (b2_chain_polygon_Contact .create'Access,  b2_chain_polygon_Contact .destroy'Access,  b2_Shape.e_chain,    b2_Shape.e_polygon);
    end initializeRegisters;
 
 

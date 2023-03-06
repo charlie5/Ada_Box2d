@@ -86,15 +86,15 @@ is
    --                               b2BlockAllocator* allocator);
    --
 
-   type b2ContactCreateFcn is access function (fixtureA : access b2Fixture;   indexA : in Natural;
-                                               fixtureB : access b2Fixture;   indexB : in Natural) return access b2Contact;
+   type b2ContactCreateFcn is access function (fixtureA : in out b2Fixture;   indexA : in Natural;
+                                               fixtureB : in out b2Fixture;   indexB : in Natural) return access b2Contact'Class;
 
 
 
    --  typedef void b2ContactDestroyFcn(b2Contact* contact, b2BlockAllocator* allocator);
    --
 
-   type b2ContactDestroyFcn is access procedure (Contact : access b2Contact);
+   type b2ContactDestroyFcn is access procedure (Contact : access b2Contact'Class);
 
 
 
@@ -566,9 +566,6 @@ private
          m_restitutionThreshold,
          m_tangentSpeed        : Real;
       end record;
-
-
-
 
 
 end b2_Contact;
