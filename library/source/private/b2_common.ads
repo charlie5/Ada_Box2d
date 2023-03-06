@@ -187,7 +187,7 @@ is
 
    use b2_Types;
 
-   type b2Verson is
+   type b2Version is
       record
          Major,                -- Significant changes.
          Minor,                -- Incremental changes.
@@ -199,9 +199,9 @@ is
 
    --  extern b2Version b2_version;
    --
-   b2_Version : constant b2Verson := (Major    => 2,
-                                      Minor    => 4,
-                                      Revision => 0);
+   b2_Version : constant b2Version := (Major    => 2,
+                                       Minor    => 4,
+                                       Revision => 0);
 
 
 end b2_Common;
