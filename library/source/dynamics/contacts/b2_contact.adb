@@ -674,26 +674,26 @@ is
       end if;
 
       declare
-         type1     : b2_Shape.shape_Type := fixtureA.getType;
-         type2     : b2_Shape.shape_Type := fixtureB.getType;
+         type1     : constant b2_Shape.shape_Type := fixtureA.getType;
+         type2     : constant b2_Shape.shape_Type := fixtureB.getType;
 
-         type1_Pos : Natural := b2_Shape.shape_Type'Pos (type1);
-         type2_Pos : Natural := b2_Shape.shape_Type'Pos (type2);
+         type1_Pos : constant Natural := b2_Shape.shape_Type'Pos (type1);
+         type2_Pos : constant Natural := b2_Shape.shape_Type'Pos (type2);
 
          pragma assert (0 <= type1_Pos and type1 < b2_Shape.e_typeCount);
          pragma assert (0 <= type2_Pos and type2 < b2_Shape.e_typeCount);
 
-         createFcn : b2ContactCreateFcn := s_registers (type1_Pos, type2_Pos).createFcn;
+         createFcn : constant b2ContactCreateFcn := s_registers (type1_Pos, type2_Pos).createFcn;
       begin
          if createFcn /= null
          then
             if s_registers (type1_Pos, type2_Pos).primary
             then
-               return createFcn (fixtureA'Access,  indexA,
-                                 fixtureB'Access,  indexB);
+               return createFcn (fixtureA,  indexA,
+                                 fixtureB,  indexB);
             else
-               return createFcn (fixtureB'Access,  indexB,
-                                 fixtureA'Access,  indexA);
+               return createFcn (fixtureB,  indexB,
+                                 fixtureA,  indexA);
             end if;
          else
             return null;
@@ -744,8 +744,8 @@ is
    is
      pragma assert (s_initialized);
 
-     fixtureA : access b2Fixture := contact.m_fixtureA;
-     fixtureB : access b2Fixture := contact.m_fixtureB;
+      fixtureA : constant access b2Fixture := contact.m_fixtureA;
+      fixtureB : constant access b2Fixture := contact.m_fixtureB;
 
    begin
       if    contact.m_manifold.pointCount > 0
@@ -757,16 +757,16 @@ is
       end if;
 
       declare
-         typeA : b2_Shape.shape_Type := fixtureA.getType;
-         typeB : b2_Shape.shape_Type := fixtureB.getType;
+         typeA : constant b2_Shape.shape_Type := fixtureA.getType;
+         typeB : constant b2_Shape.shape_Type := fixtureB.getType;
 
-         typeA_Pos : Natural := b2_Shape.shape_Type'Pos (typeA);
-         typeB_Pos : Natural := b2_Shape.shape_Type'Pos (typeB);
+         typeA_Pos : constant Natural := b2_Shape.shape_Type'Pos (typeA);
+         typeB_Pos : constant Natural := b2_Shape.shape_Type'Pos (typeB);
 
          pragma assert (0 <= typeA_Pos and typeA < b2_Shape.e_typeCount);
          pragma assert (0 <= typeB_Pos and typeB < b2_Shape.e_typeCount);
 
-         destroyFcn : b2ContactDestroyFcn := s_registers (typeA_Pos, typeB_Pos).destroyFcn;
+         destroyFcn : constant b2ContactDestroyFcn := s_registers (typeA_Pos, typeB_Pos).destroyFcn;
       begin
          destroyFcn (contact);
       end;
@@ -956,15 +956,15 @@ is
       Self.m_flags := Self.m_flags or e_enabledFlag;
 
       declare
-         touching    : Boolean := False;
-         wasTouching : Boolean := (Self.m_flags and e_touchingFlag) = e_touchingFlag;
+         touching    :          Boolean := False;
+         wasTouching : constant Boolean := (Self.m_flags and e_touchingFlag) = e_touchingFlag;
 
-         sensorA : Boolean := Self.m_fixtureA.IsSensor;
-         sensorB : Boolean := Self.m_fixtureB.IsSensor;
-         sensor  : Boolean := sensorA or sensorB;
+         sensorA : constant Boolean := Self.m_fixtureA.IsSensor;
+         sensorB : constant Boolean := Self.m_fixtureB.IsSensor;
+         sensor  : constant Boolean := sensorA or sensorB;
 
-         bodyA   : access b2Body := Self.m_fixtureA.getBody;
-         bodyB   : access b2Body := Self.m_fixtureB.getBody;
+         bodyA   : constant access b2Body := Self.m_fixtureA.getBody;
+         bodyB   : constant access b2Body := Self.m_fixtureB.getBody;
 
          xfA     : constant b2Transform := bodyA.getTransform;
          xfB     : constant b2Transform := bodyB.getTransform;
@@ -975,8 +975,8 @@ is
          if sensor
          then
             declare
-               shapeA : access b2Shape := Self.m_fixtureA.getShape;
-               shapeB : access b2Shape := Self.m_fixtureB.getShape;
+               shapeA : constant access b2Shape := Self.m_fixtureA.getShape;
+               shapeB : constant access b2Shape := Self.m_fixtureB.getShape;
             begin
                touching := b2_Collision.overlap.b2testOverlap (shapeA, Self.m_indexA,
                                                                shapeB, Self.m_indexB,
@@ -997,9 +997,9 @@ is
             for i in 0 .. Self.m_manifold.pointCount - 1
             loop
                declare
-                  id2 :        b2ContactID;
-                  mp1 : access b2ManifoldPoint;
-                  mp2 : access b2ManifoldPoint := Self.m_manifold.points (i)'Access;
+                  id2 :                 b2ContactID;
+                  mp1 : access          b2ManifoldPoint;
+                  mp2 : constant access b2ManifoldPoint := Self.m_manifold.points (i)'Access;
                begin
                   mp2.normalImpulse  := 0.0;
                   mp2.tangentImpulse := 0.0;
