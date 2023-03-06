@@ -67,11 +67,11 @@ is
    --  }
    --
 
-   function getShape (Self : in b2Fixture) return b2_Shape.b2Shape'Class
-   is
-   begin
-      return Self.m_shape.all;
-   end getShape;
+   --  function getShape (Self : in b2Fixture) return b2_Shape.b2Shape'Class
+   --  is
+   --  begin
+   --     return Self.m_shape.all;
+   --  end getShape;
 
 
 

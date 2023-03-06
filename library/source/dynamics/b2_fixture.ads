@@ -206,8 +206,8 @@ is
    --    const b2Shape* GetShape() const;
    --
 
-   function getShape (Self : in b2Fixture) return b2_Shape.b2Shape'Class
-     with inline;
+   --  function getShape (Self : in b2Fixture) return b2_Shape.b2Shape'Class
+   --    with inline;
 
 
 
