@@ -979,9 +979,18 @@ is
    end m_Shape_is;
 
 
+
+   function m_proxies (Self : in out b2Fixture) return b2FixtureProxies
+   is
+   begin
+      return Self.m_proxies.all;
+   end m_proxies;
+
+
    --
    -- End of protected b2Fixture functions.
    ----------------------------------------
+
 
 
 

@@ -529,19 +529,10 @@ is
    function  m_Body    (Self : access b2Fixture)         return b2_Body.b2Body_ptr;
    procedure m_Body_is (Self : in out b2Fixture;   Now : access b2_Body.b2Body);
 
-   function  m_Density    (Self : in     b2Fixture) return Real;
+   function  m_Density    (Self : in     b2Fixture)        return Real;
    procedure m_Density_is (Self : in out b2FixtureDef;   Now : in Real);
 
    procedure m_Shape_is (Self : in out b2FixtureDef;   Now : access b2Shape'Class);
-
-
-   --
-   -- End of protected b2Fixture functions.
-   ----------------------------------------
-
-
-
-
 
 
    --  This proxy is used internally to connect fixtures to the broad-phase.
@@ -568,8 +559,16 @@ is
    type b2FixtureProxies_ptr is access all b2FixtureProxies;
 
 
+   function m_proxies (Self : in out b2Fixture) return b2FixtureProxies;
 
-private
+
+   --
+   -- End of protected b2Fixture functions.
+   ----------------------------------------
+
+
+
+   private
 
    --    float m_density;
    --

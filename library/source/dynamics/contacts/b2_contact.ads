@@ -32,9 +32,8 @@ is
    --
 
 
-   type b2Contact is abstract tagged private;
-
-
+   type b2Contact     is abstract tagged private;
+   type b2Contact_ptr is access all b2Contact'Class;
 
 
    --  Friction mixing law. The idea is to allow either fixture to drive the friction to zero.
@@ -214,7 +213,7 @@ is
    --
 
    function getNext (Self : access b2Contact) return access          b2Contact'Class   with inline;
-   function getNext (Self : in     b2Contact) return access constant b2Contact'Class   with inline;
+   --  function getNext (Self : in     b2Contact) return access constant b2Contact'Class   with inline;
 
 
 
@@ -497,6 +496,22 @@ is
    procedure update (Self : in out b2Contact'Class;   listener : access b2ContactListener'Class);
 
 
+   function  m_Prev    (Self : in     b2Contact)  return access b2Contact'Class;
+   procedure m_Prev_is (Self : in out b2Contact;   Now : in     b2Contact_ptr);
+
+   function  m_Next    (Self : in     b2Contact)  return access b2Contact'Class;
+   procedure m_Next_is (Self : in out b2Contact;   Now : in     b2Contact_ptr);
+
+   function  m_NodeA    (Self : access b2Contact) return access b2ContactEdge;
+   procedure m_NodeA_is (Self : in out b2Contact;  Now : in     b2ContactEdge);
+
+   function  m_NodeB    (Self : access b2Contact) return access b2ContactEdge;
+   procedure m_NodeB_is (Self : in out b2Contact;  Now : in     b2ContactEdge);
+
+   function  m_Flags    (Self : in     b2Contact)    return flag_Set;
+   procedure m_Flags_is (Self : in out b2Contact;  Now : in flag_Set);
+
+
 
 private
 
@@ -548,7 +563,7 @@ private
          -- Nodes for connecting bodies.
          --
          m_nodeA,
-         m_nodeB : b2ContactEdge;
+         m_nodeB : aliased b2ContactEdge;
 
          m_fixtureA,
          m_fixtureB : access b2Fixture;

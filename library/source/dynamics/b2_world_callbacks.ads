@@ -2,7 +2,8 @@ with
      b2_Settings,
      b2_Common,
      b2_Math,
-     b2_Collision;
+     b2_Collision,
+     b2_Fixture;
 
 limited
 with
@@ -11,10 +12,6 @@ with
 
 package b2_world_Callbacks
 is
-   procedure dummy;
-
-
-   --
    --  struct b2Vec2;
    --  struct b2Transform;
    --  class b2Fixture;
@@ -51,22 +48,41 @@ is
 
 
 
+
+   -------------------
+   --- b2ContactFilter
+   --
+
    --  Implement this class to provide collision filtering. In other words, you can implement
    --  this class if you want finer control over contact creation.
+   --
    --  class b2ContactFilter
    --  {
    --  public:
-   --    virtual ~b2ContactFilter() {}
-   --
-   --    Return true if contact calculations should be performed between these two shapes.
-   --    @warning for performance reasons this is only called when the AABBs begin to overlap.
-   --    virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB);
    --  };
    --
 
    type b2ContactFilter is tagged null record;
 
 
+   --    virtual ~b2ContactFilter() {}
+   --
+   procedure destruct (Self : in out b2ContactFilter) is null;
+
+
+   --    Return true if contact calculations should be performed between these two shapes.
+   --    @warning for performance reasons this is only called when the AABBs begin to overlap.
+   --
+   --    virtual bool ShouldCollide(b2Fixture* fixtureA, b2Fixture* fixtureB);
+
+   function shouldCollide (Self : in out b2ContactFilter;   fixtureA,
+                                                            fixtureB : access b2_Fixture.b2Fixture) return Boolean;
+
+
+
+   --------------------
+   --- b2ContactImpulse
+   --
 
    --  Contact impulses for reporting. Impulses are used instead of forces because
    --  sub-step forces may approach infinity for rigid body collisions. These

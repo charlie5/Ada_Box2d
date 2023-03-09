@@ -234,11 +234,11 @@ is
    --  }
    --
 
-   function getNext (Self : in b2Contact) return access constant b2Contact'Class
-   is
-   begin
-      return Self.m_next;
-   end getNext;
+   --  function getNext (Self : in b2Contact) return access constant b2Contact'Class
+   --  is
+   --  begin
+   --     return Self.m_next;
+   --  end getNext;
 
 
 
@@ -1057,6 +1057,82 @@ is
       end;
    end update;
 
+
+
+
+   function m_Prev (Self : in b2Contact) return access b2Contact'Class
+   is
+   begin
+      return Self.m_prev;
+   end m_Prev;
+
+   procedure m_Prev_is (Self : in out b2Contact;   Now : in b2Contact_ptr)
+   is
+   begin
+      Self.m_Prev := Now;
+   end m_Prev_is;
+
+
+
+   function m_Next (Self : in b2Contact) return access b2Contact'Class
+   is
+   begin
+      return Self.m_next;
+   end m_Next;
+
+   procedure m_Next_is (Self : in out b2Contact;   Now : in b2Contact_ptr)
+   is
+   begin
+      Self.m_Next := Now;
+   end m_Next_is;
+
+
+
+   function m_NodeA (Self : access b2Contact) return access b2ContactEdge
+   is
+   begin
+      return Self.m_NodeA'Access;
+   end m_NodeA;
+
+   function m_NodeA (Self : in b2Contact) return b2ContactEdge
+   is
+   begin
+      return Self.m_NodeA;
+   end m_NodeA;
+
+   procedure m_NodeA_is (Self : in out b2Contact;   Now : in b2ContactEdge)
+   is
+   begin
+      Self.m_NodeA := Now;
+   end m_NodeA_is;
+
+
+
+   function m_NodeB (Self : access b2Contact) return access b2ContactEdge
+   is
+   begin
+      return Self.m_NodeB'Access;
+   end m_NodeB;
+
+   procedure m_NodeB_is (Self : in out b2Contact;   Now : in b2ContactEdge)
+   is
+   begin
+      Self.m_NodeB := Now;
+   end m_NodeB_is;
+
+
+
+   function m_Flags (Self : in b2Contact) return flag_Set
+   is
+   begin
+      return Self.m_Flags;
+   end m_Flags;
+
+   procedure m_Flags_is (Self : in out b2Contact;   Now : in flag_Set)
+   is
+   begin
+      Self.m_flags := Now;
+   end m_Flags_is;
 
 
 end b2_Contact;
