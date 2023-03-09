@@ -52,7 +52,8 @@ is
    -- User Data
    --
 
-   type void_ptr is access all uint8;
+   --  type void_ptr is access all uint8;
+   subtype void_ptr is system.Address;
 
 
 
@@ -127,13 +128,13 @@ is
 
    -- void* b2Alloc_Default (int32   size);
 
-   function b2alloc_default (Size : in int32) return void_ptr;
+   --  function b2alloc_default (Size : in int32) return void_ptr;
 
 
 
    -- void   b2Free_Default (void*   mem);
 
-   procedure b2free_default (Mem : in out void_ptr);
+   --  procedure b2free_default (Mem : in out void_ptr);
 
 
 
@@ -144,16 +145,16 @@ is
    --   return b2Alloc_Default(size);
    -- }
 
-   function b2alloc (Size : in int32) return void_ptr
-     with Inline;
+   --  function b2alloc (Size : in int32) return void_ptr
+   --    with Inline;
 
 
    -- If you implement b2Alloc, you should also implement this function.
    --
    -- inline void b2Free (void* mem);
 
-   procedure b2free (Mem : in out void_ptr)
-     with Inline;
+   --  procedure b2free (Mem : in out void_ptr)
+   --    with Inline;
 
 
 

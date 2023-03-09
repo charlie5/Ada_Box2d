@@ -25,11 +25,11 @@ is
    --   return b2Alloc_Default(size);
    -- }
 
-   function b2alloc (Size : in int32) return void_ptr
-   is
-   begin
-      return b2alloc_default (size);
-   end b2Alloc;
+   --  function b2alloc (Size : in int32) return void_ptr
+   --  is
+   --  begin
+   --     return b2alloc_default (size);
+   --  end b2Alloc;
 
 
 
@@ -38,11 +38,11 @@ is
    --   b2Free_Default (mem);
    -- }
 
-   procedure b2free (Mem : in out void_ptr)
-   is
-   begin
-      b2free_default (Mem);
-   end b2free;
+   --  procedure b2free (Mem : in out void_ptr)
+   --  is
+   --  begin
+   --     b2free_default (Mem);
+   --  end b2free;
 
 
 
@@ -54,16 +54,16 @@ is
    --    return malloc (size);
    --  }
 
-   function b2alloc_default (Size : in int32) return void_ptr
-   is
-      use type int32;
-
-      type uint8s is array (0 .. Size - 1) of aliased uint8;
-
-      Block : access uint8s := new uint8s;
-   begin
-      return Block (Block'First)'Access;
-   end b2alloc_default;
+   --  function b2alloc_default (Size : in int32) return void_ptr
+   --  is
+   --     use type int32;
+   --
+   --     type uint8s is array (0 .. Size - 1) of aliased uint8;
+   --
+   --     Block : access uint8s := new uint8s;
+   --  begin
+   --     return Block (Block'First)'Access;
+   --  end b2alloc_default;
 
 
 
@@ -72,12 +72,12 @@ is
    --    free (mem);
    --  }
 
-   procedure b2free_default (Mem : in out void_ptr)
-   is
-      procedure free is new ada.unchecked_Deallocation (uint8, void_ptr);
-   begin
-      free (Mem);
-   end b2free_default;
+   --  procedure b2free_default (Mem : in out void_ptr)
+   --  is
+   --     procedure free is new ada.unchecked_Deallocation (uint8, void_ptr);
+   --  begin
+   --     free (Mem);
+   --  end b2free_default;
 
 
 
