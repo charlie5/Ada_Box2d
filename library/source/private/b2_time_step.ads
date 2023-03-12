@@ -114,11 +114,15 @@ is
    --  };
    --
 
+   type b2Positions  is array (Natural range <>) of b2Position;
+   type b2Velocities is array (Natural range <>) of b2Velocity;
+
+
    type b2SolverData is
       record
            step       :        b2TimeStep;
-           positions  : access b2Position;
-           velocities : access b2Velocity;
+           positions  : access b2Positions;
+           velocities : access b2Velocities;
       end record;
 
 
