@@ -101,6 +101,9 @@ is
    --
    procedure multiply (Self : in out b2Vec2;   By : in Real);
 
+   function "*" (Left : in b2Vec2;   Right : in Real) return b2Vec2;
+
+
 
    --    Get the length of this vector (the norm).
    --

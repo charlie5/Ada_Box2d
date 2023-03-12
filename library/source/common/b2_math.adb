@@ -147,6 +147,17 @@ is
 
 
 
+   function "*" (Left : in b2Vec2;   Right : in Real) return b2Vec2
+   is
+      Result : b2Vec2 := Left;
+   begin
+      multiply (Result, by => Right);
+
+      return Result;
+   end "*";
+
+
+
    --    float Length() const
    --    {
    --       return b2Sqrt(x * x + y * y);
