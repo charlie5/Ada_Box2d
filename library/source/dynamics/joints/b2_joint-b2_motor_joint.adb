@@ -4,7 +4,7 @@ with
      b2_time_Step;
 
 
-package body b2_motor_Joint
+package body b2_Joint.b2_motor_Joint
 is
    procedure dummy is null;
 
@@ -295,4 +295,4 @@ is
 --    b2Dump("  jd.correctionFactor = %.9g;\n", m_correctionFactor);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
-end b2_motor_Joint;
+end b2_Joint.b2_motor_Joint;

@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_mouse_Joint
+package b2_Joint.b2_mouse_Joint
 is
    procedure dummy;
 
@@ -113,4 +113,4 @@ is
 --    b2Vec2 m_C;
 --  };
 --
-end b2_mouse_Joint;
+end b2_Joint.b2_mouse_Joint;

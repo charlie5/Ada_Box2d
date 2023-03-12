@@ -4,7 +4,7 @@ with
      b2_time_Step;
 
 
-package body b2_friction_Joint
+package body b2_Joint.b2_friction_Joint
 is
    procedure dummy is null;
 
@@ -239,4 +239,4 @@ is
 --    b2Dump("  jd.maxTorque = %.9g;\n", m_maxTorque);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
-end b2_friction_Joint;
+end b2_Joint.b2_friction_Joint;

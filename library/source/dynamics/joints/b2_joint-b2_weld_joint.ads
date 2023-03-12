@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_weld_Joint
+package b2_Joint.b2_weld_Joint
 is
    procedure dummy;
 
@@ -112,4 +112,4 @@ is
 --    b2Mat33 m_mass;
 --  };
 --
-end b2_weld_Joint;
+end b2_Joint.b2_weld_Joint;

@@ -4,7 +4,7 @@ with
      b2_time_Step;
 
 
-package body b2_pulley_Joint
+package body b2_Joint.b2_pulley_Joint
 is
    procedure dummy is null;
 
@@ -336,4 +336,4 @@ is
 --    m_groundAnchorA -= newOrigin;
 --    m_groundAnchorB -= newOrigin;
 --  }
-end b2_pulley_Joint;
+end b2_Joint.b2_pulley_Joint;

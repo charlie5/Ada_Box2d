@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_prismatic_Joint
+package b2_Joint.b2_prismatic_Joint
 is
    procedure dummy;
 
@@ -184,4 +184,4 @@ is
 --    return m_motorSpeed;
 --  }
 --
-end b2_prismatic_Joint;
+end b2_Joint.b2_prismatic_Joint;

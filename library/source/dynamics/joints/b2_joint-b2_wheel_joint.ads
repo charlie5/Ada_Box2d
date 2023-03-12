@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_wheel_Joint
+package b2_Joint.b2_wheel_Joint
 is
    procedure dummy;
 
@@ -219,4 +219,4 @@ is
 --    return m_maxMotorTorque;
 --  }
 --
-end b2_wheel_Joint;
+end b2_Joint.b2_wheel_Joint;

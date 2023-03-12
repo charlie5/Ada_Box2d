@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_friction_Joint
+package b2_Joint.b2_friction_Joint
 is
    procedure dummy;
 
@@ -103,4 +103,4 @@ is
 --    float m_angularMass;
 --  };
 --
-end b2_friction_Joint;
+end b2_Joint.b2_friction_Joint;

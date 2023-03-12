@@ -6,7 +6,7 @@ with
      b2_time_Step;
 
 
-package body b2_gear_Joint
+package body b2_Joint.b2_gear_Joint
 is
    procedure dummy is null;
 
@@ -413,4 +413,4 @@ is
 --    b2Dump("  jd.ratio = %.9g;\n", m_ratio);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
-end b2_gear_Joint;
+end b2_Joint.b2_gear_Joint;

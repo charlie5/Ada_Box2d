@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_motor_Joint
+package b2_Joint.b2_motor_Joint
 is
    procedure dummy;
 
@@ -117,4 +117,4 @@ is
 --    float m_angularMass;
 --  };
 --
-end b2_motor_Joint;
+end b2_Joint.b2_motor_Joint;

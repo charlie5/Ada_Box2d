@@ -4,7 +4,7 @@ with
      b2_time_Step;
 
 
-package body b2_mouse_Joint
+package body b2_Joint.b2_mouse_Joint
 is
    procedure dummy is null;
 
@@ -176,4 +176,4 @@ is
 --  {
 --    m_targetA -= newOrigin;
 --  }
-end b2_mouse_Joint;
+end b2_Joint.b2_mouse_Joint;

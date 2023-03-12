@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_revolute_Joint
+package b2_Joint.b2_revolute_Joint
 is
    procedure dummy;
 
@@ -190,4 +190,4 @@ is
 --    return m_motorSpeed;
 --  }
 --
-end b2_revolute_Joint;
+end b2_Joint.b2_revolute_Joint;

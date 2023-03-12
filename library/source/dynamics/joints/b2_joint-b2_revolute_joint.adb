@@ -5,7 +5,7 @@ with
      b2_time_Step;
 
 
-package body b2_revolute_Joint
+package body b2_Joint.b2_revolute_Joint
 is
    procedure dummy is null;
 
@@ -485,4 +485,4 @@ is
 --    draw->DrawSegment(pA, pB, color);
 --    draw->DrawSegment(xfB.p, pB, color);
 --  }
-end b2_revolute_Joint;
+end b2_Joint.b2_revolute_Joint;

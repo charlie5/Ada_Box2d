@@ -4,7 +4,7 @@ with
      b2_weld_Joint;
 
 
-package body b2_weld_Joint
+package body b2_Joint.b2_weld_Joint
 is
    procedure dummy is null;
 
@@ -328,4 +328,4 @@ is
 --    b2Dump("  jd.damping = %.9g;\n", m_damping);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
-end b2_weld_Joint;
+end b2_Joint.b2_weld_Joint;

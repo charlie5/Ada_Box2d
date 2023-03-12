@@ -5,7 +5,7 @@ with
      b2_time_Step;
 
 
-package body b2_prismatic_Joint
+package body b2_Joint.b2_prismatic_Joint
 is
    procedure dummy is null;
 
@@ -627,4 +627,4 @@ is
 --    draw->DrawPoint(pA, 5.0f, c1);
 --    draw->DrawPoint(pB, 5.0f, c4);
 --  }
-end b2_prismatic_Joint;
+end b2_Joint.b2_prismatic_Joint;

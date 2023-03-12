@@ -2,7 +2,7 @@ with
      b2_Joint;
 
 
-package b2_pulley_Joint
+package b2_Joint.b2_pulley_Joint
 is
    procedure dummy;
 
@@ -136,4 +136,4 @@ is
 --    float m_mass;
 --  };
 --
-end b2_pulley_Joint;
+end b2_Joint.b2_pulley_Joint;
