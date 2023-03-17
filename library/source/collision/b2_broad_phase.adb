@@ -42,6 +42,8 @@ is
       Self.m_moveCount    := 0;
       Self.m_moveBuffer   := new Integers (0 .. Self.m_moveCapacity - 1);
 
+      Self.m_tree         := to_b2DynamicTree;
+
       return Self;
    end to_b2BroadPhase;
 

@@ -73,6 +73,8 @@ is
       Self.m_inv_dt0 := 0.0;
       Self.m_profile := (others => 0.0);
 
+      Self.m_contactManager := to_b2ContactManager;
+
       return Self;
    end to_b2World;
 

@@ -44,6 +44,8 @@ is
       Self.m_contactFilter   := b2_defaultFilter  'Access;
       Self.m_contactListener := b2_defaultListener'Access;
 
+      Self.m_broadPhase := to_b2BroadPhase;
+
       return Self;
    end to_b2ContactManager;
 
