@@ -823,8 +823,8 @@ is
    begin
       Self.m_flags    := e_enabledFlag;
 
-      Self.m_fixtureA := fixtureA;
-      Self.m_fixtureB := fixtureB;
+      Self.m_fixtureA := fixtureA.all'unchecked_Access;
+      Self.m_fixtureB := fixtureB.all'unchecked_Access;
 
       Self.m_indexA   := indexA;
       Self.m_indexB   := indexB;

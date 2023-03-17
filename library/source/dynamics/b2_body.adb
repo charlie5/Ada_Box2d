@@ -2524,7 +2524,7 @@ is
    procedure m_contactList_is (Self : in out b2Body;   Now : access b2_Contact.b2ContactEdge)
    is
    begin
-      Self.m_contactList := Now;
+      Self.m_contactList := Now.all'unchecked_Access;
    end m_contactList_is;
 
 

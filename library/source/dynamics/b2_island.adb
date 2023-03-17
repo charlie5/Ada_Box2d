@@ -276,7 +276,7 @@ is
    is
       pragma assert (Self.m_contactCount < Self.m_contactCapacity);
    begin
-      Self.m_contacts (Self.m_contactCount) := contact;
+      Self.m_contacts (Self.m_contactCount) := contact.all'unchecked_Access;
       Self.m_contactCount                   := Self.m_contactCount + 1;
    end add;
 

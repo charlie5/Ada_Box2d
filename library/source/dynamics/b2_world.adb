@@ -448,7 +448,8 @@ is
       end if;
 
       declare
-         b : constant b2Body_ptr := new b2Body' (to_b2Body (def, Self'Access));
+         b : constant b2Body_ptr := new b2Body' (to_b2Body (bd    => def,
+                                                            world => Self.all'unchecked_Access));
       begin
          -- Add to world doubly linked list.
          --

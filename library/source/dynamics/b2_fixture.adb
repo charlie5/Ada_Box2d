@@ -633,7 +633,7 @@ is
       Self.m_restitution          := def.restitution;
       Self.m_restitutionThreshold := def.restitutionThreshold;
 
-      Self.m_body := the_body;
+      Self.m_body := the_body.all'unchecked_Access;
       Self.m_next := null;
 
       Self.m_filter   := def.filter;
@@ -957,7 +957,7 @@ is
    procedure m_Body_is (Self : in out b2Fixture;   Now : access b2_Body.b2Body)
    is
    begin
-      Self.m_body := Now;
+      Self.m_body := Now.all'unchecked_Access;
    end m_Body_is;
 
 

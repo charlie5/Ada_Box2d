@@ -1,5 +1,5 @@
 with
-     Box2d;
+     b2_Common;
 
 
 procedure launch_hello_Box2d
