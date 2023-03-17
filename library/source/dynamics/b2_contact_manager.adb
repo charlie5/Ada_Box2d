@@ -297,7 +297,7 @@ is
             then
                -- Should these bodies collide?
                --
-               if bodyB.shouldCollide (bodyA.all) = False
+               if bodyB.shouldCollide (bodyA) = False
                then
                   declare
                      cNuke : constant access b2Contact := c;
@@ -388,7 +388,7 @@ is
       procedure update_Pairs is new b2_broad_Phase.updatePairs (callback_t => b2ContactManager,
                                                                 addPair    => addPair);
    begin
-      update_Pairs (Self.m_broadPhase, Self);
+      update_Pairs (Self.m_broadPhase, Self'Access);
    end findNewContacts;
 
 
@@ -510,7 +510,7 @@ is
    --  }
    --
 
-   procedure addPair (Self : in out b2ContactManager;   proxyUserDataA : void_ptr;
+   procedure addPair (Self : access b2ContactManager;   proxyUserDataA : void_ptr;
                                                         proxyUserDataB : void_ptr)
    is
       proxyA   : b2FixtureProxy with Address => proxyUserDataA ,   import;
@@ -576,7 +576,7 @@ is
 
       -- Does a joint override collision? Is at least one body dynamic?
       --
-      if bodyB.shouldCollide (bodyA.all) = False
+      if bodyB.shouldCollide (bodyA) = False
       then
          return;
       end if;

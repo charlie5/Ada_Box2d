@@ -59,8 +59,8 @@ is
    --    void AddPair(void* proxyUserDataA, void* proxyUserDataB);
    --
 
-   procedure addPair (Self : in out b2ContactManager;   proxyUserDataA : void_ptr;
-                                                        proxyUserDataB : void_ptr);
+   procedure addPair (Self : access b2ContactManager;   proxyUserDataA : void_ptr;
+                      proxyUserDataB : void_ptr);
 
 
    --  procedure addPair (Self : in out b2ContactManager;   proxyUserDataA : system.Address;

@@ -172,7 +172,7 @@ is
    --    void* GetUserData(int32 proxyId) const;
    --
 
-   function getUserData (Self : in out b2BroadPhase;   proxyId : in Natural) return system.Address;
+   function getUserData (Self : in b2BroadPhase;   proxyId : in Natural) return system.Address;
 
 
 
@@ -208,10 +208,10 @@ is
    generic
       type callback_t is private;
 
-      with procedure addPair (Callback : in out callback_t;   userDataA,
+      with procedure addPair (Callback : access callback_t;   userDataA,
                                                               userDataB : in system.Address);
 
-   procedure updatePairs (Self : in out b2BroadPhase;    callback : in out callback_t);
+   procedure updatePairs (Self : in out b2BroadPhase;    callback : access callback_t);
 
 
 
@@ -227,11 +227,15 @@ is
    generic
       type callback_t is private;
 
-   procedure query (Self : in out b2BroadPhase;   callback : in out callback_t;
-                                                  aabb     : in     b2AABB);
+      with function queryCallback (Callback : in out Callback_t;
+                                   nodeId   : in     Natural) return Boolean;
+
+   procedure query (Self : in b2BroadPhase;   callback : access callback_t;
+                                                           aabb     : in     b2AABB);
 
 
-
+   --  function queryCallback (Callback : in out Callback_t;
+   --                          nodeId   : in     Natural) return Boolean;
 
 
    --    Ray-cast against the proxies in the tree. This relies on the callback

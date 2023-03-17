@@ -27,6 +27,15 @@ is
    --
 
 
+   procedure free (the_Fixture : in out b2Fixture_ptr)
+   is
+      procedure deallocate is new ada.unchecked_Deallocation (b2Fixture'Class, b2Fixture_ptr);
+   begin
+      deallocate (the_Fixture);
+   end free;
+
+
+
    --  inline b2Shape::Type b2Fixture::GetType() const
    --  {
    --    return m_shape->GetType();
@@ -927,7 +936,7 @@ is
 
 
 
-   procedure m_Next_is (Self : in out b2Fixture;   Now : access b2Fixture)
+   procedure m_Next_is (Self : in out b2Fixture;   Now : in b2Fixture_ptr)
    is
    begin
       Self.m_Next := Now;
@@ -985,6 +994,15 @@ is
    begin
       return Self.m_proxies.all;
    end m_proxies;
+
+
+
+   procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural)
+   is
+   begin
+      Self.m_proxyCount := Now;
+   end m_proxyCount_is;
+
 
 
    --

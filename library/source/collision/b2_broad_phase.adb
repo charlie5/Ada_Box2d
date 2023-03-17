@@ -207,7 +207,7 @@ is
    --  }
    --
 
-   function getUserData (Self : in out b2BroadPhase;   proxyId : in Natural) return system.Address
+   function getUserData (Self : in b2BroadPhase;   proxyId : in Natural) return system.Address
    is
    begin
       return Self.m_tree.getUserData (proxyId);
@@ -318,7 +318,7 @@ is
    --  }
    --
 
-   procedure updatePairs (Self : in out b2BroadPhase;    callback : in out callback_t)
+   procedure updatePairs (Self : in out b2BroadPhase;    callback : access callback_t)
    is
    begin
       -- Reset pair buffer.
@@ -344,7 +344,7 @@ is
                --     return True;
                --  end queryCallback;
 
-               function queryCallback (Callback : in out b2BroadPhase;
+               function queryCallback (Callback : access b2BroadPhase;
                                        nodeId   : in     Natural) return Boolean
                is
                begin
@@ -410,11 +410,11 @@ is
 
 
 
-   --    Query an AABB for overlapping proxies. The callback class
-   --    is called for each proxy that overlaps the supplied AABB.
+   --  Query an AABB for overlapping proxies. The callback class
+   --  is called for each proxy that overlaps the supplied AABB.
    --
-   --    template <typename T>
-   --    void Query (T* callback, const b2AABB& aabb) const;
+   --  template <typename T>
+   --  void Query (T* callback, const b2AABB& aabb) const;
    --
    --  template <typename T>
    --  inline void b2BroadPhase::Query(T* callback, const b2AABB& aabb) const
@@ -423,20 +423,21 @@ is
    --  }
    --
 
-   procedure query (Self : in out b2BroadPhase;    callback : in out callback_t;
-                                                   aabb     : in     b2AABB)
+   procedure query (Self : in b2BroadPhase;    callback : access callback_t;
+                                                            aabb     : in     b2AABB)
    is
-      function queryCallback (Callback : in out Callback_t;
-                              nodeId   : in     Natural) return Boolean
-      is
-      begin
-         return Self.queryCallback (nodeId);
-      end queryCallback;
+      --  function queryCallback (Callback : access Callback_t;
+      --                          nodeId   : in     Natural) return Boolean
+      --  is
+      --  begin
+      --     return Self.queryCallback (nodeId);
+      --  end queryCallback;
 
 
       procedure my_Query is new b2_dynamic_Tree.query (callback_t, queryCallback);
+
    begin
-      my_query (Self.m_tree, callback, aabb);
+      my_query (Self.m_tree, callback.all, aabb);
    end query;
 
 

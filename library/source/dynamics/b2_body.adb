@@ -1,15 +1,15 @@
 with
      b2_Contact,
      b2_World,
-     b2_broad_Phase;
+     b2_broad_Phase,
+     ada.unchecked_Deallocation;
 
 
 package body b2_Body
 is
    use b2_broad_Phase,
-       b2_Fixture,
-       b2_Contact;
-
+       b2_Contact,
+       Interfaces;
 
 
 
@@ -1900,11 +1900,11 @@ is
    --  }
    --
 
-   function getFixtureList (Self : in b2Body) return access constant b2_Fixture.b2Fixture
-   is
-   begin
-      return Self.m_fixtureList;
-   end getFixtureList;
+   --  function getFixtureList (Self : in b2Body) return access constant b2_Fixture.b2Fixture
+   --  is
+   --  begin
+   --     return Self.m_fixtureList;
+   --  end getFixtureList;
 
 
 
@@ -1937,11 +1937,11 @@ is
    --  }
    --
 
-   function getJointList (Self : in b2Body) return access constant b2_Joint.b2JointEdge
-   is
-   begin
-      return Self.m_jointList;
-   end getJointList;
+   --  function getJointList (Self : in b2Body) return access constant b2_Joint.b2JointEdge
+   --  is
+   --  begin
+   --     return Self.m_jointList;
+   --  end getJointList;
 
 
 
@@ -2012,11 +2012,11 @@ is
    --  }
    --
 
-   function getNext (Self : in b2Body) return access constant b2Body
-   is
-   begin
-      return Self.m_next;
-   end getNext;
+   --  function getNext (Self : in b2Body) return access constant b2Body
+   --  is
+   --  begin
+   --     return Self.m_next;
+   --  end getNext;
 
 
 
@@ -2319,6 +2319,14 @@ is
 
 
 
+   procedure free (Self : in out b2Body_ptr)
+   is
+      procedure deallocate is new ada.unchecked_Deallocation (b2Body, b2Body_ptr);
+   begin
+      deallocate (Self);
+   end free;
+
+
 
 
    --    void SynchronizeFixtures();
@@ -2521,6 +2529,117 @@ is
 
 
 
+   function m_Force (Self : in b2Body) return b2Vec2
+   is
+   begin
+      return Self.m_Force;
+   end m_Force;
+
+
+   procedure m_Force_is  (Self : in out b2Body;   Now : in b2Vec2)
+   is
+   begin
+      Self.m_force := Now;
+   end m_Force_is;
+
+
+
+   function m_Torque (Self : in b2Body) return Real
+   is
+   begin
+      return Self.m_Torque;
+   end m_Torque;
+
+
+   procedure m_Torque_is (Self : in out b2Body;   Now : in Real)
+   is
+   begin
+      Self.m_torque := Now;
+   end m_Torque_is;
+
+
+
+   procedure m_prev_is (Self : in out b2Body;   Now : in b2Body_ptr)
+   is
+   begin
+      Self.m_prev := Now;
+   end m_prev_is;
+
+
+
+   procedure m_next_is (Self : in out b2Body;   Now : in b2Body_ptr)
+   is
+   begin
+      Self.m_next := Now;
+   end m_next_is;
+
+
+
+   function m_prev (Self : in b2Body) return b2Body_ptr
+   is
+   begin
+      return Self.m_prev;
+   end m_prev;
+
+
+
+   function m_next (Self : in b2Body) return b2Body_ptr
+   is
+   begin
+      return Self.m_next;
+   end m_next;
+
+
+
+
+
+   procedure m_jointList_is (Self : in out b2Body;   Now : access b2JointEdge)
+   is
+   begin
+      Self.m_jointList := Now;
+   end m_jointList_is;
+
+
+
+   procedure m_fixtureList_is (Self : in out b2Body;   Now : in b2Fixture_ptr)
+   is
+   begin
+      Self.m_fixtureList := Now;
+   end m_fixtureList_is;
+
+
+
+   function m_sleepTime (Self : in b2Body) return Real
+   is
+   begin
+      return Self.m_sleepTime;
+   end m_sleepTime;
+
+
+   procedure m_sleepTime_is (Self : in out b2Body;   Now : in Real)
+   is
+   begin
+      Self.m_sleepTime := Now;
+   end m_sleepTime_is;
+
+
+
+   procedure decrement_m_fixtureCount (Self : in out b2Body)
+   is
+   begin
+      Self.m_fixtureCount := Self.m_fixtureCount - 1;
+   end decrement_m_fixtureCount;
+
+
+
+   procedure zero_m_fixtureCount (Self : in out b2Body)
+   is
+   begin
+      Self.m_fixtureCount := 0;
+   end zero_m_fixtureCount;
+
+
+
 
    function m_islandIndex (Self : in b2Body) return Natural
    is
@@ -2530,12 +2649,11 @@ is
 
 
 
-
-   function m_sweep (Self : in b2Body) return b2Sweep
+   procedure m_islandIndex_is (Self : in out b2Body;   Now : in Natural)
    is
    begin
-      return Self.m_sweep;
-   end m_sweep;
+      Self.m_islandIndex := Now;
+   end m_islandIndex_is;
 
 
 
@@ -2554,6 +2672,39 @@ is
    begin
       return Self.m_invI;
    end m_invI;
+
+
+
+
+   function m_xf (Self : access b2Body) return access b2Transform
+   is
+   begin
+      return Self.m_xf'Access;
+   end m_xf;
+
+
+
+
+   function m_sweep (Self : access b2Body) return access b2Sweep
+   is
+   begin
+      return Self.m_sweep'Access;
+   end m_sweep;
+
+
+
+   function m_Flags (Self : in b2Body) return flag_Set
+   is
+   begin
+      return Self.m_Flags;
+   end m_Flags;
+
+
+   procedure m_Flags_is (Self : in out b2Body;   Now : flag_Set)
+   is
+   begin
+      Self.m_Flags := Now;
+   end m_Flags_is;
 
 
 end b2_Body;

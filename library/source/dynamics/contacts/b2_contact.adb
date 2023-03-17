@@ -1135,4 +1135,32 @@ is
    end m_Flags_is;
 
 
+
+   function m_toiCount (Self : in b2Contact) return Natural
+   is
+   begin
+      return Self.m_toiCount;
+   end m_toiCount;
+
+   procedure m_toiCount_is (Self : in out b2Contact;  Now : in Natural)
+   is
+   begin
+      Self.m_toiCount := Now;
+   end m_toiCount_is;
+
+
+
+   function m_toi (Self : in b2Contact) return Real
+   is
+   begin
+      return Self.m_toi;
+   end m_toi;
+
+   procedure m_toi_is (Self : in out b2Contact;  Now : in Real)
+   is
+   begin
+      Self.m_toi := Now;
+   end m_toi_is;
+
+
 end b2_Contact;

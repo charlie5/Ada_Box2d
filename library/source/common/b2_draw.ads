@@ -1,13 +1,19 @@
 with
-     b2_Math;
+     b2_Math,
+     b2_Settings;
 
 
 package b2_Draw
 is
+   use b2_Settings;
+
+
+
+
    procedure dummy;
 
 
-   --
+
 --  Color for debug drawing. Each value has the range [0,1].
 --  struct b2Color
 --  {
@@ -26,6 +32,13 @@ is
 --  };
 --
 
+   type b2Color is
+      record
+         r,
+         g,
+         b,
+         a : Real;
+      end record;
 
 
 

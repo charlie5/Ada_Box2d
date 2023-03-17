@@ -161,7 +161,7 @@ is
    --  };
    --
 
-   type b2ContactSolver is
+   type b2ContactSolver is tagged
       record
          m_step                :        b2TimeStep;
          m_positions           : access b2Positions;

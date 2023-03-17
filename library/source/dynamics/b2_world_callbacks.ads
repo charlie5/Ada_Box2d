@@ -3,7 +3,8 @@ with
      b2_Common,
      b2_Math,
      b2_Collision,
-     b2_Fixture;
+     b2_Fixture,
+     b2_Joint;
 
 limited
 with
@@ -12,6 +13,12 @@ with
 
 package b2_world_Callbacks
 is
+   use b2_Math,
+       b2_Settings,
+       b2_Fixture,
+       b2_Joint;
+
+
    --  struct b2Vec2;
    --  struct b2Transform;
    --  class b2Fixture;
@@ -34,17 +41,27 @@ is
    --  public:
    --    virtual ~b2DestructionListener() {}
    --
+
    --    Called when any joint is about to be destroyed due
    --    to the destruction of one of its attached bodies.
+   --
    --    virtual void SayGoodbye(b2Joint* joint) = 0;
    --
+
    --    Called when any fixture is about to be destroyed due
    --    to the destruction of its parent body.
+   --
    --    virtual void SayGoodbye(b2Fixture* fixture) = 0;
+
    --  };
    --
 
-   type b2DestructionListener is tagged null record;
+   type b2destructionListener is interface;
+
+
+   procedure destruct   (Self : in out b2DestructionListener)                                 is null;
+   procedure sayGoodbye (Self : in out b2DestructionListener;   joint   : in b2Joint_ptr)     is abstract;
+   procedure sayGoodbye (Self : in out b2DestructionListener;   fixture : in b2Fixture_ptr)   is abstract;
 
 
 
@@ -199,28 +216,46 @@ is
    --
    --  Callback class for AABB queries.
    --  See b2World::Query
+   --
    --  class b2QueryCallback
    --  {
    --  public:
    --    virtual ~b2QueryCallback() {}
    --
+
    --    Called for each fixture found in the query AABB.
    --    @return false to terminate the query.
+   --
    --    virtual bool ReportFixture(b2Fixture* fixture) = 0;
    --  };
    --
 
+   type b2QueryCallback is abstract tagged null record;
+
+
+   procedure destruct (Self : in out b2QueryCallback)
+   is abstract;
+
+   function  reportFixture (Self : in out b2QueryCallback;   fixture : access b2_Fixture.b2Fixture) return Boolean
+                            is abstract;
 
 
 
+
+   ---------------------
+   --- b2RayCastCallback
+   --
 
    --  Callback class for ray casts.
    --  See b2World::RayCast
+   --
+
    --  class b2RayCastCallback
    --  {
    --  public:
    --    virtual ~b2RayCastCallback() {}
    --
+
    --    Called for each fixture found in the query. You control how the ray cast
    --    proceeds by returning a float:
    --    return -1: ignore this fixture and continue
@@ -233,8 +268,23 @@ is
    --    @param fraction the fraction along the ray at the point of intersection
    --    @return -1 to filter, 0 to terminate, fraction to clip the ray for
    --    closest hit, 1 to continue
-   --    virtual float ReportFixture(  b2Fixture* fixture, const b2Vec2& point,
-   --                            const b2Vec2& normal, float fraction) = 0;
-   --  };
    --
+   --    virtual float ReportFixture (b2Fixture* fixture, const b2Vec2& point,
+   --                                 const b2Vec2& normal, float fraction) = 0;
+   --  };
+
+
+   type b2RayCastCallback is interface;
+
+
+   procedure destruct (Self : in out b2RayCastCallback)
+   is abstract;
+
+   function  reportFixture (Self : in out b2RayCastCallback;   fixture  : access b2_Fixture.b2Fixture;
+                                                               point    : in     b2Vec2;
+                                                               normal   : in     b2Vec2;
+                                                               fraction : in     Real) return Real
+                            is abstract;
+
+
 end b2_world_Callbacks;

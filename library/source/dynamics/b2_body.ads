@@ -15,7 +15,9 @@ with
 
 package b2_Body
 is
-   use b2_Shape,
+   use b2_Joint,
+       b2_Shape,
+       b2_Fixture,
        b2_Math,
        b2_Settings;
 
@@ -245,6 +247,17 @@ is
    type b2Body is tagged private;
 
    type b2Body_ptr is access all b2Body;
+
+
+
+
+
+
+   --    ~b2Body();
+   --
+
+   procedure destruct (Self : in out b2Body);
+   procedure free     (Self : in out b2Body_ptr);
 
 
 
@@ -839,7 +852,7 @@ is
    --    const b2Fixture* GetFixtureList() const;
    --
 
-   function getFixtureList (Self : in b2Body) return access constant b2_Fixture.b2Fixture;
+   --  function getFixtureList (Self : in b2Body) return access constant b2_Fixture.b2Fixture;
 
 
 
@@ -856,7 +869,7 @@ is
    --    const b2JointEdge* GetJointList() const;
    --
 
-   function getJointList (Self : in b2Body) return access constant b2_Joint.b2JointEdge;
+   --  function getJointList (Self : in b2Body) return access constant b2_Joint.b2JointEdge;
 
 
 
@@ -891,7 +904,7 @@ is
    --    const b2Body* GetNext() const;
    --
 
-   function getNext (Self : in b2Body) return access constant b2Body;
+   --  function getNext (Self : in b2Body) return access constant b2Body;
 
 
 
@@ -954,6 +967,30 @@ is
    procedure m_contactList_is (Self : in out b2Body;   Now : access b2_Contact.b2ContactEdge);
 
 
+   function  m_Force     (Self : in     b2Body)     return b2Vec2;
+   procedure m_Force_is  (Self : in out b2Body;   Now : in b2Vec2);
+
+   function  m_Torque    (Self : in     b2Body)     return Real;
+   procedure m_Torque_is (Self : in out b2Body;   Now : in Real);
+
+
+   procedure m_prev_is (Self : in out b2Body;   Now : in b2Body_ptr);
+   procedure m_next_is (Self : in out b2Body;   Now : in b2Body_ptr);
+
+   function  m_prev    (Self : in     b2Body) return b2Body_ptr;
+   function  m_next    (Self : in     b2Body) return b2Body_ptr;
+
+
+   procedure m_jointList_is   (Self : in out b2Body;   Now : access b2JointEdge);
+   procedure m_fixtureList_is (Self : in out b2Body;   Now : in     b2Fixture_ptr);
+
+   function  m_sleepTime      (Self : in     b2Body)         return Real;
+   procedure m_sleepTime_is   (Self : in out b2Body;   Now : in     Real);
+
+   procedure decrement_m_fixtureCount (Self : in out b2Body);
+   procedure      zero_m_fixtureCount (Self : in out b2Body);
+
+
    --    This is used to prevent connected bodies from colliding.
    --    It may lie, depending on the collideConnected flag.
    --
@@ -963,18 +1000,37 @@ is
    function shouldCollide (Self : in b2Body;   other : access b2Body) return Boolean;
 
 
-   function m_islandIndex (Self : in b2Body) return Natural;
-   function m_sweep       (Self : in b2Body) return b2Sweep;
+   function  m_islandIndex    (Self : in     b2Body)     return Natural;
+   procedure m_islandIndex_is (Self : in out b2Body;   Now : in Natural);
+
+
+
    function m_invMass     (Self : in b2Body) return Real;
    function m_invI        (Self : in b2Body) return Real;
 
+   function m_xf    (Self : access b2Body) return access b2Transform;
+   function m_sweep (Self : access b2Body) return access b2Sweep;
 
 
 
+   --    void SynchronizeTransform();
+   --
 
-private
+   procedure synchronizeTransform (Self : in out b2Body);
 
-   use Interfaces;
+
+   --    void SynchronizeFixtures();
+   --
+
+   procedure synchronizeFixtures (Self : in out b2Body);
+
+
+   --    void Advance(float t);
+   --
+   --  };
+   --
+
+   procedure advance (Self : in out b2Body;   t : in Real);
 
 
 
@@ -992,7 +1048,9 @@ private
    --     e_toiFlag         = 0x0040
    --  };
 
-   subtype Flag is Unsigned_16;
+   subtype Flag     is interfaces.Unsigned_16;
+   subtype flag_Set is interfaces.Unsigned_16;
+
 
    e_islandFlag         : constant Flag := 16#0001#;
    e_awakeFlag          : constant Flag := 16#0002#;
@@ -1002,9 +1060,12 @@ private
    e_enabledFlag        : constant Flag := 16#0020#;
    e_toiFlag            : constant Flag := 16#0040#;
 
-   subtype flag_Set is Unsigned_16;
+   function  m_Flags    (Self : in b2Body)      return flag_Set;
+   procedure m_Flags_is (Self : in out b2Body;   Now : flag_Set);
 
 
+
+private
 
    --    friend class b2World;
    --    friend class b2Island;
@@ -1075,8 +1136,8 @@ private
 
          m_islandIndex     : Natural;
 
-         m_xf              : b2Transform;    -- The body origin transform.
-         m_sweep           : b2Sweep;        -- Rhe swept motion for CCD.
+         m_xf              : aliased b2Transform;    -- The body origin transform.
+         m_sweep           : aliased b2Sweep;        -- Rhe swept motion for CCD.
 
          m_linearVelocity  : b2Vec2;
          m_angularVelocity : Real;
@@ -1109,42 +1170,6 @@ private
          m_sleepTime       : Real;
          m_userData        : b2BodyUserData;
       end record;
-
-
-
-
-
-
-
-   --    ~b2Body();
-   --
-
-   procedure destruct (Self : in out b2Body);
-
-
-
-   --    void SynchronizeFixtures();
-   --
-
-   procedure synchronizeFixtures (Self : in out b2Body);
-
-
-
-   --    void SynchronizeTransform();
-   --
-
-   procedure SynchronizeTransform (Self : in out b2Body);
-
-
-
-   --    void Advance(float t);
-   --
-   --  };
-   --
-
-   procedure advance (Self : in out b2Body;   t : in Real);
-
-
 
 
 end b2_Body;

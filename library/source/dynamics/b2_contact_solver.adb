@@ -956,15 +956,18 @@ is
                declare
                   vcp : b2VelocityConstraintPoint renames vc.points (j);
 
-                  -- Relative velocity at contact
+                  -- Relative velocity at contact.
+                  --
                   dv : constant b2Vec2 :=   vB + b2Cross (wB, vcp.rB)
                                  - vA - b2Cross (wA, vcp.rA);
 
-                  -- Compute tangent force
+                  -- Compute tangent force.
+                  --
                   vt     : constant Real := b2Dot (dv, tangent) - vc.tangentSpeed;
                    lambda : Real := vcp.tangentMass * (-vt);
 
-                  -- b2Clamp the accumulated force
+                  -- b2Clamp the accumulated force.
+                  --
                   maxFriction : constant Real := friction * vcp.normalImpulse;
                   newImpulse  : constant Real := b2Clamp ( vcp.tangentImpulse + lambda,
                                                  -maxFriction,
@@ -974,7 +977,8 @@ is
                   lambda             := newImpulse - vcp.tangentImpulse;
                   vcp.tangentImpulse := newImpulse;
 
-                  -- Apply contact impulse
+                  -- Apply contact impulse.
+                  --
                   P := lambda * tangent;
 
                   vA := vA - mA * P;
@@ -986,7 +990,8 @@ is
             end loop;
 
 
-            -- Solve normal constraints
+            -- Solve normal constraints.
+            --
             if   pointCount   = 1
               or g_blockSolve = False
             then

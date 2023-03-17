@@ -5,9 +5,6 @@ with
 
 package body b2_world_Callbacks
 is
-   use b2_Fixture;
-
-
    --  // Return true if contact calculations should be performed between these two shapes.
    --  // If you implement your own collision filter you may want to build from this implementation.
    --

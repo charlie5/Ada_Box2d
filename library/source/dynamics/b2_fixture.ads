@@ -175,10 +175,16 @@ is
    type b2Fixture     is tagged private;
    type b2Fixture_ptr is access all b2Fixture'Class;
 
+   procedure free (the_Fixture : in out b2Fixture_ptr);
+
+
 
    ---------------------
    --  public functions.
    --
+
+   procedure destruct (Self : in out b2Fixture) is null;
+
 
 
    --    Get the type of the child shape. You can use this to down cast to the concrete shape.
@@ -524,7 +530,7 @@ is
 
 
    function  m_Next    (Self : access b2Fixture)  return access b2Fixture;
-   procedure m_Next_is (Self : in out b2Fixture;   Now : access b2Fixture);
+   procedure m_Next_is (Self : in out b2Fixture;   Now :        b2Fixture_ptr);
 
    function  m_Body    (Self : access b2Fixture)         return b2_Body.b2Body_ptr;
    procedure m_Body_is (Self : in out b2Fixture;   Now : access b2_Body.b2Body);
@@ -559,7 +565,8 @@ is
    type b2FixtureProxies_ptr is access all b2FixtureProxies;
 
 
-   function m_proxies (Self : in out b2Fixture) return b2FixtureProxies;
+   function  m_proxies       (Self : in out b2Fixture) return b2FixtureProxies;
+   procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural);
 
 
    --
