@@ -1,7 +1,6 @@
 with
      b2_Body,
-     b2_time_Step,
-     b2_weld_Joint;
+     b2_time_Step;
 
 
 package body b2_Joint.b2_weld_Joint

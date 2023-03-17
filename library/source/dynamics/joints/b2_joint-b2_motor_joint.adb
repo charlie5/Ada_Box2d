@@ -1,6 +1,5 @@
 with
      b2_Body,
-     b2_motor_Joint,
      b2_time_Step;
 
 

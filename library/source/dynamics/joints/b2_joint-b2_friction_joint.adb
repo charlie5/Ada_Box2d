@@ -1,5 +1,4 @@
 with
-     b2_friction_Joint,
      b2_Body,
      b2_time_Step;
 

@@ -395,6 +395,17 @@ is
 
 
 
+   procedure m_prev_is (Self : in out b2Joint;   Now : in b2Joint_ptr);
+   procedure m_next_is (Self : in out b2Joint;   Now : in b2Joint_ptr);
+
+   function  m_prev    (Self : access b2Joint) return b2Joint_ptr;
+   function  m_next    (Self : access b2Joint) return b2Joint_ptr;
+
+   function  m_edgeA   (Self : access b2Joint) return access b2JointEdge;
+   function  m_edgeB   (Self : access b2Joint) return access b2JointEdge;
+
+   function  m_islandFlag    (Self : in     b2Joint)     return Boolean;
+   procedure m_islandFlag_is (Self : in out b2Joint;   Now : in Boolean);
 
 
    --  inline b2JointType b2Joint::GetType() const
@@ -436,8 +447,6 @@ is
 
 
 
-
-
 private
 
    --    b2JointType m_type;
@@ -461,13 +470,13 @@ private
          m_type             : b2JointType;
 
          m_prev,
-         m_next             : access b2Joint;
+         m_next             : access  b2Joint;
 
          m_edgeA,
-         m_edgeB            : b2JointEdge;
+         m_edgeB            : aliased b2JointEdge;
 
          m_bodyA,
-         m_bodyB            : access b2_Body.b2Body;
+         m_bodyB            : access  b2_Body.b2Body;
 
          m_index            : Natural;
 

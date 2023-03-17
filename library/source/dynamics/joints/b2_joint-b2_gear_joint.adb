@@ -1,7 +1,6 @@
 with
-     b2_gear_Joint,
-     b2_revolute_Joint,
-     b2_prismatic_Joint,
+     b2_Joint.b2_revolute_Joint,
+     b2_Joint.b2_prismatic_Joint,
      b2_Body,
      b2_time_Step;
 

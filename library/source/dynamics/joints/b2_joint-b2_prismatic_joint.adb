@@ -1,7 +1,6 @@
 with
      b2_Body,
      b2_Draw,
-     b2_prismatic_Joint,
      b2_time_Step;
 
 

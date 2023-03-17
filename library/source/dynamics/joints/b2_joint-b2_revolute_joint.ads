@@ -1,7 +1,3 @@
-with
-     b2_Joint;
-
-
 package b2_Joint.b2_revolute_Joint
 is
    procedure dummy;

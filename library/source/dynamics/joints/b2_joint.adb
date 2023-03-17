@@ -381,39 +381,48 @@ is
 
         when e_mouseJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2MouseJoint));
-              joint := new b2MouseJoint (b2MouseJointDef (def));
+            null;
+            -- joint := new b2MouseJoint (b2MouseJointDef (def));
 
         when e_prismaticJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2PrismaticJoint));
-              joint := new b2PrismaticJoint (b2PrismaticJointDef (def));
+            null;
+            -- joint := new b2PrismaticJoint (b2PrismaticJointDef (def));
 
         when e_revoluteJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2RevoluteJoint));
-              joint := new b2RevoluteJoint (b2RevoluteJointDef (def));
+            null;
+            -- joint := new b2RevoluteJoint (b2RevoluteJointDef (def));
 
         when e_pulleyJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2PulleyJoint));
-              joint := new b2PulleyJoint (b2PulleyJointDef (def));
+            null;
+            -- joint := new b2PulleyJoint (b2PulleyJointDef (def));
 
         when e_gearJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2GearJoint));
-              joint := new b2GearJoint (b2GearJointDef (def));
+            null;
+            -- joint := new b2GearJoint (b2GearJointDef (def));
 
         when e_wheelJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2WheelJoint));
-              joint := new b2WheelJoint (b2WheelJointDef (def));
+            null;
+            -- joint := new b2WheelJoint (b2WheelJointDef (def));
 
         when e_weldJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2WeldJoint));
-              joint := new b2WeldJoint (b2WeldJointDef (def));
+            null;
+            -- joint := new b2WeldJoint (b2WeldJointDef (def));
 
         when e_frictionJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2FrictionJoint));
-              joint := new b2FrictionJoint (b2FrictionJointDef (def));
+            null;
+            -- joint := new b2FrictionJoint (b2FrictionJointDef (def));
 
         when e_motorJoint =>
               --  void* mem = allocator->Allocate(sizeof(b2MotorJoint));
-              joint := new b2MotorJoint (b2MotorJointDef (def));
+            null;
+            -- joint := new b2MotorJoint (b2MotorJointDef (def));
 
         when others =>
            pragma assert (False);
@@ -668,7 +677,67 @@ is
 
 
 
+   procedure m_prev_is (Self : in out b2Joint;   Now : in b2Joint_ptr)
+   is
+   begin
+      Self.m_prev := Now;
+   end m_prev_is;
 
+
+
+   procedure m_next_is (Self : in out b2Joint;   Now : in b2Joint_ptr)
+   is
+   begin
+      Self.m_next := Now;
+   end m_next_is;
+
+
+
+
+   function m_prev (Self : access b2Joint) return b2Joint_ptr
+   is
+   begin
+      return Self.m_prev;
+   end m_prev;
+
+
+
+   function m_next (Self : access b2Joint) return b2Joint_ptr
+   is
+   begin
+      return Self.m_next;
+   end m_next;
+
+
+
+
+   function m_edgeA (Self : access b2Joint) return access b2JointEdge
+   is
+   begin
+      return Self.m_edgeA'Access;
+   end m_edgeA;
+
+
+
+   function m_edgeB (Self : access b2Joint) return access b2JointEdge
+   is
+   begin
+      return Self.m_edgeB'Access;
+   end m_edgeb;
+
+
+   function m_islandFlag (Self : in b2Joint) return Boolean
+   is
+   begin
+      return Self.m_islandFlag;
+   end m_islandFlag;
+
+
+   procedure m_islandFlag_is (Self : in out b2Joint;   Now : in Boolean)
+   is
+   begin
+      Self.m_islandFlag := Now;
+   end m_islandFlag_is;
 
 
 end b2_Joint;

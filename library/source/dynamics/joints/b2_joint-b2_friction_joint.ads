@@ -1,7 +1,3 @@
-with
-     b2_Joint;
-
-
 package b2_Joint.b2_friction_Joint
 is
    procedure dummy;
