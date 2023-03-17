@@ -168,7 +168,7 @@ is
    function to_b2Island (bodyCapacity    : Natural;
                          contactCapacity : Natural;
                          jointCapacity   : Natural;
-                         listener        : access b2ContactListener) return b2Island
+                         listener        : access b2ContactListener'Class) return b2Island
    is
       Self : b2Island;
    begin
