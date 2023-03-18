@@ -533,9 +533,9 @@ private
    --    static b2ContactRegister s_registers[b2Shape::e_typeCount][b2Shape::e_typeCount];
    --    static bool s_initialized;
    --
-   s_registers   : array (0 .. Shape_Type'Pos (e_typeCount) - 2,
-                          0 .. Shape_Type'Pos (e_typeCount) - 2) of b2ContactRegister;
-   s_initialized : Boolean;
+   s_registers   : array (0 .. Shape_Type'Pos (e_typeCount) - 1,
+                          0 .. Shape_Type'Pos (e_typeCount) - 1) of b2ContactRegister;
+   s_initialized : Boolean := False;
 
 
 
