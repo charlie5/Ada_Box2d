@@ -31,7 +31,7 @@ build
 #
 
 launch_hello_box2d
-
+applet/test/unit/collision_test/collision_test
 
 
 ## Misc

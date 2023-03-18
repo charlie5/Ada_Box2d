@@ -1,0 +1,25 @@
+with
+     "../../../../library/box2d_default",
+     "../../../../library/box2d";
+
+
+project collision_Test
+is
+   for Object_Dir   use "build";
+   for Source_Dirs  use ("source");
+   for Exec_Dir     use ".";
+   for Main         use ("collision_test");
+   
+   -- Define the packages.
+   --
+
+   package Ide      renames Box2d_default.Ide;
+   package Builder  renames Box2d_default.Builder;
+   package Compiler renames Box2d_default.Compiler;
+   package Binder   renames Box2d_default.Binder;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-g");
+   end Linker;
+
+end collision_Test;
