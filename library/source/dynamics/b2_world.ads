@@ -86,7 +86,7 @@ is
    --    void SetContactListener(b2ContactListener* listener);
    --
 
-   procedure SetContactListener (Self : in out b2World;   listener : access b2ContactListener);
+   procedure setContactListener (Self : in out b2World;   listener : access b2ContactListener'Class);
 
 
    --    Register a routine for debug drawing. The debug draw functions are called

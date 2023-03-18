@@ -387,7 +387,7 @@ is
    --  }
    --
 
-   procedure SetContactListener (Self : in out b2World;   listener : access b2ContactListener)
+   procedure setContactListener (Self : in out b2World;   listener : access b2ContactListener'Class)
    is
    begin
       Self.m_contactManager.m_contactListener := listener;
@@ -449,7 +449,7 @@ is
 
       declare
          b : constant b2Body_ptr := new b2Body' (to_b2Body (bd    => def,
-                                                            world => Self.all'unchecked_Access));
+                                                            world => Self'unchecked_Access));
       begin
          -- Add to world doubly linked list.
          --
