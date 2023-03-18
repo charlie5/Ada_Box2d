@@ -1,6 +1,6 @@
 with
-     "box2d_default",
-     "box2d";
+     "../../../library/box2d_default",
+     "../../../library/box2d";
 
 
 project hello_Box2d
