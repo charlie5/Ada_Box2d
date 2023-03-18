@@ -1217,7 +1217,7 @@ is
       -- Peel a node off the free list.
       --
       declare
-         nodeId : constant Natural := Self.m_freeList;
+         nodeId : constant Integer := Self.m_freeList;
       begin
          Self.m_freeList                   := Self.m_nodes (nodeId).PorN.next;
          Self.m_nodes (nodeId).PorN.parent := b2_nullNode;
