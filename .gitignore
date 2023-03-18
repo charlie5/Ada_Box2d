@@ -32,6 +32,7 @@ build
 
 launch_hello_box2d
 applet/test/unit/collision_test/collision_test
+applet/test/unit/math_test/math_test
 
 
 ## Misc
