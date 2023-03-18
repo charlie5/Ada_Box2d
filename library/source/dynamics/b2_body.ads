@@ -291,8 +291,8 @@ is
    --    b2Fixture* CreateFixture(const b2Shape* shape, float density);
    --
 
-   function createFixture (Self : in out b2Body;   shape   : access constant b2Shape;
-                           Density : in Real) return b2_Fixture.b2Fixture_ptr;
+   function createFixture (Self : in out b2Body;   Shape   : access constant b2Shape'Class;
+                                                   Density : in              Real) return b2_Fixture.b2Fixture_ptr;
 
 
 

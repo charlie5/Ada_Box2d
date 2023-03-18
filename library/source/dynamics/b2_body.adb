@@ -156,7 +156,7 @@ is
    --  }
    --
 
-   function createFixture (Self : in out b2Body;   shape   : access constant b2Shape;
+   function createFixture (Self : in out b2Body;   Shape   : access constant b2Shape'Class;
                                                    Density : in              Real) return b2_Fixture.b2Fixture_ptr
    is
       def : b2FixtureDef;
@@ -2216,6 +2216,7 @@ is
    --  }
    --
 
+   --  function to_b2Body (bd : in b2BodyDef;   world : in b2World_ptr) return b2Body
    function to_b2Body (bd : in b2BodyDef;   world : access b2_World.b2World) return b2Body
    is
       pragma assert (isValid (bd.position));
