@@ -740,6 +740,9 @@ is
 
       n  : Natural;
       ps : array (0 .. b2_maxPolygonVertices - 1) of b2Vec2;
+
+      pragma Warnings (Off, """ps"" may be referenced before it has a value");     -- This warning is a false positive.
+                                                                                   -- Check algorithm below.
    begin
       if Count < 3
       then
