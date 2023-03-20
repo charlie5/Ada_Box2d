@@ -1,3 +1,4 @@
+with Ada.Text_IO; use Ada.Text_IO;
 with
      b2_growable_Stack,
      b2_Types,
@@ -46,7 +47,7 @@ is
    function getUserData (Self : in b2DynamicTree;   proxyId : Natural) return system.Address
    is
       pragma assert (          0 <= proxyId
-                               and proxyId < Self.m_nodeCapacity);
+                     and proxyId <  Self.m_nodeCapacity);
    begin
       return Self.m_nodes (proxyId).userData;
    end getUserData;
@@ -474,7 +475,7 @@ is
    procedure query (Self : in b2DynamicTree;   Callback : in out Callback_t;
                                                aabb     : in     b2AABB)
    is
-      stack : natural_Stack;
+      stack : natural_Stack := to_Stack;
    begin
       push (stack, Self.m_root);
 
@@ -640,7 +641,7 @@ is
          segmentAABB : b2AABB;
          t           : constant b2Vec2 := p1  +  maxFraction * (p2 - p1);
 
-         stack       :  natural_Stack;
+         stack       :  natural_Stack := to_Stack;
       begin
          segmentAABB.lowerBound := b2Min (p1, t);
          segmentAABB.upperBound := b2Max (p1, t);

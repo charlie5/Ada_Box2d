@@ -70,24 +70,29 @@ is
    generic
       type Element_t is private;
       initial_Capacity : Positive;
+
    package b2GrowableStack
    is
-      type Stack is private;
+      type Stack is limited private;
 
       function  to_Stack return Stack;
 
+      procedure push (Self : in out Stack; E : in Element_T);
+      function  pop  (Self : in out Stack) return Element_T;
 
-      procedure push (Self : in out Stack;   E : in Element_T);
-      function  pop  (Self : in out Stack)   return Element_T;
+      function  getCount    (Self : in     Stack)    return Natural;
 
-
-      function getCount (Self : in  Stack)   return Natural;
-
+      function  getCapacity (Self : in     Stack)    return Natural;
+      procedure setCapacity (Self : in out Stack;   To : in Natural);
 
 
    private
       package Vectors is new ada.Containers.Vectors (Positive, Element_t);
-      type    Stack   is new Vectors.Vector with null record;
+
+      type Stack is limited
+         record
+            Elements : Vectors.Vector;
+         end record;
 
    end b2GrowableStack;
 

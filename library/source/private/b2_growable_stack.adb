@@ -1,3 +1,6 @@
+with ada.Text_IO; use ada.Text_IO;
+
+
 package body b2_growable_Stack
 is
 
@@ -7,43 +10,56 @@ is
 
 
 
-      function to_Stack return Stack
+      function  to_Stack return Stack
       is
-         Self : Stack;
       begin
-         Self.reserve_Capacity (Count_type (initial_Capacity));
-         return Self;
+         return Self : Stack
+         do
+            Self.Elements.reserve_Capacity (Count_type (initial_Capacity));
+         end return;
       end to_Stack;
-
-
 
 
       procedure push (Self : in out Stack;   E : in Element_T)
       is
-         pragma assert (Check   => Self.Capacity >= Count_type (initial_Capacity),
+         pragma assert (Check   => Self.Elements.Capacity >= Count_type (initial_Capacity),
                         Message => "Stack has not been initialised.");
       begin
-         Self.append (E);
+         Self.Elements.append (E);
       end push;
 
 
 
       function pop (Self : in out Stack) return Element_T
       is
-         Top : constant Element_t := Self.last_Element;
+         Top : constant Element_t := Self.Elements.last_Element;
       begin
-         Self.delete_Last;
+         Self.Elements.delete_Last;
          return Top;
       end pop;
-
 
 
 
       function getCount (Self : in  Stack)   return Natural
       is
       begin
-         return Natural (Self.Length);
+         return Natural (Self.Elements.Length);
       end getCount;
+
+
+
+      function getCapacity (Self : in  Stack)   return Natural
+      is
+      begin
+         return Natural (Self.Elements.Capacity);
+      end getCapacity;
+
+      procedure setCapacity (Self : in out Stack;   To : in Natural)
+      is
+      begin
+         Self.Elements.reserve_Capacity (Count_type (To));
+      end setCapacity;
+
 
    end b2GrowableStack;
 
