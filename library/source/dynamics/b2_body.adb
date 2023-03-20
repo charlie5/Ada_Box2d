@@ -97,7 +97,7 @@ is
      end if;
 
       declare
-         fixture : constant b2_Fixture.b2Fixture_ptr := new b2_Fixture.b2Fixture;
+         fixture : constant b2_Fixture.b2Fixture_ptr := new b2_Fixture.b2Fixture' (to_b2Fixture);
       begin
          fixture.create (Self'Access, def);
 
@@ -1112,8 +1112,53 @@ is
 
    procedure setMassData (Self : in out b2Body;   data : in b2massData)
    is
+      pragma assert (Self.m_world.isLocked = False);
    begin
-      null;
+      if Self.m_world.isLocked = True
+      then
+         return;
+      end if;
+
+      if Self.m_type /= b2_dynamicBody
+      then
+         return;
+      end if;
+
+      Self.m_invMass := 0.0;
+      Self.m_I       := 0.0;
+      Self.m_invI    := 0.0;
+
+      Self.m_mass    := Data.mass;
+
+     if Self.m_mass <= 0.0
+     then
+        Self.m_mass := 1.0;
+     end if;
+
+     Self.m_invMass := 1.0 / Self.m_mass;
+
+      if     Data.I > 0.0
+        and (Self.m_flags and b2_Body.e_fixedRotationFlag) = 0
+      then
+         Self.m_I    := Data.I - Self.m_mass * b2Dot (Data.center, Data.center);
+         pragma assert (Self.m_I > 0.0);
+         Self.m_invI := 1.0 / Self.m_I;
+      end if;
+
+      -- Move center of mass.
+      --
+      declare
+         oldCenter : constant b2Vec2 := Self.m_sweep.c;
+      begin
+         Self.m_sweep.localCenter := Data.center;
+         Self.m_sweep.c           := b2Mul (Self.m_xf, Self.m_sweep.localCenter);
+         Self.m_sweep.c0          := Self.m_sweep.c;
+
+         -- Update center of mass velocity.
+         --
+         Self.m_linearVelocity := Self.m_linearVelocity + b2Cross (Self.m_angularVelocity,
+                                                                   Self.m_sweep.c - oldCenter);
+      end;
    end setMassData;
 
 
@@ -1196,7 +1241,93 @@ is
    procedure resetMassData (Self : in out b2Body)
    is
    begin
-      null;
+      -- Compute mass data from shapes. Each shape has its own density.
+      --
+      Self.m_mass    := 0.0;
+      Self.m_invMass := 0.0;
+      Self.m_I       := 0.0;
+      Self.m_invI    := 0.0;
+      setZero (Self.m_sweep.localCenter);
+
+      -- Static and kinematic bodies have zero mass.
+      --
+      if   Self.m_type = b2_staticBody
+        or Self.m_type = b2_kinematicBody
+      then
+         Self.m_sweep.c0 := Self.m_xf.p;
+         Self.m_sweep.c  := Self.m_xf.p;
+         Self.m_sweep.a0 := Self.m_sweep.a;
+
+         return;
+      end if;
+
+        pragma assert (Self.m_type = b2_dynamicBody);
+
+      -- Accumulate mass over all fixtures.
+      --
+      declare
+         localCenter :        b2Vec2    := b2Vec2_zero;
+         f           : access b2Fixture := Self.m_fixtureList;
+      begin
+         while f /= null
+         loop
+            if f.m_density = 0.0
+            then
+               goto Continue;
+            end if;
+
+            declare
+               massData : b2MassData;
+            begin
+               f.getMassData (massData);
+
+               Self.m_mass := Self.m_mass + massData.mass;
+               localCenter := localCenter + massData.mass * massData.center;
+               Self.m_I    := Self.m_I + massData.I;
+            end;
+
+            <<Continue>>
+            f := f.m_next;
+         end loop;
+
+         -- Compute center of mass.
+         --
+         if Self.m_mass > 0.0
+         then
+            Self.m_invMass := 1.0 / Self.m_mass;
+            localCenter    := localCenter * Self.m_invMass;
+         end if;
+
+         if     Self.m_I > 0.0
+           and (Self.m_flags and e_fixedRotationFlag) = 0
+         then
+            -- Center the inertia about the center of mass.
+            --
+            Self.m_I    := Self.m_I - Self.m_mass * b2Dot (localCenter,
+                                                           localCenter);
+            pragma assert (Self.m_I > 0.0);
+            Self.m_invI := 1.0 / Self.m_I;
+
+         else
+            Self.m_I    := 0.0;
+            Self.m_invI := 0.0;
+         end if;
+
+         -- Move center of mass.
+         --
+         declare
+            oldCenter : constant b2Vec2 := Self.m_sweep.c;
+         begin
+            Self.m_sweep.localCenter := localCenter;
+            Self.m_sweep.c           := b2Mul (Self.m_xf, Self.m_sweep.localCenter);
+            Self.m_sweep.c0          := Self.m_sweep.c;
+
+            -- Update center of mass velocity.
+            --
+            Self.m_linearVelocity := Self.m_linearVelocity + b2Cross (Self.m_angularVelocity,
+                                                                      Self.m_sweep.c - oldCenter);
+         end;
+      end;
    end resetMassData;
 
 
@@ -1515,8 +1646,76 @@ is
 
    procedure setType (Self : in out b2Body;   Kind : in b2BodyType)
    is
+      pragma assert (Self.m_world.isLocked = False);
    begin
-      null;
+      if Self.m_world.isLocked = True
+      then
+         return;
+      end if;
+
+      if Self.m_type = Kind
+      then
+         return;
+      end if;
+
+      Self.m_type := Kind;
+
+      Self.resetMassData;
+
+      if Self.m_type = b2_staticBody
+      then
+         setZero (Self.m_linearVelocity);
+
+         Self.m_angularVelocity := 0.0;
+         Self.m_sweep.a0        := Self.m_sweep.a;
+         Self.m_sweep.c0        := Self.m_sweep.c;
+         Self.m_flags           := Self.m_flags and not e_awakeFlag;
+
+         Self.synchronizeFixtures;
+      end if;
+
+     Self.setAwake (True);
+
+     setZero (Self.m_force);
+     Self.m_torque := 0.0;
+
+      -- Delete the attached contacts.
+      --
+      declare
+         ce : access b2ContactEdge := Self.m_contactList;
+      begin
+         while ce /= null
+         loop
+            declare
+               ce0 : constant access b2ContactEdge := ce;
+            begin
+               ce := ce.next;
+               Self.m_world.m_contactManager.destroy (ce0.contact);
+            end;
+         end loop;
+      end;
+
+      Self.m_contactList := null;
+
+      -- Touch the proxies so that new contacts will be created (when appropriate).
+      --
+      declare
+         broadPhase : constant access b2BroadPhase := Self.m_world.m_contactManager.m_broadPhase'Access;
+         f          :          access b2Fixture    := Self.m_fixtureList;
+         proxyCount :                 Natural;
+      begin
+         while f /= null
+         loop
+            proxyCount := f.m_proxyCount;
+
+            for i in 0 .. proxyCount - 1
+            loop
+               broadPhase.touchProxy (f.m_proxies (i).proxyId);
+            end loop;
+
+            f := f.m_next;
+         end loop;
+      end;
    end setType;
 
 
@@ -1789,8 +1988,66 @@ is
 
    procedure setEnabled (Self : in out b2Body;   Flag : in Boolean)
    is
+     pragma assert (Self.m_world.isLocked = False);
    begin
-      null;
+      if flag = Self.isEnabled
+      then
+         return;
+      end if;
+
+      if flag
+      then
+         Self.m_flags := Self.m_flags or e_enabledFlag;
+
+         -- Create all proxies.
+         --
+         declare
+            broadPhase : constant access b2BroadPhase := Self.m_world.m_contactManager.m_broadPhase'Access;
+            f          :          access b2Fixture    := Self.m_fixtureList;
+         begin
+            while f /= null
+            loop
+               f.createProxies (broadPhase, Self.m_xf);
+               f := f.m_next;
+            end loop;
+         end;
+
+         -- Contacts are created at the beginning of the next.
+         --
+         Self.m_world.m_newContacts_is (True);
+
+      else
+         Self.m_flags := Self.m_flags and not e_enabledFlag;
+
+         -- Destroy all proxies.
+         --
+         declare
+            broadPhase : constant access b2BroadPhase := Self.m_world.m_contactManager.m_broadPhase'Access;
+            f          :          access b2Fixture    := Self.m_fixtureList;
+         begin
+            while f /= null
+            loop
+               f.destroyProxies (broadPhase);
+               f := f.m_next;
+            end loop;
+         end;
+
+         -- Destroy the attached contacts.
+         --
+         declare
+            ce  : access b2ContactEdge := Self.m_contactList;
+            ce0 : access b2ContactEdge;
+         begin
+            while ce /= null
+            loop
+               ce0 := ce;
+               ce  := ce.next;
+               Self.m_world.m_contactManager.destroy (ce0.contact);
+            end loop;
+
+            Self.m_contactList := null;
+         end;
+      end if;
    end setEnabled;
 
 
@@ -2048,7 +2305,7 @@ is
    procedure setUserData (Self : in out b2Body;   data : in b2BodyUserData)
    is
    begin
-      null;
+      Self.m_userData := Data;
    end setUserData;
 
 
@@ -2217,6 +2474,8 @@ is
    --
 
    --  function to_b2Body (bd : in b2BodyDef;   world : in b2World_ptr) return b2Body
+   --
+
    function to_b2Body (bd : in b2BodyDef;   world : access b2_World.b2World) return b2Body
    is
       pragma assert (isValid (bd.position));

@@ -16,7 +16,8 @@ is
    use b2_Math,
        b2_Types,
        b2_Common,
-       b2_Settings;
+       b2_Settings,
+       Interfaces;
 
 
    --  class b2Shape;
@@ -60,10 +61,10 @@ is
 
    type b2contactFeature is
       record
-         indexA : Natural;          -- Feature index on shapeA
-         indexB : Natural;          -- Feature index on shapeB
-         typeA  : feature_Type;     -- The feature type on shapeA
-         typeB  : feature_Type;     -- The feature type on shapeB
+         indexA : Unsigned_8;       -- Feature index on shapeA.
+         indexB : Unsigned_8;       -- Feature index on shapeB.
+         typeA  : feature_Type;     -- The feature type on shapeA.
+         typeB  : feature_Type;     -- The feature type on shapeB.
       end record;
 
    pragma assert (b2contactFeature'Size <= 4 * 8);

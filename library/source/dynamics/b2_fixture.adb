@@ -997,6 +997,13 @@ is
 
 
 
+
+   function m_proxyCount (Self : in out b2Fixture) return Natural
+   is
+   begin
+      return Self.m_proxyCount;
+   end m_proxyCount;
+
    procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural)
    is
    begin

@@ -143,7 +143,7 @@ is
             if s > axis.separation
             then
                axis.Kind       := e_edgeB;
-               axis.index      := i;
+               axis.index      := Integer (i);
                axis.separation := s;
                axis.normal     := n;
             end if;
@@ -781,12 +781,12 @@ is
          k_relativeTol : constant := 0.98;
          k_absoluteTol : constant := 0.001;
       begin
-         tempPolygonB.count := polygonB.m_count;
+         tempPolygonB.count := Unsigned_8 (polygonB.m_count);
 
          for i in 0 .. polygonB.m_count - 1
          loop
-            tempPolygonB.vertices (i) := b2Mul (xf,    polygonB.m_vertices (i));
-            tempPolygonB.normals  (i) := b2Mul (xf.q,  polygonB.m_normals  (i));
+            tempPolygonB.vertices (Unsigned_8 (i)) := b2Mul (xf,    polygonB.m_vertices (i));
+            tempPolygonB.normals  (Unsigned_8 (i)) := b2Mul (xf.q,  polygonB.m_normals  (i));
          end loop;
 
          radius   := polygonB.m_radius + edgeA.m_radius;
@@ -888,9 +888,9 @@ is
             clipPoints : b2ClipVertex_Pair;
             ref        : b2ReferenceFace;
 
-            bestIndex  : Natural := 0;
-            bestValue  : Real    := b2Dot (primaryAxis.normal,
-                                           tempPolygonB.normals (0));
+            bestIndex  : Unsigned_8 := 0;
+            bestValue  : Real       := b2Dot (primaryAxis.normal,
+                                              tempPolygonB.normals (0));
          begin
             if primaryAxis.Kind = e_edgeA
             then
@@ -902,7 +902,7 @@ is
                loop
                   declare
                      value : constant Real := b2Dot (primaryAxis.normal,
-                                            tempPolygonB.normals (i));
+                                                     tempPolygonB.normals (i));
                   begin
                      if value < bestValue
                      then
@@ -913,9 +913,9 @@ is
                end loop;
 
                declare
-                  i1 : constant Natural := bestIndex;
-                  i2 : constant Natural := (if i1 + 1 < tempPolygonB.count then i1 + 1
-                                                                           else 0);
+                  i1 : constant Unsigned_8 := bestIndex;
+                  i2 : constant Unsigned_8 := (if i1 + 1 < tempPolygonB.count then i1 + 1
+                                                                              else 0);
                begin
                   clipPoints (0).v            := tempPolygonB.vertices (i1);
                   clipPoints (0).id.cf.indexA := 0;
@@ -942,22 +942,22 @@ is
 
                clipPoints (0).v            := v2;
                clipPoints (0).id.cf.indexA := 1;
-               clipPoints (0).id.cf.indexB := primaryAxis.index;
+               clipPoints (0).id.cf.indexB := Unsigned_8 (primaryAxis.index);
                clipPoints (0).id.cf.typeA  := e_vertex;
                clipPoints (0).id.cf.typeB  := e_face;
 
                clipPoints (1).v            := v1;
                clipPoints (1).id.cf.indexA := 0;
-               clipPoints (1).id.cf.indexB := primaryAxis.index;
+               clipPoints (1).id.cf.indexB := Unsigned_8 (primaryAxis.index);
                clipPoints (1).id.cf.typeA  := e_vertex;
                clipPoints (1).id.cf.typeB  := e_face;
 
                ref.i1     := primaryAxis.index;
-               ref.i2     := (if ref.i1 + 1 < tempPolygonB.count then ref.i1 + 1
-                                                                 else 0);
-               ref.v1     := tempPolygonB.vertices (ref.i1);
-               ref.v2     := tempPolygonB.vertices (ref.i2);
-               ref.normal := tempPolygonB.normals  (ref.i1);
+               ref.i2     := (if ref.i1 + 1 < Natural (tempPolygonB.count) then ref.i1 + 1
+                                                                           else 0);
+               ref.v1     := tempPolygonB.vertices (Unsigned_8 (ref.i1));
+               ref.v2     := tempPolygonB.vertices (Unsigned_8 (ref.i2));
+               ref.normal := tempPolygonB.normals  (Unsigned_8 (ref.i1));
 
                -- CCW winding.
                --

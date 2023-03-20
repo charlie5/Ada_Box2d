@@ -550,7 +550,8 @@ is
    function computeCentroid (Self : in b2polygonShape;   vs    : in b2Vec2s;
                                                          Count : in Natural) return b2Vec2
    is
-      pragma assert (Count >= 3);
+      pragma assert (Count >= 3,
+                     "Count =" & Count'Image);
 
       c    : b2Vec2       := (0.0, 0.0);
       Area : Real :=  0.0;
@@ -736,8 +737,8 @@ is
    is
       pragma assert (        3 <= Count
                      and Count <= b2_maxPolygonVertices);
+
       n  : Natural;
-      m  : constant Natural := 0;
       ps : array (0 .. b2_maxPolygonVertices - 1) of b2Vec2;
    begin
       if Count < 3
@@ -746,7 +747,7 @@ is
          return;
       end if;
 
-      n := Natural'Min (Count, b2_maxPolygonVertices);
+      n := Natural'min (Count, b2_maxPolygonVertices);
 
       -- Perform welding and copy vertices into local buffer.
       --
@@ -762,9 +763,7 @@ is
 
             for j in 0 .. tempCount - 1
             loop
-               ps (j) := (0.0, 0.0);                                -- Initialise ps (see below). Check that (0.0, 0.0) is correct initialiser.
-
-               if   b2DistanceSquared (v,  ps (j))                  -- ***** TODO: ps has not been initialised in C code !!! *****
+               if   b2DistanceSquared (v,  ps (j))
                  < (0.5 * b2_linearSlop) * (0.5 * b2_linearSlop)
                then
                   Unique := False;
@@ -790,15 +789,15 @@ is
          end if;
       end;
 
-      -- Create the convex hull using the Gift wrapping algorithm
+      -- Create the convex hull using the Gift wrapping algorithm.
       -- http://en.wikipedia.org/wiki/Gift_wrapping_algorithm
       --
 
-      -- Find the right most point on the hull
+      -- Find the right most point on the hull.
       --
       declare
-         i0 : Natural      := 0;
-         x0 : Real := ps (0).x;
+         i0 : Natural := 0;
+         x0 : Real    := ps (0).x;
          x  : Real;
       begin
          for i in 1 .. n - 1
@@ -865,7 +864,7 @@ is
 
             if m < 3
             then     -- Polygon is degenerate.
-               pragma assert (False);
+               pragma assert (False, "m =" & m'Image);
 
                Self.setAsBox (1.0, 1.0);
                return;
@@ -898,13 +897,12 @@ is
                   Normalize (Self.m_Normals (i));
                end;
             end loop;
+
+            -- Compute the polygon centroid.
+            --
+            Self.m_Centroid := Self.computeCentroid (Self.m_Vertices, m);
          end;
-
       end;
-
-      -- Compute the polygon centroid.
-      --
-      Self.m_Centroid := Self.computeCentroid (Self.m_Vertices, m);
    end set;
 
 

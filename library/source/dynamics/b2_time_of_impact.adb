@@ -18,14 +18,14 @@ is
    --
 
    b2_toiTime,
-   b2_toiMaxTime : Real;
+   b2_toiMaxTime      : Real    := 0.0;
 
    b2_toiCalls,
    b2_toiIters,
-   b2_toiMaxIters : Natural;
+   b2_toiMaxIters     : Natural := 0;
 
    b2_toiRootIters,
-   b2_toiMaxRootIters : Natural;
+   b2_toiMaxRootIters : Natural := 0;
 
 
 
@@ -160,8 +160,8 @@ is
       xfA, xfB : b2Transform;
 
    begin
-      Self.m_proxyA := proxyA;
-      Self.m_proxyB := proxyB;
+      Self.m_proxyA := proxyA.all'unchecked_Access;
+      Self.m_proxyB := proxyB.all'unchecked_Access;
       count         := cache.count;
       pragma assert (0 < count and count < 3);
 
@@ -493,7 +493,7 @@ is
    --
 
    function Evaluate(Self : in b2SeparationFunction;   indexA,
-                                                       indexB : in Natural;
+                                                       indexB : in Integer;
                                                        t      : in Real) return Real
    is
       xfA, xfB : b2Transform;
@@ -931,7 +931,7 @@ is
                --
                declare
                   indexA,
-                  indexB : Natural;
+                  indexB : Integer;
                   s1     : Real;
                   s2     : Real   := fcn.findMinSeparation (indexA, indexB, t2);
                begin

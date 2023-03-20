@@ -137,7 +137,7 @@ is
    --  @warning You cannot create/destroy Box2D entities inside these callbacks.
    --
 
-   type b2ContactListener is interface;
+   type b2ContactListener is tagged null record;
 
 
    --    virtual ~b2ContactListener() {}

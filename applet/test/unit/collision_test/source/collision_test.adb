@@ -64,7 +64,7 @@ begin
       vertices (2) := (center.x - hx,  center.y + hy);
       vertices (3) := (center.x + hx,  center.y + hy);
 
-      polygon2.Set(vertices, 4);
+      polygon2.set (vertices, 4);
 
       pragma assert (abs (polygon2.m_centroid.x - center.x) < absTol + relTol * abs center.x);
       pragma assert (abs (polygon2.m_centroid.y - center.y) < absTol + relTol * abs center.y);

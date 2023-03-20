@@ -1,9 +1,12 @@
 with
-     b2_Common;
+     b2_Common,
+     Interfaces;
 
 
 package body b2_collide_Polygon
 is
+   use Interfaces;
+
 
    --  // Find the max separation between poly1 and poly2 using edge normals from poly1.
    --
@@ -191,14 +194,14 @@ is
                                                       else 0);
       begin
          c (0).v          := b2Mul (xf2,  vertices2 (i1));
-         c (0).id.cf.indexA := edge1;
-         c (0).id.cf.indexB := i1;
+         c (0).id.cf.indexA := Unsigned_8 (edge1);
+         c (0).id.cf.indexB := Unsigned_8 (i1);
          c (0).id.cf.typeA  := e_face;
          c (0).id.cf.typeB  := e_vertex;
 
          c (1).v            := b2Mul (xf2,  vertices2 (i2));
-         c (1).id.cf.indexA := edge1;
-         c (1).id.cf.indexB := i2;
+         c (1).id.cf.indexA := Unsigned_8 (edge1);
+         c (1).id.cf.indexB := Unsigned_8 (i2);
          c (1).id.cf.typeA  := e_face;
          c (1).id.cf.typeB  := e_vertex;
       end;
@@ -486,7 +489,7 @@ is
                      if separation <= totalRadius
                      then
                         declare
-                           cp : constant access b2ManifoldPoint := manifold.points (pointCount - 1)'Access;
+                           cp : constant access b2ManifoldPoint := manifold.points (pointCount)'Access;
                            cf :                 b2ContactFeature;
                         begin
                            cp.localPoint := b2MulT (xf2,  clipPoints2 (i).v);

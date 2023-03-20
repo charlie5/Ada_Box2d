@@ -566,6 +566,9 @@ is
 
 
    function  m_proxies       (Self : in out b2Fixture) return b2FixtureProxies;
+
+
+   function  m_proxyCount    (Self : in out b2Fixture)     return Natural;
    procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural);
 
 

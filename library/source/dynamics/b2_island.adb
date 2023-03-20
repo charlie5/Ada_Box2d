@@ -512,7 +512,7 @@ is
       use b2_Timer,
           b2_Settings;
 
-      timer : b2Timer;
+      timer :          b2Timer;
       h     : constant Real   := step.dt;
 
    begin
@@ -525,8 +525,8 @@ is
 
             c : constant b2Vec2 := b.m_sweep.c;
             a : constant Real   := b.m_sweep.a;
-            v : b2Vec2 := b.getLinearVelocity;
-            w : Real   := b.getAngularVelocity;
+            v :          b2Vec2 := b.getLinearVelocity;
+            w :          Real   := b.getAngularVelocity;
          begin
             -- Store positions for continuous collision.
             b.m_sweep.c0 := b.m_sweep.c;

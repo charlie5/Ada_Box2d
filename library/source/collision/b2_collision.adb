@@ -671,7 +671,7 @@ is
 
          -- VertexA is hitting edgeB.
          --
-         vOut (count).id.cf.indexA := vertexIndexA;
+         vOut (count).id.cf.indexA := Unsigned_8 (vertexIndexA);
          vOut (count).id.cf.indexB := vIn (0).id.cf.indexB;
 
          vOut (count).id.cf.typeA  := e_vertex;

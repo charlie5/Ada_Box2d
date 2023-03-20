@@ -17,16 +17,17 @@ is
        b2_Contact,
        ada.Text_IO;
 
-   begin_contact : Boolean := False;
 
+   begin_contact : Boolean := False;
 
    type myContactListener is new b2ContactListener with null record;
 
-   procedure beginContact (Self : in out myContactListener;   contact : access b2Contact)
+   overriding
+   procedure beginContact (Self : in out myContactListener;   contact : in out b2_Contact.b2Contact'Class)
    is
    begin
       begin_contact := True;
-   end BeginContact;
+   end beginContact;
 
 
 begin

@@ -2387,7 +2387,7 @@ is
                loop
                   declare
                      the_Body : constant access b2Body       := island.m_bodies (i);
-                     ce       : access b2ContactEdge;
+                     ce       : access          b2ContactEdge;
                   begin
                      the_body.m_Flags_is (the_body.m_flags and not b2_Body.e_islandFlag);
 

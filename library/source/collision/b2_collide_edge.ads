@@ -4,7 +4,8 @@ with
      b2_edge_Shape,
      b2_polygon_Shape,
      b2_Math,
-     b2_Settings;
+     b2_Settings,
+     Interfaces;
 
 
 package b2_collide_Edge
@@ -14,7 +15,8 @@ is
        b2_circle_Shape,
        b2_polygon_Shape,
        b2_Math,
-       b2_Settings;
+       b2_Settings,
+       Interfaces;
 
 
 
@@ -75,11 +77,13 @@ is
    --  };
    --
 
+   type tempPolygonVec2s is array (Unsigned_8 range 0 .. b2_maxPolygonVertices - 1) of b2Vec2;
+
    type b2TempPolygon is
       record
-         vertices : b2Vec2s (0 .. b2_maxPolygonVertices - 1);
-         normals  : b2Vec2s (0 .. b2_maxPolygonVertices - 1);
-         count    : Natural;
+         vertices : tempPolygonVec2s;
+         normals  : tempPolygonVec2s;
+         count    : Unsigned_8;
       end record;
 
 
