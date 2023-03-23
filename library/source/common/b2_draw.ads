@@ -135,7 +135,7 @@ is
    --
 
    procedure drawPolygon (Self : in out b2Draw;   vertices    : in b2Vec2s;
-                                                  vertexCount : in Natural;
+                                                  --  vertexCount : in Natural;
                                                   Color       : in b2Color) is abstract;
 
 
@@ -144,7 +144,7 @@ is
    --
 
    procedure drawSolidPolygon (Self : in out b2Draw;   vertices    : in b2Vec2s;
-                                                       vertexCount : in Natural;
+                                                       --  vertexCount : in Natural;
                                                        Color       : in b2Color) is abstract;
 
 
