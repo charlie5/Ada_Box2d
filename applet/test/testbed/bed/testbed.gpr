@@ -1,0 +1,21 @@
+with
+     "../../../../library/box2d_default",
+     "../../../../library/box2d",
+     "sdlada";
+
+
+project Testbed
+is
+   for Object_Dir   use "build";
+   for Source_Dirs  use ("source");
+   for Exec_Dir     use ".";
+   
+   -- Define the packages.
+   --
+
+   package Ide      renames Box2d_default.Ide;
+   package Builder  renames Box2d_default.Builder;
+   package Compiler renames Box2d_default.Compiler;
+   package Binder   renames Box2d_default.Binder;
+
+end Testbed;
