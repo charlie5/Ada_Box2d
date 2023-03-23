@@ -40,6 +40,18 @@ is
 
 
 
+   -- Flip 'y' coord to make the origin at the bottom left.
+   --
+
+   function "+" (y : in C.int) return C.int
+   is
+      Height : constant C.int := W.get_Size.Height;
+   begin
+      return Height - y - 1;
+   end "+";
+
+
+
    overriding
    procedure drawPolygon (Self : in out sdlDrawer;   vertices    : in b2Vec2s;
                                                      --  vertexCount : in Natural;
@@ -73,8 +85,6 @@ is
          Self.drawSegment (Start, Finish, Color);
       end loop;
    end drawPolygon;
-
-
 
    --  procedure drawPolygon (Renderer : in out SDL.Video.Renderers.Renderer;
    --                         Vertices : in     b2Vec2s)
@@ -284,14 +294,14 @@ is
       loop
          --  Each of the following renders an octant of the circle
          --
-         draw (Renderer.all, Point' (CenterX + x, CenterY - y));
-         draw (Renderer.all, Point' (CenterX + x, CenterY + y));
-         draw (Renderer.all, Point' (CenterX - x, CenterY - y));
-         draw (Renderer.all, Point' (CenterX - x, CenterY + y));
-         draw (Renderer.all, Point' (CenterX + y, CenterY - x));
-         draw (Renderer.all, Point' (CenterX + y, CenterY + x));
-         draw (Renderer.all, Point' (CenterX - y, CenterY - x));
-         draw (Renderer.all, Point' (CenterX - y, CenterY + x));
+         draw (Renderer.all, Point' (CenterX + x,  +CenterY - y));
+         draw (Renderer.all, Point' (CenterX + x,  +CenterY + y));
+         draw (Renderer.all, Point' (CenterX - x,  +CenterY - y));
+         draw (Renderer.all, Point' (CenterX - x,  +CenterY + y));
+         draw (Renderer.all, Point' (CenterX + y,  +CenterY - x));
+         draw (Renderer.all, Point' (CenterX + y,  +CenterY + x));
+         draw (Renderer.all, Point' (CenterX - y,  +CenterY - x));
+         draw (Renderer.all, Point' (CenterX - y,  +CenterY + x));
 
          if error <= 0
          then
@@ -451,8 +461,8 @@ is
    is
       use SDL.Video.Renderers;
 
-      Line : constant line_Segment := (Start  => (C.int (p1.x),  C.int (p1.y)),
-                                       Finish => (C.int (p2.x),  C.int (p2.y)));
+      Line : constant line_Segment := (Start  => (C.int (p1.x),  +C.int (p1.y)),
+                                       Finish => (C.int (p2.x),  +C.int (p2.y)));
    begin
       set_draw_Colour (the_Renderer, +Color);
       draw            (Renderer.all, Line);
@@ -504,8 +514,8 @@ is
       use SDL.Video.Renderers;
    begin
       set_draw_Colour (the_Renderer, +Color);
-      draw            (Renderer.all, Point' (C.int (p.x),
-                                             C.int (p.y)));
+      draw            (Renderer.all, Point' ( C.int (p.x),
+                                             +C.int (p.y)));
    end drawPoint;
 
 
