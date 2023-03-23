@@ -35,7 +35,7 @@ applet/test/unit/collision_test/collision_test
 applet/test/unit/hello_world/hello_world
 applet/test/unit/math_test/math_test
 applet/test/unit/world_test/world_test
-
+hello_sdl
 
 
 ## Misc

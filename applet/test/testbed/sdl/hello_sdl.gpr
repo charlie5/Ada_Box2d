@@ -1,0 +1,27 @@
+with
+     "../bed/testbed",
+     "../../../../library/box2d_default",
+     "../../../../library/box2d",
+     "sdlada";
+
+
+project hello_SDL
+is
+   for Object_Dir   use "build";
+   for Source_Dirs  use ("source");
+   for Exec_Dir     use ".";
+   for Main         use ("hello_sdl");
+   
+   -- Define the packages.
+   --
+
+   package Ide      renames Box2d_default.Ide;
+   package Builder  renames Box2d_default.Builder;
+   package Compiler renames Box2d_default.Compiler;
+   package Binder   renames Box2d_default.Binder;
+
+   package Linker is
+      for Default_Switches ("ada") use ("-g", "-lSDL2");
+   end Linker;
+
+end hello_SDL;
