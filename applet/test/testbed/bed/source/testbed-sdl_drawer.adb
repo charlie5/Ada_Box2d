@@ -386,6 +386,8 @@ is
                                                          Axis   : in b2Vec2;
                                                          Color  : in b2Color)
    is
+      radius_Delta : Real := Radius / 5.0;
+      R            : Real := Radius;
    begin
       Self.drawCircle (Center => Center,
                        Radius => 2.0,
@@ -395,9 +397,10 @@ is
       for i in int' (1) .. 5
       loop
          Self.drawCircle (Center => Center,
-                          Radius => Radius / Real (i),
+                          Radius => R, --Radius / Real (i),
                           Color  => Color);
 
+         R := R - radius_Delta;
          --  Self.drawCircle (renderer,
          --                   centreX,
          --                   centreY,
