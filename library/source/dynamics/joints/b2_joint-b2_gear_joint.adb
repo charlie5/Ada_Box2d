@@ -10,7 +10,7 @@ is
    procedure dummy is null;
 
 
-   --
+
 --  // Gear Joint:
 --  // C0 = (coordinate1 + ratio * coordinate2)_initial
 --  // C = (coordinate1 + ratio * coordinate2) - C0 = 0
@@ -30,6 +30,10 @@ is
 --  // J = [ug cross(r, ug)]
 --  // K = J * invM * JT = invMass + invI * cross(r, ug)^2
 --
+
+
+
+
 --  b2GearJoint::b2GearJoint(const b2GearJointDef* def)
 --  : b2Joint(def)
 --  {
@@ -123,6 +127,10 @@ is
 --    m_impulse = 0.0f;
 --  }
 --
+
+
+
+
 --  void b2GearJoint::InitVelocityConstraints(const b2SolverData& data)
 --  {
 --    m_indexA = m_bodyA->m_islandIndex;
@@ -227,6 +235,10 @@ is
 --    data.velocities[m_indexD].w = wD;
 --  }
 --
+
+
+
+
 --  void b2GearJoint::SolveVelocityConstraints(const b2SolverData& data)
 --  {
 --    b2Vec2 vA = data.velocities[m_indexA].v;
@@ -263,6 +275,10 @@ is
 --    data.velocities[m_indexD].w = wD;
 --  }
 --
+
+
+
+
 --  bool b2GearJoint::SolvePositionConstraints(const b2SolverData& data)
 --  {
 --    b2Vec2 cA = data.positions[m_indexA].c;
@@ -362,39 +378,67 @@ is
 --    return linearError < b2_linearSlop;
 --  }
 --
+
+
+
+
 --  b2Vec2 b2GearJoint::GetAnchorA() const
 --  {
 --    return m_bodyA->GetWorldPoint(m_localAnchorA);
 --  }
 --
+
+
+
+
 --  b2Vec2 b2GearJoint::GetAnchorB() const
 --  {
 --    return m_bodyB->GetWorldPoint(m_localAnchorB);
 --  }
 --
+
+
+
+
 --  b2Vec2 b2GearJoint::GetReactionForce(float inv_dt) const
 --  {
 --    b2Vec2 P = m_impulse * m_JvAC;
 --    return inv_dt * P;
 --  }
 --
+
+
+
+
 --  float b2GearJoint::GetReactionTorque(float inv_dt) const
 --  {
 --    float L = m_impulse * m_JwA;
 --    return inv_dt * L;
 --  }
 --
+
+
+
+
 --  void b2GearJoint::SetRatio(float ratio)
 --  {
 --    b2Assert(b2IsValid(ratio));
 --    m_ratio = ratio;
 --  }
 --
+
+
+
+
 --  float b2GearJoint::GetRatio() const
 --  {
 --    return m_ratio;
 --  }
 --
+
+
+
+
 --  void b2GearJoint::Dump()
 --  {
 --    int32 indexA = m_bodyA->m_islandIndex;
@@ -412,4 +456,6 @@ is
 --    b2Dump("  jd.ratio = %.9g;\n", m_ratio);
 --    b2Dump("  joints[%d] = m_world->CreateJoint(&jd);\n", m_index);
 --  }
+
+
 end b2_Joint.b2_gear_Joint;

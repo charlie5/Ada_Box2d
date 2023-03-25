@@ -3,7 +3,7 @@ is
    procedure dummy;
 
 
-   --
+
 --  Gear joint definition. This definition requires two existing
 --  revolute or prismatic joints (any combination will work).
 --  @warning bodyB on the input joints must both be dynamic
@@ -28,6 +28,11 @@ is
 --    float ratio;
 --  };
 --
+
+
+
+
+
 --  A gear joint is used to connect two joints together. Either joint
 --  can be a revolute or prismatic joint. You specify a gear ratio
 --  to bind the motions together:
@@ -37,37 +42,58 @@ is
 --  of length or units of 1/length.
 --  @warning You have to manually destroy the gear joint if joint1 or joint2
 --  is destroyed.
+--
 --  class b2GearJoint : public b2Joint
 --  {
 --  public:
 --    b2Vec2 GetAnchorA() const override;
 --    b2Vec2 GetAnchorB() const override;
 --
+
+
 --    b2Vec2 GetReactionForce(float inv_dt) const override;
 --    float GetReactionTorque(float inv_dt) const override;
 --
+
+
 --    Get the first joint.
 --    b2Joint* GetJoint1() { return m_joint1; }
 --
+
+
 --    Get the second joint.
 --    b2Joint* GetJoint2() { return m_joint2; }
 --
+
+
 --    Set/Get the gear ratio.
 --    void SetRatio(float ratio);
 --    float GetRatio() const;
 --
+
+
 --    Dump joint to dmLog
 --    void Dump() override;
 --
+
+
 --  protected:
 --
 --    friend class b2Joint;
 --    b2GearJoint(const b2GearJointDef* data);
 --
---    void InitVelocityConstraints(const b2SolverData& data) override;
---    void SolveVelocityConstraints(const b2SolverData& data) override;
---    bool SolvePositionConstraints(const b2SolverData& data) override;
---
+
+
+   --    void InitVelocityConstraints(const b2SolverData& data) override;
+
+
+   --    void SolveVelocityConstraints(const b2SolverData& data) override;
+
+
+   --    bool SolvePositionConstraints(const b2SolverData& data) override;
+
+
+
 --    b2Joint* m_joint1;
 --    b2Joint* m_joint2;
 --
