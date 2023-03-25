@@ -31,7 +31,8 @@ is
                           "-fno-strict-aliasing")
                         & Style_Options;
 
-   Fast_Options := ("-O3", 
+   Fast_Options := ("-g",
+                    "-O3", 
                     "-gnatn2",
                     "-gnatp",
                     "-funroll-loops",
