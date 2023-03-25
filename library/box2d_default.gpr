@@ -1,8 +1,8 @@
 abstract 
 project Box2d_default
 is
-
-   -- Scenario Variables
+   ----------------------
+   -- Scenario variables.
    --
 
    type Os_Type         is ("Windows_NT", "Linux",  "MacOSX");
@@ -31,8 +31,8 @@ is
                           "-fno-strict-aliasing")
                         & Style_Options;
 
-   Fast_Options := ("-O2", 
-                    "-gnatn",
+   Fast_Options := ("-O3", 
+                    "-gnatn2",
                     "-gnatp",
                     "-funroll-loops",
                     "-fpeel-loops",
