@@ -1,12 +1,12 @@
 with
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      box2d.b2_Types,
      ada.Numerics;
 
 
 package box2d.b2_Common
 is
-   use b2_Settings;
+   --  use b2_Settings;
 
 
    b2DEBUG : Boolean := True;
@@ -50,7 +50,7 @@ is
    --  to move by a small amount without triggering a tree adjustment.
    --  This is in meters.
    --
-   b2_aabbExtension  : constant := 0.1 * b2_lengthUnitsPerMeter;
+   b2_aabbExtension  : constant Real;
 
 
    --  This is used to fatten AABBs in the dynamic tree. This is used to predict
@@ -63,20 +63,20 @@ is
    --  A small length used as a collision and constraint tolerance. Usually it is
    --  chosen to be numerically significant, but visually insignificant. In meters.
    --
-   b2_linearSlop     : constant := 0.005 * b2_lengthUnitsPerMeter;
+   b2_linearSlop     : constant Real;
 
 
    --  A small angle used as a collision and constraint tolerance. Usually it is
    --  chosen to be numerically significant, but visually insignificant.
    --
-   b2_angularSlop    : constant := 2.0 / 180.0 * b2_Pi;
+   b2_angularSlop    : constant Real;
 
 
    --  The radius of the polygon/edge shape skin. This should not be modified. Making
    --  this smaller means polygons will have an insufficient buffer for continuous collision.
    --  Making it larger may create artifacts for vertex collision.
    --
-   b2_polygonRadius  : constant := 2.0 * b2_linearSlop;
+   b2_polygonRadius  : constant Real;
 
 
    --  Maximum number of sub-steps per contact in continuous physics simulation.
@@ -96,7 +96,7 @@ is
    --  The maximum linear position correction used when solving constraints. This helps to
    --  prevent overshoot. Meters.
    --
-   b2_maxLinearCorrection   : constant := 0.2 * b2_lengthUnitsPerMeter;
+   b2_maxLinearCorrection   : constant Real;
 
 
    --  The maximum angular position correction used when solving constraints. This helps to
@@ -108,8 +108,8 @@ is
    --  The maximum linear translation of a body per step. This limit is very large and is used
    --  to prevent numerical problems. You shouldn't need to adjust this. Meters.
    --
-   b2_maxTranslation        : constant := 2.0 * b2_lengthUnitsPerMeter;
-   b2_maxTranslationSquared : constant := b2_maxTranslation * b2_maxTranslation;
+   b2_maxTranslation        : constant Real;
+   b2_maxTranslationSquared : constant Real;
 
 
    --  The maximum angular velocity of a body. This limit is very large and is used
@@ -138,7 +138,7 @@ is
 
    --  A body cannot sleep if its linear velocity is above this tolerance.
    --
-   b2_linearSleepTolerance : constant := 0.01 * b2_lengthUnitsPerMeter;
+   b2_linearSleepTolerance : constant Real;
 
 
    --  A body cannot sleep if its angular velocity is above this tolerance.
@@ -224,6 +224,19 @@ is
    b2_Version : constant b2Version := (Major    => 2,
                                        Minor    => 4,
                                        Revision => 0);
+
+
+
+private
+
+   b2_aabbExtension         : constant Real := 0.1   * b2_lengthUnitsPerMeter;
+   b2_linearSlop            : constant Real := 0.005 * b2_lengthUnitsPerMeter;
+   b2_angularSlop           : constant Real := 2.0   / 180.0 * b2_Pi;
+   b2_polygonRadius         : constant Real := 2.0   * b2_linearSlop;
+   b2_maxLinearCorrection   : constant Real := 0.2   * b2_lengthUnitsPerMeter;
+   b2_linearSleepTolerance  : constant Real := 0.01  * b2_lengthUnitsPerMeter;
+   b2_maxTranslation        : constant Real := 2.0   * b2_lengthUnitsPerMeter;
+   b2_maxTranslationSquared : constant Real := b2_maxTranslation * b2_maxTranslation;
 
 
 end box2d.b2_Common;

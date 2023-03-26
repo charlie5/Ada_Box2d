@@ -1,5 +1,5 @@
 with
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      box2d.b2_Common,
      box2d.b2_Math,
      box2d.b2_Collision,
@@ -14,7 +14,7 @@ with
 package box2d.b2_world_Callbacks
 is
    use b2_Math,
-       b2_Settings,
+       --  b2_Settings,
        b2_Fixture,
        b2_Joint;
 

@@ -3,7 +3,7 @@ with
      box2d.b2_Fixture,
      box2d.b2_Math,
      box2d.b2_Shape,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      Interfaces;
 
@@ -19,8 +19,8 @@ is
    use b2_Joint,
        b2_Shape,
        b2_Fixture,
-       b2_Math,
-       b2_Settings;
+       b2_Math;
+       --  b2_Settings;
 
 
    --  class b2Fixture;

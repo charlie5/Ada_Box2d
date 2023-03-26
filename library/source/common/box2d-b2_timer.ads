@@ -1,5 +1,5 @@
 with
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      ada.Calendar,
      Interfaces;
 
@@ -10,7 +10,7 @@ package box2d.b2_Timer
 --  not work on every platform.
 --
 is
-   use b2_Settings,
+   use -- b2_Settings,
        Interfaces;
 
 

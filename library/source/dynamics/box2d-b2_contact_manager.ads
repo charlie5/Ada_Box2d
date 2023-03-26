@@ -2,7 +2,7 @@ with
      box2d.b2_broad_Phase,
      box2d.b2_Contact,
      box2d.b2_world_Callbacks,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      System;
 
@@ -11,8 +11,8 @@ package box2d.b2_contact_Manager
 is
    use b2_broad_Phase,
        b2_Contact,
-       b2_world_Callbacks,
-       b2_Settings;
+       b2_world_Callbacks;
+       --  b2_Settings;
 
 
    --  class b2Contact;

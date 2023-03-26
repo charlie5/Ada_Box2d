@@ -1,7 +1,7 @@
 with
      box2d.b2_Collision,
      box2d.b2_Math,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      System;
 
@@ -9,8 +9,8 @@ with
 package box2d.b2_dynamic_Tree
 is
    use b2_Collision,
-       b2_Math,
-       b2_Settings;
+       b2_Math;
+       --  b2_Settings;
 
 
 

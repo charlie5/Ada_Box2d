@@ -1,14 +1,14 @@
 with
      box2d.b2_Math,
-     box2d.b2_Distance,
-     box2d.b2_Settings;
+     box2d.b2_Distance;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_Time_of_impact
 is
    use b2_Distance,
-       b2_Math,
-       b2_Settings;
+       b2_Math;
+       --  b2_Settings;
 
 
    --  Input parameters for b2TimeOfImpact

@@ -4,8 +4,8 @@ with
      box2d.b2_Collision,
      box2d.b2_Math,
      box2d.b2_Pointers,
-     box2d.b2_Types,
-     box2d.b2_Settings;
+     box2d.b2_Types;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_chain_Shape
@@ -23,8 +23,8 @@ is
        b2_Collision,
        b2_Math,
        b2_Pointers,
-       b2_Types,
-       b2_Settings;
+       b2_Types;
+       --  b2_Settings;
 
 
 

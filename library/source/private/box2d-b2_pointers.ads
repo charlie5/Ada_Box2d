@@ -1,13 +1,13 @@
 with
      box2d.b2_Math,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      interfaces.C.Pointers;
 
 
 package box2d.b2_Pointers
 is
-   use b2_Math,
-       b2_Settings;
+   use b2_Math;
+       --  b2_Settings;
 
 
    type b2Vec2_array is array (Natural range <>) of aliased b2_Math.b2Vec2;

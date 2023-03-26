@@ -4,7 +4,7 @@ with
      box2d.b2_Timer,
      box2d.b2_World,
      box2d.b2_Common,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      ada.unchecked_Deallocation,
      Interfaces;
@@ -510,8 +510,8 @@ is
                                               gravity    : in     b2Vec2;
                                               allowSleep : in     Boolean)
    is
-      use b2_Timer,
-          b2_Settings;
+      use b2_Timer;
+          --  b2_Settings;
 
       timer :          b2Timer;
       h     : constant Real   := step.dt;
@@ -1023,7 +1023,7 @@ is
       -- because they can be quite large.
       --
       declare
-         use b2_Settings;
+         --  use b2_Settings;
 
          h : constant Real := subStep.dt;
       begin

@@ -1,16 +1,16 @@
 with
      box2d.b2_Collision,
      box2d.b2_polygon_Shape,
-     box2d.b2_Math,
-     box2d.b2_Settings;
+     box2d.b2_Math;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_collide_Polygon
 is
    use b2_Collision,
        b2_polygon_Shape,
-       b2_Math,
-       b2_Settings;
+       b2_Math;
+       --  b2_Settings;
 
 
    --  Find the max separation between poly1 and poly2 using edge normals from poly1.

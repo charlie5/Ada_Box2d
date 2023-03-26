@@ -1,7 +1,7 @@
 with
      box2d.b2_time_Step,
-     box2d.b2_Math,
-     box2d.b2_Settings;
+     box2d.b2_Math;
+     --  box2d.b2_Settings;
 
 limited
 with
@@ -11,8 +11,8 @@ with
 package box2d.b2_Joint
 is
    use b2_time_Step,
-       b2_Math,
-       b2_Settings;
+       b2_Math;
+       --  b2_Settings;
 
 
 

@@ -1,12 +1,12 @@
 with
-     box2d.b2_Math,
-     box2d.b2_Settings;
+     box2d.b2_Math;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_time_Step
 is
-   use b2_Math,
-       b2_Settings;
+   use b2_Math;
+       --  b2_Settings;
 
 
 

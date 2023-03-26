@@ -1,7 +1,7 @@
 with
      box2d.b2_Body,
-     box2d.b2_Math,
-     box2d.b2_Settings;
+     box2d.b2_Math;
+     --  box2d.b2_Settings;
 
 
 private

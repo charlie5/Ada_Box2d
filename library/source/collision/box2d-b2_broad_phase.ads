@@ -3,7 +3,7 @@ with
      box2d.b2_dynamic_Tree,
      box2d.b2_Math,
      box2d.b2_Types,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      System;
 
@@ -13,8 +13,8 @@ is
    use b2_Collision,
        b2_dynamic_Tree,
        b2_Math,
-       b2_Types,
-       b2_Settings;
+       b2_Types;
+       --  b2_Settings;
 
 
 

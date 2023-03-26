@@ -3,7 +3,7 @@ with
      box2d.b2_Contact,
      box2d.b2_Math,
      box2d.b2_time_Step,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      box2d.b2_Common;
 
 
@@ -13,7 +13,7 @@ is
        b2_Collision,
        b2_Contact,
        b2_Math,
-       b2_Settings,
+       --  b2_Settings,
        b2_Common;
 
 

@@ -2,8 +2,8 @@ with
      box2d.b2_Shape,
      box2d.b2_Math,
      box2d.b2_Types,
-     box2d.b2_Pointers,
-     box2d.b2_Settings;
+     box2d.b2_Pointers;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_Distance
@@ -11,8 +11,8 @@ is
    use b2_Shape,
        b2_Math,
        b2_Types,
-       b2_Pointers,
-       b2_Settings;
+       b2_Pointers;
+       --  b2_Settings;
 
 
 

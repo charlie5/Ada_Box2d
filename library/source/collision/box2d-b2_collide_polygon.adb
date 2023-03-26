@@ -376,9 +376,9 @@ is
          poly2    : access constant b2PolygonShape;     -- Incident polygon.
 
          xf1, xf2 : b2Transform;
-         edge1    : Natural;            -- Reference edge.
+         edge1    : Natural;                            -- Reference edge.
          flip     : Boolean;
-         k_tol    : constant := 0.1 * b2_linearSlop;
+         k_tol    : constant Real := 0.1 * b2_linearSlop;
 
          incidentEdge : b2ClipVertex_Pair;
       begin

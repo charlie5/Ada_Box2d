@@ -2,7 +2,7 @@ with
      box2d.b2_Math,
      box2d.b2_Types,
      box2d.b2_Common,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
 
      interfaces.C;
 
@@ -16,7 +16,7 @@ is
    use b2_Math,
        b2_Types,
        b2_Common,
-       b2_Settings,
+       --  b2_Settings,
        Interfaces;
 
 

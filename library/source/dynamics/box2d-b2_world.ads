@@ -5,7 +5,7 @@ with
      box2d.b2_Collision,
      box2d.b2_Math,
      box2d.b2_time_Step,
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      box2d.b2_world_Callbacks,
      box2d.b2_Body,
      box2d.b2_Draw,
@@ -21,7 +21,7 @@ is
        b2_Joint,
        b2_Collision,
        b2_Math,
-       b2_Settings,
+       --  b2_Settings,
        b2_Draw,
        b2_time_Step,
        b2_world_Callbacks;

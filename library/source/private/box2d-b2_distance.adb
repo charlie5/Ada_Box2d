@@ -1711,8 +1711,8 @@ is
          sigma  : constant Real := Real'max (b2_polygonRadius,               -- Sigma is the target distance between polygons.
                                              radius - b2_polygonRadius);
 
-         tolerance  : constant := 0.5 * b2_linearSlop;
-         k_maxIters : constant := 20;
+         tolerance  : constant Real := 0.5 * b2_linearSlop;
+         k_maxIters : constant      := 20;
 
       begin
          --    Main iteration loop.

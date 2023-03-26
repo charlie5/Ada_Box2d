@@ -1,11 +1,11 @@
 with
-     box2d.b2_Settings,
+     --  box2d.b2_Settings,
      box2d.b2_Common;
 
 
 package body box2d.b2_collide_Circle
 is
-   use b2_Settings,
+   use -- b2_Settings,
        b2_Common;
 
 

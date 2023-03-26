@@ -35,8 +35,14 @@ is
    subtype b2JointUserData is box2d_Settings.b2JointUserData;
 
 
+   -- The maximum number of vertices on a convex polygon. You cannot increase
+   -- this too much because b2BlockAllocator has a maximum object size.
+   --
+   b2_maxPolygonVertices      : constant := box2d_Settings.b2_maxPolygonVertices;
 
-private
+
+   default_max_chain_Vertices : constant := box2d_Settings.default_max_chain_Vertices;
+
 
    -- You can use this to change the length scale used by your game.
    -- For example for inches you could use '39.4'.
@@ -44,16 +50,8 @@ private
    b2_lengthUnitsPerMeter     : constant := box2d_Settings.b2_lengthUnitsPerMeter;
 
 
-   -- The maximum number of vertices on a convex polygon. You cannot increase
-   -- this too much because b2BlockAllocator has a maximum object size.
-   --
-   b2_maxPolygonVertices      : constant := box2d_Settings.b2_maxPolygonVertices;
 
-
-
-   default_max_chain_Vertices : constant := box2d_Settings.default_max_chain_Vertices;
-
-
+private
 
    DEBUG : Boolean renames box2d_Settings.DEBUG;
 

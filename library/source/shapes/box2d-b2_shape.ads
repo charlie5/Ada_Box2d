@@ -1,8 +1,8 @@
 with
      box2d.b2_Math,
      box2d.b2_Collision,
-     box2d.b2_Types,
-     box2d.b2_Settings;
+     box2d.b2_Types;
+     --  box2d.b2_Settings;
 
 
 package box2d.b2_Shape
@@ -12,8 +12,8 @@ is
 
    use b2_Math,
        b2_Collision,
-       b2_Types,
-       b2_Settings;
+       b2_Types;
+       --  b2_Settings;
 
 
 
