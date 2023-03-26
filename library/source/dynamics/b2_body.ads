@@ -719,7 +719,8 @@ is
    --    b2BodyType GetType() const;
    --
 
-   function getType (Self : in b2Body) return b2BodyType;
+   function getType (Self : in b2Body) return b2BodyType
+     with inline;
 
 
 
@@ -739,7 +740,8 @@ is
    --    bool IsBullet() const;
    --
 
-   function IsBullet (Self : in b2Body) return Boolean;
+   function IsBullet (Self : in b2Body) return Boolean
+     with inline;
 
 
 
@@ -785,7 +787,8 @@ is
    --    bool IsAwake() const;
    --
 
-   function IsAwake (Self : in b2Body) return Boolean;
+   function IsAwake (Self : in b2Body) return Boolean
+     with inline;
 
 
 
