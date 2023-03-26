@@ -2,14 +2,42 @@ with
      "box2d_default";
 
 
-library
+--library
 project Box2d
 is
+   type Settings_Mode_Type is ("default", "custom");
+   settings_Mode : Settings_Mode_Type := external ("Settings_Mode", "default");
+
+
    for Library_Name use "Box2d";
    for Library_Dir  use "lib";
    for Object_Dir   use "build";
-   for Source_Dirs  use ("source",
-                         "source/**");
+
+   for Source_Dirs  use ("source/collision",
+                         "source/common",
+                         "source/dynamics",
+                         "source/dynamics/contacts",
+                         "source/dynamics/joints",
+                         "source/private",
+                         "source/rope",
+                         "source/shapes");
+
+   case settings_Mode
+   is
+      when "default" =>
+         for Source_Dirs use Box2d'Source_Dirs & "source/private/settings/default";
+      when "custom" =>
+         for Source_Dirs use Box2d'Source_Dirs & "source/private/settings/custom";
+   end case;
+
+
+   --  for Source (Box2D_Settings) use
+
+   --  for Spec ("Box2D_Settings") use "source/private/box2d_default_settings.spec";
+   --  for Body ("Box2D_Settings") use "source/private/box2d_default_settings.body";
+   --
+   --  for Spec ("MyPack.MyChild") use "mypack.mychild.spec";
+
 
    -- Define the packages.
    --
