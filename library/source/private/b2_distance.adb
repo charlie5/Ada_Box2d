@@ -192,18 +192,18 @@ is
       use b2_Pointers.b2Vec2_Pointers,
           interfaces.C;
 
-      my_Vertices_ptr : constant b2Vec2_ptr   := Self.m_Vertices.all'Access;
-      my_Vertices     : constant b2Vec2_array := Value (my_Vertices_ptr,
-                                                        ptrdiff_t (Self.m_Count));
-      bestIndex : Natural      := 0;
-      bestValue : Real := b2Dot (my_Vertices (0),
-                                         d);
+      Vertex    : b2Vec2_ptr;
+      bestIndex : ptrdiff_t := 0;
+      bestValue : Real      := b2Dot (Self.m_Vertices.all,
+                                      d);
    begin
-      for i in 1 .. Self.m_Count - 1
+      for i in 1 .. ptrdiff_t (Self.m_Count) - 1
       loop
+         Vertex := (Self.m_Vertices + i);
+
          declare
-            Value : constant Real := b2Dot (my_Vertices (i),
-                                                    d);
+            Value : constant Real := b2Dot (Vertex.all,
+                                            d);
          begin
             if Value > bestValue
             then
@@ -213,7 +213,7 @@ is
          end;
       end loop;
 
-      return bestIndex;
+      return Natural (bestIndex);
    end getSupport;
 
 
@@ -241,18 +241,17 @@ is
       use b2_Pointers.b2Vec2_Pointers,
           interfaces.C;
 
-      my_Vertices_ptr : constant b2Vec2_ptr   := Self.m_Vertices.all'Access;
-      my_Vertices     : constant b2Vec2_array := Value (my_Vertices_ptr,
-                                                        ptrdiff_t (Self.m_Count));
+      Vertex    : b2Vec2_ptr;
       Value     : Real;
-      bestIndex : Natural      := 0;
-      bestValue : Real := b2Dot (my_Vertices (0),
-                                         d);
+      bestIndex : ptrdiff_t := 0;
+      bestValue : Real      := b2Dot (Self.m_Vertices.all,
+                                      d);
    begin
-      for i in 1 .. Self.m_Count - 1
+      for i in 1 .. ptrdiff_t (Self.m_Count) - 1
       loop
-         Value := b2Dot (my_Vertices (i),
-                         d);
+         Vertex := (Self.m_Vertices + i);
+         Value  := b2Dot (Vertex.all,
+                          d);
 
         if Value > bestValue
          then
@@ -261,7 +260,9 @@ is
          end if;
       end loop;
 
-     return my_Vertices (bestIndex);
+      Vertex := Self.m_Vertices + bestIndex;
+
+      return Vertex.all;
    end getSupportVertex;
 
 
