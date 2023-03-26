@@ -6,7 +6,7 @@ with
 project Box2d
 is
    type Settings_Mode_Type is ("default", "custom");
-   settings_Mode : Settings_Mode_Type := external ("Settings_Mode", "default");
+   settings_Mode : Settings_Mode_Type := external ("Box2d_Settings_Mode", "default");
 
 
    for Library_Name use "Box2d";
