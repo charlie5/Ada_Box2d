@@ -2240,6 +2240,7 @@ is
 
                minContact.m_Flags_is (minContact.m_flags or b2_Contact.e_islandFlag);
 
+
                -- Get contacts on bodyA and bodyB.
                --
                declare
@@ -2367,6 +2368,7 @@ is
                   end loop;
                end;
 
+
                declare
                   subStep : b2TimeStep;
                begin
@@ -2381,10 +2383,13 @@ is
                                             bB.m_islandIndex);
                end;
 
+
                -- Reset island flags and synchronize broad-phase proxies.
                --
                for i in 0 .. island.m_bodyCount - 1
                loop
+                  --  put_Line (island.m_bodyCount'Image);
+
                   declare
                      the_Body : constant access b2Body       := island.m_bodies (i);
                      ce       : access          b2ContactEdge;
@@ -2411,6 +2416,7 @@ is
 
                   <<Continue_4>>
                end loop;
+
 
                -- Commit fixture proxy movements to the broad-phase so that new contacts are created.
                -- Also, some contacts can be destroyed.
