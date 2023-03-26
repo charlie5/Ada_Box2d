@@ -159,26 +159,6 @@ is
 
 
 
-   ----------------------------
-   -- Default logging function.
-   --
-
-   --  You can modify this to use your logging facility.
-
-   -- void b2Log_Default (const char*   string,
-   --                     va_list       args);
-
-   procedure b2Log_Default (Message : in String);
-
-
-   -- Implement this to use your own logging.
-   --
-   -- inline void b2Log (const char*   string, ...)
-
-   procedure b2Log (Message : in String)
-     with Inline;
-
-
    --
    --
    -- #endif // B2_USER_SETTINGS

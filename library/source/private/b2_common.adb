@@ -76,4 +76,38 @@ is
 
 
 
+
+   ----------------------------
+   -- Default logging function.
+   --
+
+   --  void b2Log_Default (const char* string, va_list args)
+   --  {
+   --    vprintf (string, args);
+   --  }
+
+   procedure b2Log_Default (Message : in String)
+   is
+   begin
+      put_Line (Message);
+   end b2Log_Default;
+
+
+
+   -- inline void b2Log (const char*   string, ...)
+   -- {
+   --   va_list   args;
+   --
+   --   va_start (args, string);
+   --   b2Log_Default (string, args);
+   --   va_end (args);
+   -- }
+
+   procedure b2Log (Message : in String)
+   is
+   begin
+      b2Log_Default (Message);
+   end b2Log;
+
+
 end b2_Common;
