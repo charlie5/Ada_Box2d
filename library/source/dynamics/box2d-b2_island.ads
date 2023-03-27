@@ -165,7 +165,7 @@ is
    --    }
    --
 
-   procedure add (Self : in out b2Island;   Contact : access b2Contact)
+   procedure add (Self : in out b2Island;   Contact : access b2Contact'Class)
      with inline;
 
 
