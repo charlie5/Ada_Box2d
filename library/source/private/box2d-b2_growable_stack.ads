@@ -77,13 +77,23 @@ is
 
       function  to_Stack return Stack;
 
-      procedure push (Self : in out Stack; E : in Element_T);
-      function  pop  (Self : in out Stack) return Element_T;
+      procedure push (Self : in out Stack; E : in Element_T)
+        with inline;
 
-      function  getCount    (Self : in     Stack)    return Natural;
+      function  pop  (Self : in out Stack) return Element_T
+        with inline;
 
-      function  getCapacity (Self : in     Stack)    return Natural;
-      procedure setCapacity (Self : in out Stack;   To : in Natural);
+
+      function  getCount    (Self : in     Stack)    return Natural
+        with inline;
+
+
+      function  getCapacity (Self : in     Stack)    return Natural
+        with inline;
+
+      procedure setCapacity (Self : in out Stack;   To : in Natural)
+        with inline;
+
 
 
    private

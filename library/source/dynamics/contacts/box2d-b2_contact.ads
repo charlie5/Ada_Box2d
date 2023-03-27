@@ -504,27 +504,55 @@ is
    --- Protected C++ members/functions.
    --
 
-   function  m_Prev    (Self : in     b2Contact)  return access b2Contact'Class;
-   procedure m_Prev_is (Self : in out b2Contact;   Now : in     b2Contact_ptr);
+   function  m_Prev    (Self : in     b2Contact)  return access b2Contact'Class
+     with inline;
 
-   function  m_Next    (Self : in     b2Contact)  return access b2Contact'Class;
-   procedure m_Next_is (Self : in out b2Contact;   Now : in     b2Contact_ptr);
-
-   function  m_NodeA    (Self : access b2Contact) return access b2ContactEdge;
-   procedure m_NodeA_is (Self : in out b2Contact;  Now : in     b2ContactEdge);
-
-   function  m_NodeB    (Self : access b2Contact) return access b2ContactEdge;
-   procedure m_NodeB_is (Self : in out b2Contact;  Now : in     b2ContactEdge);
-
-   function  m_Flags    (Self : in     b2Contact)    return flag_Set;
-   procedure m_Flags_is (Self : in out b2Contact;  Now : in flag_Set);
-
-   function  m_toi         (Self : in     b2Contact)    return Real;
-   procedure m_toi_is      (Self : in out b2Contact;  Now : in Real);
+   procedure m_Prev_is (Self : in out b2Contact;   Now : in     b2Contact_ptr)
+     with inline;
 
 
-   function  m_toiCount    (Self : in     b2Contact)    return Natural;
-   procedure m_toiCount_is (Self : in out b2Contact;  Now : in Natural);
+   function  m_Next    (Self : in     b2Contact)  return access b2Contact'Class
+     with inline;
+
+   procedure m_Next_is (Self : in out b2Contact;   Now : in     b2Contact_ptr)
+     with inline;
+
+
+   function  m_NodeA    (Self : access b2Contact) return access b2ContactEdge
+     with inline;
+
+   procedure m_NodeA_is (Self : in out b2Contact;  Now : in     b2ContactEdge)
+     with inline;
+
+
+   function  m_NodeB    (Self : access b2Contact) return access b2ContactEdge
+     with inline;
+
+   procedure m_NodeB_is (Self : in out b2Contact;  Now : in     b2ContactEdge)
+     with inline;
+
+
+   function  m_Flags    (Self : in     b2Contact)    return flag_Set
+     with inline;
+
+   procedure m_Flags_is (Self : in out b2Contact;  Now : in flag_Set)
+     with inline;
+
+
+   function  m_toi         (Self : in     b2Contact)    return Real
+     with inline;
+
+   procedure m_toi_is      (Self : in out b2Contact;  Now : in Real)
+     with inline;
+
+
+
+   function  m_toiCount    (Self : in     b2Contact)    return Natural
+     with inline;
+
+   procedure m_toiCount_is (Self : in out b2Contact;  Now : in Natural)
+     with inline;
+
 
 
 

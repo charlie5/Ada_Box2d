@@ -530,16 +530,30 @@ is
 
 
 
-   function  m_Next    (Self : access b2Fixture)  return access b2Fixture;
-   procedure m_Next_is (Self : in out b2Fixture;   Now :        b2Fixture_ptr);
+   function  m_Next    (Self : access b2Fixture)  return access b2Fixture
+     with inline;
 
-   function  m_Body    (Self : access b2Fixture)         return b2_Body.b2Body_ptr;
-   procedure m_Body_is (Self : in out b2Fixture;   Now : access b2_Body.b2Body);
+   procedure m_Next_is (Self : in out b2Fixture;   Now :        b2Fixture_ptr)
+     with inline;
 
-   function  m_Density    (Self : in     b2Fixture)        return Real;
-   procedure m_Density_is (Self : in out b2FixtureDef;   Now : in Real);
 
-   procedure m_Shape_is (Self : in out b2FixtureDef;   Now : access b2Shape'Class);
+   function  m_Body    (Self : access b2Fixture)         return b2_Body.b2Body_ptr
+     with inline;
+
+   procedure m_Body_is (Self : in out b2Fixture;   Now : access b2_Body.b2Body)
+     with inline;
+
+
+   function  m_Density    (Self : in     b2Fixture)        return Real
+     with inline;
+
+   procedure m_Density_is (Self : in out b2FixtureDef;   Now : in Real)
+     with inline;
+
+
+   procedure m_Shape_is (Self : in out b2FixtureDef;   Now : access b2Shape'Class)
+     with inline;
+
 
 
    --  This proxy is used internally to connect fixtures to the broad-phase.
@@ -566,11 +580,17 @@ is
    type b2FixtureProxies_ptr is access all b2FixtureProxies;
 
 
-   function  m_proxies       (Self : in out b2Fixture) return b2FixtureProxies;
+   function  m_proxies       (Self : in out b2Fixture) return b2FixtureProxies
+     with inline;
 
 
-   function  m_proxyCount    (Self : in out b2Fixture)     return Natural;
-   procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural);
+
+   function  m_proxyCount    (Self : in out b2Fixture)     return Natural
+     with inline;
+
+   procedure m_proxyCount_is (Self : in out b2Fixture;   Now : in Natural)
+     with inline;
+
 
 
    --

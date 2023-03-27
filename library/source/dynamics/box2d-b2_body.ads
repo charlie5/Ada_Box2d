@@ -967,32 +967,63 @@ is
    -------------------------------
 
 
-   function  m_contactList    (Self : in     b2Body)  return access b2_Contact.b2ContactEdge;
-   procedure m_contactList_is (Self : in out b2Body;   Now : access b2_Contact.b2ContactEdge);
+   function  m_contactList    (Self : in     b2Body)  return access b2_Contact.b2ContactEdge
+     with inline;
+
+   procedure m_contactList_is (Self : in out b2Body;   Now : access b2_Contact.b2ContactEdge)
+     with inline;
 
 
-   function  m_Force     (Self : in     b2Body)     return b2Vec2;
-   procedure m_Force_is  (Self : in out b2Body;   Now : in b2Vec2);
+   function  m_Force     (Self : in     b2Body)     return b2Vec2
+     with inline;
 
-   function  m_Torque    (Self : in     b2Body)     return Real;
-   procedure m_Torque_is (Self : in out b2Body;   Now : in Real);
-
-
-   procedure m_prev_is (Self : in out b2Body;   Now : in b2Body_ptr);
-   procedure m_next_is (Self : in out b2Body;   Now : in b2Body_ptr);
-
-   function  m_prev    (Self : in     b2Body) return b2Body_ptr;
-   function  m_next    (Self : in     b2Body) return b2Body_ptr;
+   procedure m_Force_is  (Self : in out b2Body;   Now : in b2Vec2)
+     with inline;
 
 
-   procedure m_jointList_is   (Self : in out b2Body;   Now : access b2JointEdge);
-   procedure m_fixtureList_is (Self : in out b2Body;   Now : in     b2Fixture_ptr);
+   function  m_Torque    (Self : in     b2Body)     return Real
+     with inline;
 
-   function  m_sleepTime      (Self : in     b2Body)         return Real;
-   procedure m_sleepTime_is   (Self : in out b2Body;   Now : in     Real);
+   procedure m_Torque_is (Self : in out b2Body;   Now : in Real)
+     with inline;
 
-   procedure decrement_m_fixtureCount (Self : in out b2Body);
-   procedure      zero_m_fixtureCount (Self : in out b2Body);
+
+
+   procedure m_prev_is (Self : in out b2Body;   Now : in b2Body_ptr)
+     with inline;
+
+   procedure m_next_is (Self : in out b2Body;   Now : in b2Body_ptr)
+     with inline;
+
+
+   function  m_prev    (Self : in     b2Body) return b2Body_ptr
+     with inline;
+
+   function  m_next    (Self : in     b2Body) return b2Body_ptr
+     with inline;
+
+
+
+   procedure m_jointList_is   (Self : in out b2Body;   Now : access b2JointEdge)
+     with inline;
+
+   procedure m_fixtureList_is (Self : in out b2Body;   Now : in     b2Fixture_ptr)
+     with inline;
+
+
+   function  m_sleepTime      (Self : in     b2Body)         return Real
+     with inline;
+
+   procedure m_sleepTime_is   (Self : in out b2Body;   Now : in     Real)
+     with inline;
+
+
+   procedure decrement_m_fixtureCount (Self : in out b2Body)
+     with inline;
+
+   procedure      zero_m_fixtureCount (Self : in out b2Body)
+     with inline;
+
 
 
    --    This is used to prevent connected bodies from colliding.
@@ -1001,19 +1032,33 @@ is
    --    bool ShouldCollide(const b2Body* other) const;
    --
 
-   function shouldCollide (Self : in b2Body;   other : access b2Body) return Boolean;
-
-
-   function  m_islandIndex    (Self : in     b2Body)     return Natural;
-   procedure m_islandIndex_is (Self : in out b2Body;   Now : in Natural);
+   function shouldCollide (Self : in b2Body;   other : access b2Body) return Boolean
+     with inline;
 
 
 
-   function m_invMass     (Self : in b2Body) return Real;
-   function m_invI        (Self : in b2Body) return Real;
+   function  m_islandIndex    (Self : in     b2Body)     return Natural
+     with inline;
 
-   function m_xf    (Self : access b2Body) return access b2Transform;
-   function m_sweep (Self : access b2Body) return access b2Sweep;
+   procedure m_islandIndex_is (Self : in out b2Body;   Now : in Natural)
+     with inline;
+
+
+
+
+   function m_invMass     (Self : in b2Body) return Real
+     with inline;
+
+   function m_invI        (Self : in b2Body) return Real
+     with inline;
+
+
+   function m_xf    (Self : access b2Body) return access b2Transform
+     with inline;
+
+   function m_sweep (Self : access b2Body) return access b2Sweep
+     with inline;
+
 
 
 
@@ -1064,8 +1109,12 @@ is
    e_enabledFlag        : constant Flag := 16#0020#;
    e_toiFlag            : constant Flag := 16#0040#;
 
-   function  m_Flags    (Self : in b2Body)      return flag_Set;
-   procedure m_Flags_is (Self : in out b2Body;   Now : flag_Set);
+   function  m_Flags    (Self : in b2Body)      return flag_Set
+     with inline;
+
+   procedure m_Flags_is (Self : in out b2Body;   Now : flag_Set)
+     with inline;
+
 
 
 

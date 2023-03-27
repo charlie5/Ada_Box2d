@@ -395,17 +395,33 @@ is
 
 
 
-   procedure m_prev_is (Self : in out b2Joint;   Now : in b2Joint_ptr);
-   procedure m_next_is (Self : in out b2Joint;   Now : in b2Joint_ptr);
+   procedure m_prev_is (Self : in out b2Joint;   Now : in b2Joint_ptr)
+     with inline;
 
-   function  m_prev    (Self : access b2Joint) return b2Joint_ptr;
-   function  m_next    (Self : access b2Joint) return b2Joint_ptr;
+   procedure m_next_is (Self : in out b2Joint;   Now : in b2Joint_ptr)
+     with inline;
 
-   function  m_edgeA   (Self : access b2Joint) return access b2JointEdge;
-   function  m_edgeB   (Self : access b2Joint) return access b2JointEdge;
 
-   function  m_islandFlag    (Self : in     b2Joint)     return Boolean;
-   procedure m_islandFlag_is (Self : in out b2Joint;   Now : in Boolean);
+   function  m_prev    (Self : access b2Joint) return b2Joint_ptr
+     with inline;
+
+   function  m_next    (Self : access b2Joint) return b2Joint_ptr
+     with inline;
+
+
+   function  m_edgeA   (Self : access b2Joint) return access b2JointEdge
+     with inline;
+
+   function  m_edgeB   (Self : access b2Joint) return access b2JointEdge
+     with inline;
+
+
+   function  m_islandFlag    (Self : in     b2Joint)     return Boolean
+     with inline;
+
+   procedure m_islandFlag_is (Self : in out b2Joint;   Now : in Boolean)
+     with inline;
+
 
 
    --  inline b2JointType b2Joint::GetType() const
