@@ -513,8 +513,8 @@ is
       use b2_Timer;
           --  b2_Settings;
 
-      timer :          b2Timer;
-      h     : constant Real   := step.dt;
+      timer :          b2Timer := to_b2Timer;
+      h     : constant Real    := step.dt;
 
    begin
       -- Integrate velocities and apply damping. Initialize the body state.

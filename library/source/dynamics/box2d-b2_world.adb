@@ -72,6 +72,7 @@ is
       Self.m_clearForces := True;
 
       Self.m_inv_dt0 := 0.0;
+
       Self.m_profile := (others => 0.0);
 
       Self.m_contactManager := to_b2ContactManager;
@@ -1613,8 +1614,8 @@ is
          use b2_Timer;
          use type b2_Body.Flag;
 
-         timer :        b2Timer;
-         b     : access b2Body := Self.m_bodyList;
+         timer : constant b2Timer := to_b2Timer;
+         b     : access b2Body  := Self.m_bodyList;
       begin
          -- Synchronize fixtures, check for out of range bodies.
          --
@@ -2519,7 +2520,7 @@ is
       use b2_Timer;
 
       dt        : Real renames timeStep;
-      stepTimer : b2Timer;
+      stepTimer : constant b2Timer := to_b2Timer;
 
    begin
       -- If new fixtures were added, we need to find the new contacts.
@@ -2552,7 +2553,7 @@ is
          -- Update contacts. This is where some contacts are destroyed.
          --
          declare
-            timer : b2Timer;
+            timer : constant b2Timer := to_b2Timer;
          begin
             Self.m_contactManager.collide;
             Self.m_profile.collide := timer.getMilliseconds;
@@ -2563,7 +2564,7 @@ is
          if Self.m_stepComplete and step.dt > 0.0
          then
             declare
-               timer : b2Timer;
+               timer : constant b2Timer := to_b2Timer;
             begin
                Self.solve (step);
                Self.m_profile.solve := timer.getMilliseconds;
@@ -2575,7 +2576,7 @@ is
          if Self.m_continuousPhysics and step.dt > 0.0
          then
             declare
-               timer : b2Timer;
+               timer : constant b2Timer := to_b2Timer;
             begin
                Self.solveTOI (step);
                Self.m_profile.solveTOI := timer.getMilliseconds;

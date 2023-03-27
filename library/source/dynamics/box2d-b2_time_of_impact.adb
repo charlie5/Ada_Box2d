@@ -798,7 +798,7 @@ is
       use b2_Timer,
           b2_Common;
 
-      timer : b2Timer;
+      timer : constant b2Timer := to_b2Timer;
 
       proxyA : constant access constant b2DistanceProxy := input.proxyA'Access;
       proxyB : constant access constant b2DistanceProxy := input.proxyB'Access;
