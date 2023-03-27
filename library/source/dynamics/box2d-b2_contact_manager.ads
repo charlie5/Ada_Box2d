@@ -53,6 +53,7 @@ is
 
    function to_b2ContactManager return b2ContactManager;
 
+   procedure destruct (Self : in out b2ContactManager);
 
 
    --    // Broad-phase callback.
@@ -61,7 +62,7 @@ is
    --
 
    procedure addPair (Self : access b2ContactManager;   proxyUserDataA : void_ptr;
-                      proxyUserDataB : void_ptr);
+                                                        proxyUserDataB : void_ptr);
 
 
    --  procedure addPair (Self : in out b2ContactManager;   proxyUserDataA : system.Address;

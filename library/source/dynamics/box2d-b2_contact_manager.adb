@@ -53,6 +53,12 @@ is
 
 
 
+   procedure destruct (Self : in out b2ContactManager)
+   is
+   begin
+      Self.m_broadPhase.destruct;
+   end destruct;
+
 
 
    --  void b2ContactManager::Destroy(b2Contact* c)

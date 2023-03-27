@@ -129,6 +129,9 @@ is
 
          b := bNext;
       end loop;
+
+
+      Self.m_contactManager.destruct;
    end destruct;
 
 
@@ -1607,6 +1610,8 @@ is
 
             --  free (stack);
          end;
+
+         Island.destruct;
       end;
 
 
@@ -2436,6 +2441,9 @@ is
 
          <<Continue_1>>
       end loop;
+
+
+      Island.destruct;
    end SolveTOI;
 
 
@@ -2527,7 +2535,7 @@ is
       --
       if Self.m_newContacts
       then
-         Self.m_contactManager.FindNewContacts;
+         Self.m_contactManager.findNewContacts;
          Self.m_newContacts := False;
       end if;
 

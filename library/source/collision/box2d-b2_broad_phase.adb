@@ -64,6 +64,8 @@ is
    begin
       free (Self.m_moveBuffer);
       free (Self.m_pairBuffer);
+
+      Self.m_tree.destruct;
    end destruct;
 
 
@@ -731,7 +733,7 @@ is
 
       Self.m_pairCount := Self.m_pairCount + 1;
 
-     return true;
+     return True;
    end queryCallback;
 
 

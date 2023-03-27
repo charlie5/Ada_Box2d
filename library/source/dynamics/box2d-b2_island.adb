@@ -758,6 +758,8 @@ is
                   end;
                end if;
             end;
+
+            contactSolver.destruct;
          end;
       end;
    end solve;
@@ -1092,6 +1094,7 @@ is
       end;
 
       Self.report (contactSolver.m_velocityConstraints.all);
+      contactSolver.destruct;
    end SolveTOI;
 
 

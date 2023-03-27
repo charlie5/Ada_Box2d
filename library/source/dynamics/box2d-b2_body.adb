@@ -18,6 +18,24 @@ is
    -- b2BodyDef
    --
 
+   --       b2BodyDef()
+   --  {
+   --    position.Set(0.0f, 0.0f);
+   --    angle = 0.0f;
+   --    linearVelocity.Set(0.0f, 0.0f);
+   --    angularVelocity = 0.0f;
+   --    linearDamping = 0.0f;
+   --    angularDamping = 0.0f;
+   --    allowSleep = true;
+   --    awake = true;
+   --    fixedRotation = false;
+   --    bullet = false;
+   --    type = b2_staticBody;
+   --    enabled = true;
+   --    gravityScale = 1.0f;
+   --  }
+   --
+
    function to_b2BodyDef return b2BodyDef
    is
       Self : b2BodyDef;
