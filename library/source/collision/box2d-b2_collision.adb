@@ -365,7 +365,7 @@ is
    --       upperBound = b2Max(aabb1.upperBound, aabb2.upperBound);
    --    }
 
-   procedure combine (Self : in out b2AABB;   aabb1 : in b2AABB;
+   procedure combine (Self : in out b2AABB;   aabb1 : in b2AABB;     -- TODO: Make 'Self' an 'out' parameter.
                                               aabb2 : in b2AABB)
    is
    begin
