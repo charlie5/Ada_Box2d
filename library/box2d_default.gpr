@@ -18,6 +18,7 @@ is
    --
 
    Binder_Options := ();
+--   Binder_Options := ("-shared");
 
    Style_Options  := ("-gnatyk",      --  Check casings: a:attribute, k:keywords, n:package Standard identifiers, p:pragma, r:identifier references.
                       "-gnatybfhi",   --  Check b:no blanks at end of lines, f:no ff/vtabs, h: no htabs, i:if-then layout, u:no unnecessary blank lines.
@@ -123,7 +124,8 @@ is
                                               & "-gnatVcfimorst"
                                               & "-gnatyhiknp";
       when "Linux" =>
-         Binder_Options   := Binder_Options   & "-static";
+--         Binder_Options   := Binder_Options   & "-static";
+         Binder_Options   := Binder_Options   & "-shared";
 
       when "Windows_NT" =>
          null;
