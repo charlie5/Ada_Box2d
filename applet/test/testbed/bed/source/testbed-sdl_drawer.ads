@@ -1,7 +1,6 @@
 with
-     b2_Math,
-     b2_Draw,
-     b2_Settings,
+     box2d.b2_Math,
+     box2d.b2_Draw,
 
      SDL.Video.Rectangles,
      SDL.Video.Renderers.Makers,
@@ -12,21 +11,18 @@ with
 
 package testbed.SDL_Drawer
 is
-   use b2_Math,
-       b2_Draw,
-       b2_Settings,
+   use Box2D,
+       box2d.b2_Math,
+       box2d.b2_Draw,
        Interfaces.C;
-
-   Texture : SDL.Video.Textures.Texture;
 
 
    type sdlDrawer is new b2_Draw.b2Draw with private;
 
 
    overriding
-   procedure drawPolygon (Self : in out sdlDrawer;   vertices    : in b2Vec2s;
-                                                     --  vertexCount : in Natural;
-                                                     Color       : in b2Color);
+   procedure drawPolygon (Self : in out sdlDrawer;   Vertices : in b2Vec2s;
+                                                     Color    : in b2Color);
 
 
    --    Draw a solid closed polygon provided in CCW order.
@@ -34,9 +30,8 @@ is
    --
 
    overriding
-   procedure drawSolidPolygon (Self : in out sdlDrawer;   vertices    : in b2Vec2s;
-                                                          --  vertexCount : in Natural;
-                                                          Color       : in b2Color);
+   procedure drawSolidPolygon (Self : in out sdlDrawer;   Vertices : in b2Vec2s;
+                                                          Color    : in b2Color);
 
 
    --    Draw a circle.
@@ -88,12 +83,18 @@ is
                                                    Color : in b2Color);
 
 
-
+   procedure Scale_is (Now : in Real);
 
 
 
 
    function  Renderer return access SDL.Video.Renderers.Renderer;
+
+
+   procedure clear  (Self : in     sdlDrawer);
+   procedure render (Self : in out sdlDrawer);
+
+   function  window_Closed (Self : in sdlDrawer) return Boolean;
 
 
    --  procedure drawCircle (renderer : in out SDL.Video.Renderers.Renderer;
@@ -125,7 +126,7 @@ private
 
    type sdlDrawer is new b2_Draw.b2Draw with
       record
-         null;
+         Window_closed : Boolean := False;
       end record;
 
 end testbed.SDL_Drawer;

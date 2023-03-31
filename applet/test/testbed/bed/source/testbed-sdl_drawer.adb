@@ -1,5 +1,6 @@
 with
      SDL.Events.Events,
+     SDL.Events.Keyboards,
      SDL.Log,
      SDL.Video.Pixel_Formats,
      SDL.Video.Textures.Makers,
@@ -9,8 +10,8 @@ with
      ada.Finalization;
 
 
---  with ada.Text_IO;
---  use  ada.Text_IO;
+with ada.Text_IO;
+use  ada.Text_IO;
 
 
 package body testbed.SDL_Drawer
@@ -20,8 +21,28 @@ is
 
 
    W                :          SDL.Video.Windows.Window;
-   W_Size           : constant SDL.Positive_Sizes          := (800, 640);
+   --  W_Size           : constant SDL.Positive_Sizes          := (800, 640);
+   W_Size           : constant SDL.Positive_Sizes := (1_000, 1_000);
    the_Renderer     : aliased  SDL.Video.Renderers.Renderer;
+   Texture          :          SDL.Video.Textures.Texture;
+
+
+
+
+
+
+   Scale : Real := 1.0;
+
+
+   procedure Scale_is (Now : in Real)
+   is
+   begin
+      Scale := Now;
+   end Scale_is;
+
+
+
+
 
    use type SDL.Events.Event_Types,
             Interfaces.C.int;
@@ -32,10 +53,10 @@ is
    is
       use sdl.Video.Palettes;
    begin
-      return (Colour_Component (Color.r),
-              Colour_Component (Color.g),
-              Colour_Component (Color.b),
-              Colour_Component (Color.a));
+      return (Colour_Component (Color.r * 255.0),
+              Colour_Component (Color.g * 255.0),
+              Colour_Component (Color.b * 255.0),
+              Colour_Component (Color.a * 255.0));
    end "+";
 
 
@@ -43,19 +64,79 @@ is
    -- Flip 'y' coord to make the origin at the bottom left.
    --
 
-   function "+" (y : in C.int) return C.int
+   --  function "+" (y : in C.int) return C.int
+   --  is
+   --     Height : constant C.int := W.get_Size.Height;
+   --  begin
+   --     return Height - y - 1;
+   --  end "+";
+
+
+
+   function to_pixel_Coords (x, y : in C.int) return SDL.Video.Rectangles.Point
    is
       Height : constant C.int := W.get_Size.Height;
+      Width  : constant C.int := W.get_Size.Width;
+
+      Result : SDL.Video.Rectangles.Point;
    begin
-      return Height - y - 1;
-   end "+";
+      Result.x := x + Width  / 2;
+      Result.y := y + Height / 2;
+
+      Result.y := Height - Result.y - 1;
+      --  return Height - y - 1;
+
+      return Result;
+   end to_pixel_Coords;
+
+
+
+
+
+   procedure clear  (Self : in sdlDrawer)
+   is
+   begin
+      Renderer.clear;
+      Renderer.copy (Texture);
+   end clear;
+
+
+
+   procedure render (Self : in out sdlDrawer)
+   is
+      use SDL.Events.Keyboards;
+
+      new_Event_detected : Boolean;
+      Event              : SDL.Events.Events.Events;
+   begin
+      new_Event_detected :=SDL.Events.Events.Poll (Event);
+
+      if         new_Event_detected
+        and then (   Event.Common.Event_Type = SDL.Events.Quit
+                  or (    Event.Keyboard.Event_Type       = Key_Up
+                      and Event.Keyboard.Key_Sym.Key_Code = Code_Escape))
+      then
+         Self.Window_closed := True;
+      end if;
+
+      Renderer.Present;
+   end render;
+
+
+
+   function Window_closed (Self : in sdlDrawer) return Boolean
+   is
+   begin
+      return Self.Window_closed;
+   end Window_closed;
+
+
 
 
 
    overriding
-   procedure drawPolygon (Self : in out sdlDrawer;   vertices    : in b2Vec2s;
-                                                     --  vertexCount : in Natural;
-                                                     Color       : in b2Color)
+   procedure drawPolygon (Self : in out sdlDrawer;   vertices : in b2Vec2s;
+                                                     Color    : in b2Color)
    is
       use SDL.Video.Renderers;
 
@@ -69,17 +150,17 @@ is
       loop
          if i /= Vertices'Last
          then
-            Start  := (Vertices (i + 0).x,
-                       Vertices (i + 0).y);
+            Start  := (Vertices (i + 0).x * Scale,
+                       Vertices (i + 0).y * Scale);
 
-            Finish := (Vertices (i + 1).x,
-                       Vertices (i + 1).y);
+            Finish := (Vertices (i + 1).x * Scale,
+                       Vertices (i + 1).y * Scale);
          else
-            Start  := (Vertices (i).x,
-                       Vertices (i).y);
+            Start  := (Vertices (i).x * Scale,
+                       Vertices (i).y * Scale);
 
-            Finish := (Vertices (0).x,
-                       Vertices (0).y);
+            Finish := (Vertices (0).x * Scale,
+                       Vertices (0).y * Scale);
          end if;
 
          Self.drawSegment (Start, Finish, Color);
@@ -121,9 +202,8 @@ is
    --
 
    overriding
-   procedure drawSolidPolygon (Self : in out sdlDrawer;   vertices    : in b2Vec2s;
-                                                          --  vertexCount : in Natural;
-                                                          Color       : in b2Color)
+   procedure drawSolidPolygon (Self : in out sdlDrawer;   Vertices : in b2Vec2s;
+                                                          Color    : in b2Color)
    is
       use b2_Math.Functions;
 
@@ -273,13 +353,13 @@ is
    is
       use SDL.Video.Renderers;
 
-      diameter : constant C.int := C.int (radius * 2.0);
+      diameter : constant C.int := C.int (Radius * 2.0 * Scale);
 
-      CenterX  : constant c.int := C.int (Center.x);
-      CenterY  : constant c.int := C.int (Center.y);
+      CenterX  : constant c.int := C.int (Center.x * Scale);
+      CenterY  : constant c.int := C.int (Center.y * Scale);
 
       -- Point : SDL.Video.Rectangles.Point;
-      x  : C.int := C.int (Radius) - 1;
+      x  : C.int := C.int (Radius * Scale) - 1;
       y  : C.int := 0;
 
       tx : C.int := 1;
@@ -294,14 +374,14 @@ is
       loop
          --  Each of the following renders an octant of the circle
          --
-         draw (Renderer.all, Point' (CenterX + x,  +CenterY - y));
-         draw (Renderer.all, Point' (CenterX + x,  +CenterY + y));
-         draw (Renderer.all, Point' (CenterX - x,  +CenterY - y));
-         draw (Renderer.all, Point' (CenterX - x,  +CenterY + y));
-         draw (Renderer.all, Point' (CenterX + y,  +CenterY - x));
-         draw (Renderer.all, Point' (CenterX + y,  +CenterY + x));
-         draw (Renderer.all, Point' (CenterX - y,  +CenterY - x));
-         draw (Renderer.all, Point' (CenterX - y,  +CenterY + x));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX + x,  CenterY - y)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX + x,  CenterY + y)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX - x,  CenterY - y)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX - x,  CenterY + y)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX + y,  CenterY - x)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX + y,  CenterY + x)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX - y,  CenterY - x)));
+         draw (Renderer.all, Point' (to_pixel_Coords (CenterX - y,  CenterY + x)));
 
          if error <= 0
          then
@@ -386,8 +466,8 @@ is
                                                          Axis   : in b2Vec2;
                                                          Color  : in b2Color)
    is
-      radius_Delta : Real := Radius / 5.0;
-      R            : Real := Radius;
+      radius_Delta : constant Real := Radius / 5.0;
+      R            :          Real := Radius;
    begin
       Self.drawCircle (Center => Center,
                        Radius => 2.0,
@@ -464,8 +544,8 @@ is
    is
       use SDL.Video.Renderers;
 
-      Line : constant line_Segment := (Start  => (C.int (p1.x),  +C.int (p1.y)),
-                                       Finish => (C.int (p2.x),  +C.int (p2.y)));
+      Line : constant line_Segment := (Start  => to_pixel_Coords (C.int (p1.x),  C.int (p1.y)),
+                                       Finish => to_pixel_Coords (C.int (p2.x),  C.int (p2.y)));
    begin
       set_draw_Colour (the_Renderer, +Color);
       draw            (Renderer.all, Line);
@@ -517,8 +597,8 @@ is
       use SDL.Video.Renderers;
    begin
       set_draw_Colour (the_Renderer, +Color);
-      draw            (Renderer.all, Point' ( C.int (p.x),
-                                             +C.int (p.y)));
+      draw            (Renderer.all, Point' (C.int (p.x),
+                                             C.int (p.y)));
    end drawPoint;
 
 
@@ -592,7 +672,7 @@ begin
       SDL.Video.Windows.Makers.Create
         (Win      => W,
          Title    => "Hello, World",
-         Position => SDL.Natural_Coordinates' (X => 100, Y => 100),
+         Position => SDL.Natural_Coordinates' (X => 1500, Y => 500),
          Size     => W_Size,
          Flags    => SDL.Video.Windows.Resizable);
 
