@@ -1,11 +1,14 @@
 with
-     b2_Contact,
-     b2_Fixture,
-     b2_polygon_Shape,
-     b2_Body,
-     b2_World,
-     b2_Math,
-     b2_Settings,
+     box2d.b2_Contact,
+     box2d.b2_Fixture,
+     box2d.b2_polygon_Shape,
+     box2d.b2_Body,
+     box2d.b2_World,
+     box2d.b2_Math,
+     box2d.b2_Draw,
+     testbed.sdl_Drawer,
+
+     SDL.Events.Events,
 
      ada.Text_IO;
 
@@ -18,7 +21,8 @@ procedure hello_World
 --  with your rendering engine in your game engine.
 --
 is
-   use b2_Contact,
+   use Box2D,
+       Box2D.b2_Contact,
        ada.Text_IO;
 
 begin
@@ -30,8 +34,12 @@ begin
           b2_Body,
           b2_Fixture,
           b2_World,
-          b2_Math,
-          b2_Settings;
+          b2_Draw,
+          b2_Math;
+
+      --  Debug : Boolean := False;
+      Debug : Boolean := True;
+
 
       --    // Define the gravity vector.
       --
@@ -46,8 +54,8 @@ begin
       --    b2World world(gravity);
       --
 
-      world : b2World := to_b2World (gravity);
-
+      World  :         b2World := to_b2World (gravity);
+      Drawer : aliased Testbed.SDL_Drawer.sdlDrawer;
 
 
       --    // Define the ground body.
@@ -85,7 +93,20 @@ begin
       Fixture    :         b2Fixture_ptr with unreferenced;
 
    begin
+      if Debug
+      then
+         World.setDebugDraw (Drawer'Access);
+         Drawer.setFlags (Drawer.getFlags
+                          or b2_Draw.e_shapeBit
+                          --  or e_aabbBit
+                          --  or e_pairBit
+                         );
+
+         testbed.sdl_Drawer.Scale_is (8.0);
+      end if;
+
       groundBodyDef.Position := (0.0, -10.0);
+      --  groundBodyDef.Position := (0.0, 0.0);
       groundBody             := world.createBody (groundBodyDef);
 
 
@@ -95,6 +116,7 @@ begin
       --
 
       groundBox.setAsBox (50.0, 10.0);
+      --  groundBox.setAsBox (50.0, 50.0);
 
 
       --    // Add the ground fixture to the ground body.
@@ -103,6 +125,10 @@ begin
       --
 
       Fixture := groundBody.createFixture (groundBox'unchecked_Access, 0.0);
+      --  Fixture.setFriction (1.3);
+
+
+
 
 
       --    // Define the dynamic body. We set its position and call the body factory.
@@ -113,9 +139,12 @@ begin
       --
 
       bodyDef.Kind     := b2_dynamicBody;
+      --  bodyDef.Angle    := (0.1);
+      --  bodyDef.position := (0.0, 200.0);
       bodyDef.position := (0.0, 4.0);
       the_body         := World.createBody (bodyDef);
 
+      the_Body.setSleepingAllowed (True);
 
       --    // Define another box shape for our dynamic body.
       --
@@ -143,7 +172,8 @@ begin
       --    fixtureDef.friction = 0.3f;
       --
 
-      fixtureDef.friction := 0.3;
+      fixtureDef.friction    := 0.3;
+      --  fixtureDef.restitution := 0.9;
 
       --    // Add the shape to the body.
       --
@@ -157,6 +187,8 @@ begin
       --    // in most game scenarios.
       --
       declare
+         use testbed.sdl_Drawer;
+
          --    float timeStep = 1.0f / 60.0f;
          --    int32 velocityIterations = 6;
          --    int32 positionIterations = 2;
@@ -172,6 +204,8 @@ begin
 
          position : b2Vec2 := the_Body.getPosition;
          angle    : Real   := the_Body.getAngle;
+
+         White : constant b2Color := (1.0, 1.0, 1.0, 1.0);
 
       begin
          --    // This is our little game loop.
@@ -190,7 +224,8 @@ begin
          --    }
          --
 
-         for i in 0 .. 59
+         --  for i in 0 .. 59
+         --  for i in 0 .. 259
          loop
             -- Instruct the world to perform a single step of simulation.
             -- It is generally best to keep the time step and iterations fixed.
@@ -207,6 +242,31 @@ begin
             put_Line (  "("  & position.x'Image
                       & ","  & position.y'Image
                       & ") " & angle     'Image);
+
+            if Debug
+            then
+               Drawer.clear;
+
+               Drawer.drawCircle (Center => (0.0, 0.0),
+                                  Radius => 1.0 * 50.0,
+                                  Color  => White);
+               World.debugDraw;
+               Drawer.render;
+            end if;
+
+
+            delay Duration (timeStep / 4.0);
+
+
+            declare
+               C : Character;
+               A : Boolean  := False;
+            begin
+               get_Immediate (C, A);
+
+               exit when A or Drawer.window_Closed;
+            end;
+
          end loop;
 
 

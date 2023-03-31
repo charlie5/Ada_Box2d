@@ -1,6 +1,7 @@
 with
      "../../../../library/box2d_default",
-     "../../../../library/box2d";
+     "../../../../library/box2d",
+     "../../testbed/bed/testbed";
 
 
 project hello_World
@@ -19,7 +20,7 @@ is
    package Binder   renames Box2d_default.Binder;
 
    package Linker is
-      for Default_Switches ("ada") use ("-g");
+      for Default_Switches ("ada") use ("-g", "-lSDL2");
    end Linker;
 
 end hello_World;
