@@ -96,7 +96,7 @@ is
    --    void SetDebugDraw(b2Draw* debugDraw);
    --
 
-   procedure SetDebugDraw (Self : in out b2World;   debugDraw : access b2Draw);
+   procedure SetDebugDraw (Self : in out b2World;   debugDraw : access b2Draw'Class);
 
 
    --    Create a rigid body given a definition. No reference to the definition
@@ -180,7 +180,7 @@ is
    --    void DebugDraw();
    --
 
-   procedure DebugDraw (Self : in out b2World);
+   procedure debugDraw (Self : in out b2World);
 
 
 
@@ -564,7 +564,7 @@ private
          m_allowSleep : Boolean;
 
          m_destructionListener : access b2DestructionListener'Class;
-         m_debugDraw           : access b2Draw;
+         m_debugDraw           : access b2Draw'Class;
 
          -- This is used to compute the time step ratio to support a variable time step.
          --
@@ -623,8 +623,8 @@ private
 --    void DrawShape(b2Fixture* shape, const b2Transform& xf, const b2Color& color);
 --
 
-   procedure DrawShape (Self : in out b2World;   shape : access b2Fixture;
-                                                 xf    : in     b2Transform;
-                                                 color : in     b2Color);
+   procedure DrawShape (Self : in out b2World;   fixture : access b2Fixture'Class;
+                                                 xf      : in     b2Transform;
+                        color   : in     b2Color);
 
 end box2d.b2_World;

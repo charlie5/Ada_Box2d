@@ -2,6 +2,7 @@ with
      box2d.b2_contact_Solver,
      box2d.b2_Island,
      box2d.b2_broad_Phase,
+     box2d.b2_Shape,
      box2d.b2_chain_Shape,
      box2d.b2_circle_Shape,
      box2d.b2_edge_Shape,
@@ -407,10 +408,10 @@ is
    --  }
    --
 
-   procedure SetDebugDraw (Self : in out b2World;   debugDraw : access b2Draw)
+   procedure SetDebugDraw (Self : in out b2World;   debugDraw : access b2Draw'Class)
    is
    begin
-      Self.m_debugDraw := debugDraw;
+      Self.m_debugDraw := debugDraw.all'unchecked_Access;
    end SetDebugDraw;
 
 
@@ -2868,12 +2869,90 @@ is
    --  }
    --
 
-   procedure drawShape (Self : in out b2World;   shape : access b2Fixture;
-                                                 xf    : in     b2Transform;
-                                                 color : in     b2Color)
+   procedure drawShape (Self : in out b2World;   fixture : access b2Fixture'Class;
+                                                 xf      : in     b2Transform;
+                                                 color   : in     b2Color)
    is
    begin
-      raise Program_Error with "TODO";
+      case fixture.getType
+      is
+      when b2_Shape.e_circle =>
+         declare
+            use b2_circle_Shape;
+
+            Circle : constant access b2CircleShape := b2CircleShape_ptr (fixture.getShape);
+
+            center : constant b2Vec2  := b2Mul (xf, circle.m_p);
+            radius : constant Real    := circle.m_radius;
+            axis   : constant b2Vec2  := b2Mul (xf.q, (1.0, 0.0));
+         begin
+            Self.m_debugDraw.drawSolidCircle (center, radius, axis, color);
+         end;
+
+
+         when b2_Shape.e_edge =>
+            declare
+               use b2_edge_Shape;
+
+               edge : constant access b2EdgeShape := b2EdgeShape_ptr (fixture.getShape);
+
+               v1   : constant b2Vec2 := b2Mul (xf, edge.m_vertex1);
+               v2   : constant b2Vec2 := b2Mul (xf, edge.m_vertex2);
+            begin
+               Self.m_debugDraw.drawSegment (v1, v2, color);
+
+               if edge.m_oneSided = False
+               then
+                  Self.m_debugDraw.drawPoint (v1, 4.0, color);
+                  Self.m_debugDraw.drawPoint (v2, 4.0, color);
+               end if;
+            end;
+
+
+         when b2_Shape.e_chain =>
+            declare
+               use b2_chain_Shape;
+
+               chain    : constant access b2ChainShape := b2ChainShape_ptr (fixture.getShape);
+
+               count    : constant Natural := chain.m_count;
+               vertices : constant b2Vec2s := chain.m_vertices;
+               v1       :          b2Vec2  := b2Mul (xf, vertices (0));
+            begin
+               for i in 1 .. count - 1
+               loop
+                  declare
+                     v2 : constant b2Vec2 := b2Mul (xf, vertices (i));
+                  begin
+                     Self.m_debugDraw.drawSegment (v1, v2, color);
+                     v1 := v2;
+                  end;
+               end loop;
+            end;
+
+
+         when b2_Shape.e_polygon =>
+            declare
+               use b2_polygon_Shape;
+
+               poly        : constant access b2PolygonShape := b2PolygonShape_ptr (fixture.getShape);
+               vertexCount : constant        Natural        := poly.m_count;
+               pragma assert (vertexCount <= b2_maxPolygonVertices);
+
+               vertices    : b2Vec2s (0 .. vertexCount - 1);
+            begin
+               for i in 0 .. vertexCount - 1
+               loop
+                  vertices (i) := b2Mul (xf, poly.m_vertices (i));
+               end loop;
+
+               Self.m_debugDraw.drawSolidPolygon (vertices, color);
+            end;
+
+
+         when others =>
+            null;
+      end case;
    end drawShape;
 
 
@@ -2991,11 +3070,173 @@ is
    --  }
    --
 
-   procedure DebugDraw (Self : in out b2World)
+   procedure debugDraw (Self : in out b2World)
    is
+      flags : b2_Draw.flag_Set;
    begin
-      raise Program_Error with "TODO";
-   end DebugDraw;
+      if Self.m_debugDraw = null
+      then
+         return;
+      end if;
+
+
+      flags := Self.m_debugDraw.getFlags;
+
+      if (flags and b2_Draw.e_shapeBit) /= 0
+      then
+         declare
+            b : b2Body_ptr := Self.m_bodyList;
+         begin
+            while b /= null
+            loop
+               declare
+                  xf : b2Transform renames b.getTransform;
+                  f  : b2Fixture_ptr    := b.getFixtureList;
+               begin
+                  while f /= null
+                  loop
+                     if    b.getType = b2_dynamicBody
+                       and b.getMass = 0.0
+                     then
+                        Self.drawShape (f, xf, to_b2Color (1.0, 0.0, 0.0));     -- Bad body.
+
+                     elsif b.isEnabled = False
+                     then
+                        Self.drawShape (f, xf, to_b2Color (0.5, 0.5, 0.3));
+
+                     elsif b.getType = b2_staticBody
+                     then
+                        Self.drawShape (f, xf, to_b2Color (0.5, 0.9, 0.5));
+
+                     elsif b.getType = b2_kinematicBody
+                     then
+                        Self.drawShape (f, xf, to_b2Color (0.5, 0.5, 0.9));
+
+                     elsif b.isAwake = False
+                     then
+                        Self.drawShape (f, xf, to_b2Color (0.6, 0.6, 0.6));
+
+                     else
+                        Self.drawShape (f, xf, to_b2Color (0.9, 0.7, 0.7));
+                     end if;
+
+                     f := f.getNext;
+                  end loop;
+               end;
+
+               b := b.getNext;
+            end loop;
+         end;
+      end if;
+
+
+      if (flags and b2_Draw.e_jointBit) /= 0
+      then
+         declare
+            j : b2Joint_ptr := Self.m_jointList;
+         begin
+            while j /= null
+            loop
+               j.draw (Self.m_debugDraw);
+               j := j.getNext;
+            end loop;
+         end;
+      end if;
+
+
+      if (flags and b2_Draw.e_pairBit) /= 0
+      then
+         declare
+            color : constant b2Color       := to_b2Color (0.3, 0.9, 0.9);
+            c     :          b2Contact_ptr := Self.m_contactManager.m_contactList;
+         begin
+            while c /= null
+            loop
+               declare
+                  fixtureA : constant b2Fixture_ptr := c.getFixtureA;
+                  fixtureB : constant b2Fixture_ptr := c.getFixtureB;
+
+                  indexA   : constant Natural       := c.getChildIndexA;
+                  indexB   : constant Natural       := c.getChildIndexB;
+
+                  cA       : constant b2Vec2        := getCenter (fixtureA.getAABB (indexA));
+                  cB       : constant b2Vec2        := getCenter (fixtureB.getAABB (indexB));
+               begin
+                  Self.m_debugDraw.drawSegment (cA, cB, color);
+               end;
+
+               c := c.getNext;
+            end loop;
+         end;
+      end if;
+
+
+      if (flags and b2_Draw.e_aabbBit) /= 0
+      then
+         declare
+            color : constant        b2Color      := to_b2Color (0.9, 0.3, 0.9);
+            bp    : constant access b2BroadPhase := Self.m_contactManager.m_broadPhase'Access;
+            b     :                 b2Body_ptr   := Self.m_bodyList;
+            f     :                 b2Fixture_ptr;
+         begin
+            while b /= null
+            loop
+               if b.IsEnabled = false
+               then
+                  goto Continue;
+               end if;
+
+               f := b.getFixtureList;
+
+               while f /= null
+               loop
+                  declare
+                     proxies : b2FixtureProxies renames f.m_proxies;
+                  begin
+                     for i in 0 .. f.m_proxyCount - 1
+                     loop
+                        declare
+                           proxy :          b2FixtureProxy renames proxies (i);
+                           aabb  : constant b2AABB              := bp.getFatAABB (proxy.proxyId);
+                           vs    :          b2Vec2s (0 .. 3);
+                        begin
+                           vs (0) := (aabb.lowerBound.x,  aabb.lowerBound.y);
+                           vs (1) := (aabb.upperBound.x,  aabb.lowerBound.y);
+                           vs (2) := (aabb.upperBound.x,  aabb.upperBound.y);
+                           vs (3) := (aabb.lowerBound.x,  aabb.upperBound.y);
+
+                           Self.m_debugDraw.drawPolygon (vs, color);
+                        end;
+                     end loop;
+                  end;
+
+                  f := f.getNext;
+               end loop;
+
+               <<Continue>>
+               b := b.getNext;
+            end loop;
+         end;
+      end if;
+
+
+      if (flags and b2_Draw.e_centerOfMassBit) /= 0
+      then
+         declare
+            b  : b2Body_ptr := Self.m_bodyList;
+            xf : b2Transform;
+         begin
+            while b /= null
+            loop
+               xf   := b.getTransform;
+               xf.p := b.getWorldCenter;
+               Self.m_debugDraw.drawTransform (xf);
+
+               b := b.getNext;
+            end loop;
+         end;
+      end if;
+   end debugDraw;
 
 
 
