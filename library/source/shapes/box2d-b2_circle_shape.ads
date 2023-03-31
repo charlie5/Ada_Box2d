@@ -31,6 +31,7 @@ is
          m_p : aliased b2Vec2;     -- Position.
       end record;
 
+   type b2circleShape_ptr is access all b2circleShape;
 
 
 

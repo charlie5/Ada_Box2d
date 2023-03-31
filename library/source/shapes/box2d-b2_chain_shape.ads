@@ -28,11 +28,6 @@ is
 
 
 
-   type b2EdgeShape_ptr is access all b2EdgeShape;
-
-
-
-
    --  class b2chainShape : public b2Shape
    --  {
    --  public:
@@ -55,6 +50,8 @@ is
          m_prevVertex,
          m_nextVertex : b2Vec2;
       end record;
+
+   type b2chainShape_ptr is access all b2chainShape;
 
 
 

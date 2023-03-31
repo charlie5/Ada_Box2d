@@ -43,8 +43,6 @@ is
    --  }
    --
 
-   type b2polygonShape_ptr is access all b2polygonShape;
-
    overriding
    function clone (Self : in b2polygonShape) return b2Shape_ptr
    is

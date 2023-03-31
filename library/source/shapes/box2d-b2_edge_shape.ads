@@ -45,6 +45,7 @@ is
          m_oneSided :         Boolean;     -- Uses m_vertex0 and m_vertex3 to create smooth collision.
       end record;
 
+   type b2edgeShape_ptr is access all b2edgeShape;
 
 
    --    b2EdgeShape();

@@ -219,8 +219,6 @@ is
    --  }
    --
 
-   type b2chainShape_ptr is access all b2chainShape;
-
    overriding
    function clone (Self : in b2chainShape) return b2Shape_ptr
    is

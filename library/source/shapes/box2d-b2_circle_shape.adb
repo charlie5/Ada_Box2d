@@ -39,9 +39,6 @@ is
    --  }
    --
 
-   type b2circleShape_ptr is access all b2circleShape;
-
-
    overriding
    function clone (Self : in b2circleShape) return b2Shape_ptr
    is

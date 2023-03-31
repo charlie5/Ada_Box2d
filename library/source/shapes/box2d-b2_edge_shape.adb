@@ -89,9 +89,6 @@ is
    --  }
    --
 
-   type b2edgeShape_ptr is access all b2edgeShape;
-
-
    overriding
    function clone (Self : in b2edgeShape) return b2Shape_ptr
    is

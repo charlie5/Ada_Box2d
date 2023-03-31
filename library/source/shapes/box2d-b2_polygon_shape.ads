@@ -38,7 +38,7 @@ is
          m_Count    : Natural;
       end record;
 
-
+   type b2polygonShape_ptr is access all b2polygonShape;
 
    --    b2PolygonShape();
    --
