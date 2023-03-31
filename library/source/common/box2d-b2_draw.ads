@@ -209,7 +209,7 @@ private
 
    type b2Draw is abstract tagged
       record
-         m_drawFlags : flag_Set;
+         m_drawFlags : flag_Set := 0;
       end record;
 
 
