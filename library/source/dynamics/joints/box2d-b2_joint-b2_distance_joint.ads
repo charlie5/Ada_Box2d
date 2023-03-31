@@ -266,7 +266,7 @@ is
    --
 
    overriding
-   procedure draw (Self : in b2DistanceJoint);
+   procedure draw (Self : in b2DistanceJoint;   Draw : access b2Draw'Class);
 
 
 

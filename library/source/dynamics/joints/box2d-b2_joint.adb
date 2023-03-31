@@ -1,7 +1,6 @@
 with
      box2d.b2_Body,
      box2d.b2_Joint.b2_Distance_Joint,
-     box2d.b2_Draw,
      box2d.b2_Joint.b2_friction_Joint,
      box2d.b2_Joint.b2_gear_Joint,
      box2d.b2_Joint.b2_motor_Joint,
@@ -652,7 +651,7 @@ is
    --    }
    --  }
 
-   procedure draw (Self : in b2Joint)
+   procedure draw (Self : in b2Joint;   draw : access b2Draw'Class)
    is
    begin
       return;

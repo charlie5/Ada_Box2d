@@ -1,5 +1,6 @@
 with
      box2d.b2_time_Step,
+     box2d.b2_Draw,
      box2d.b2_Math;
      --  box2d.b2_Settings;
 
@@ -11,6 +12,7 @@ with
 package box2d.b2_Joint
 is
    use b2_time_Step,
+       box2d.b2_Draw,
        b2_Math;
        --  b2_Settings;
 
@@ -320,7 +322,7 @@ is
    --    virtual void Draw(b2Draw* draw) const;
    --
 
-   procedure draw (Self : in b2Joint);
+   procedure draw (Self : in b2Joint;   draw : access b2Draw'Class);
 
 
 
