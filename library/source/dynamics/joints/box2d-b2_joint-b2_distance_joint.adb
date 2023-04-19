@@ -976,8 +976,21 @@ is
    overriding
    procedure dump (Self : in b2DistanceJoint)
    is
+      indexA : constant Natural := Self.m_bodyA.m_islandIndex;
+      indexB : constant Natural := Self.m_bodyB.m_islandIndex;
    begin
-      raise Program_Error with "TODO";
+     b2Dump ("  b2DistanceJointDef   jd;");
+     b2Dump ("  jd.bodyA = bodies[%d];"                  & indexA                 'Image);
+     b2Dump ("  jd.bodyB = bodies[%d];"                  & indexB                 'Image);
+     b2Dump ("  jd.collideConnected = bool(%d);"         & Self.m_collideConnected'Image);
+     b2Dump ("  jd.localAnchorA.Set(%.9g, %.9g);"        & Self.m_localAnchorA.x  'Image & Self.m_localAnchorA.y'Image);
+     b2Dump ("  jd.localAnchorB.Set(%.9g, %.9g);"        & Self.m_localAnchorB.x  'Image & Self.m_localAnchorB.y'Image);
+     b2Dump ("  jd.length = %.9g;"                       & Self.m_length          'Image);
+     b2Dump ("  jd.minLength = %.9g;"                    & Self.m_minLength       'Image);
+     b2Dump ("  jd.maxLength = %.9g;"                    & Self.m_maxLength       'Image);
+     b2Dump ("  jd.stiffness = %.9g;"                    & Self.m_stiffness       'Image);
+     b2Dump ("  jd.damping = %.9g;"                      & Self.m_damping         'Image);
+     b2Dump ("  joints[%d] = m_world->CreateJoint(&jd);" & Self.m_index           'Image);
    end dump;
 
 
@@ -1023,13 +1036,47 @@ is
    overriding
    procedure draw (Self : in b2DistanceJoint;   Draw : access b2Draw'Class)
    is
+      xfA    : constant b2Transform := Self.m_bodyA.getTransform;
+      xfB    : constant b2Transform := Self.m_bodyB.getTransform;
+
+      pA     : constant b2Vec2      := b2Mul (xfA, Self.m_localAnchorA);
+      pB     : constant b2Vec2      := b2Mul (xfB, Self.m_localAnchorB);
+
+      axis   :          b2Vec2      := pB - pA;
+      length :          Real        := normalize (axis);
+
+      c1     : constant b2Color     := to_b2Color (0.7, 0.7, 0.7);
+      c2     : constant b2Color     := to_b2Color (0.3, 0.9, 0.3);
+      c3     : constant b2Color     := to_b2Color (0.9, 0.3, 0.3);
+      c4     : constant b2Color     := to_b2Color (0.4, 0.4, 0.4);
+
+      pRest  : constant b2Vec2      := pA + Self.m_length * axis;
    begin
-      draw_any (Self, Draw);
+      draw_any         (Self,  Draw);
+      draw.drawSegment (pA,    pB,  c4);
+      draw.drawPoint   (pRest, 8.0, c1);
 
-      raise Program_Error with "TODO";
+     if Self.m_minLength /= Self.m_maxLength
+     then
+        if Self.m_minLength > b2_linearSlop
+         then
+            declare
+               pMin : constant b2Vec2 := pA + Self.m_minLength * axis;
+            begin
+               draw.drawPoint (pMin, 4.0, c2);
+            end;
+        end if;
+
+        if Self.m_maxLength < Real'Last
+         then
+            declare
+               pMax : constant b2Vec2 := pA + Self.m_maxLength * axis;
+            begin
+               draw.drawPoint (pMax, 4.0, c3);
+            end;
+        end if;
+     end if;
    end draw;
-
-
 
 
 end box2d.b2_Joint.b2_Distance_Joint;
