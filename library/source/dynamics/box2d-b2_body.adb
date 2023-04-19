@@ -2,6 +2,7 @@ with
      box2d.b2_Contact,
      box2d.b2_World,
      box2d.b2_broad_Phase,
+     box2d.b2_Common,
 
      ada.unchecked_Deallocation;
 
@@ -2406,8 +2407,43 @@ is
 
    procedure dump (Self : in out b2Body)
    is
+      use b2_Common;
+
+      bodyIndex : constant Integer   := Self.m_islandIndex;
+      f         : access   b2Fixture := Self.m_fixtureList;
+
+      -- %.9g is sufficient to save and load the same value using text
+      -- FLT_DECIMAL_DIG == 9
    begin
-      raise program_Error with "TODO";
+      b2Dump ("{");
+      b2Dump ("  b2BodyDef   bd;");
+      b2Dump ("  bd.type = b2BodyType(%d);"                & Self.m_type'Image);
+      b2Dump ("  bd.position.Set(%.9g, %.9g);"             & Self.m_xf.p.x          'Image & Self.m_xf.p.y'Image);
+      b2Dump ("  bd.angle = %.9g;"                         & Self.m_sweep.a         'Image);
+      b2Dump ("  bd.linearVelocity.Set(%.9g, %.9g);"       & Self.m_linearVelocity.x'Image & Self.m_linearVelocity.y'Image);
+      b2Dump ("  bd.angularVelocity = %.9g;"               & Self.m_angularVelocity 'Image);
+      b2Dump ("  bd.linearDamping = %.9g;"                 & Self.m_linearDamping   'Image);
+      b2Dump ("  bd.angularDamping = %.9g;"                & Self.m_angularDamping  'Image);
+      b2Dump ("  bd.allowSleep = bool(%d);"                & Flag' (Self.m_flags and e_autoSleepFlag)    'Image);
+      b2Dump ("  bd.awake = bool(%d);"                     & Flag' (Self.m_flags and e_awakeFlag)        'Image);
+      b2Dump ("  bd.fixedRotation = bool(%d);"             & Flag' (Self.m_flags and e_fixedRotationFlag)'Image);
+      b2Dump ("  bd.bullet = bool(%d);"                    & Flag' (Self.m_flags and e_bulletFlag)       'Image);
+      b2Dump ("  bd.enabled = bool(%d);"                   & Flag' (Self.m_flags and e_enabledFlag)      'Image);
+      b2Dump ("  bd.gravityScale = %.9g;"                  & Self.m_gravityScale'Image);
+      b2Dump ("  bodies[%d] = m_world->CreateBody(&bd);\n" & Self.m_islandIndex 'Image);
+      b2Dump ("");
+
+      --  for (b2Fixture* f = m_fixtureList; f; f = f->m_next)
+      while f /= null
+      loop
+         b2Dump ("  {");
+         f.dump (bodyIndex);
+         b2Dump ("  }");
+
+         f := f.m_Next;
+      end loop;
+
+      b2Dump("}");
    end dump;
 
 
