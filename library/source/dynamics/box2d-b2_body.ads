@@ -902,7 +902,8 @@ is
    --    b2Body* GetNext();
    --
 
-   function getNext (Self : in out b2Body) return access b2Body;
+   function getNext (Self : in out b2Body) return access b2Body
+     with inline;
 
 
    --    const b2Body* GetNext() const;
