@@ -1024,6 +1024,8 @@ is
    procedure draw (Self : in b2DistanceJoint;   Draw : access b2Draw'Class)
    is
    begin
+      draw_any (Self, Draw);
+
       raise Program_Error with "TODO";
    end draw;
 

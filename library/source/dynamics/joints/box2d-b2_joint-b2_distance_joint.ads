@@ -100,7 +100,9 @@ is
    --  distance from each other. You can view this as a massless, rigid rod.
    --
 
-   type b2DistanceJoint is new b2_Joint.b2Joint with private;
+   type b2DistanceJoint     is new b2_Joint.b2Joint with private;
+   type b2DistanceJoint_ptr is access all b2DistanceJoint;
+
 
 
    --  class b2DistanceJoint : public b2Joint
