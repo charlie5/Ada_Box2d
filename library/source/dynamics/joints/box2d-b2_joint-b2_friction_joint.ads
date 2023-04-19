@@ -67,8 +67,8 @@ is
    --  class b2FrictionJoint : public b2Joint
    --  {
 
-   type b2FrictionJoint is new b2_Joint.b2Joint with private;
-
+   type b2FrictionJoint     is new b2_Joint.b2Joint with private;
+   type b2FrictionJoint_ptr is access all b2FrictionJoint'Class;
 
 
    --  public:
