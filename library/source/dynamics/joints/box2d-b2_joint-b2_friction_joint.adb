@@ -1,6 +1,7 @@
 with
      box2d.b2_Body,
-     box2d.b2_time_Step;
+     box2d.b2_time_Step,
+     box2d.b2_Common;
 
 
 package body box2d.b2_Joint.b2_friction_Joint
@@ -618,8 +619,20 @@ is
    overriding
    procedure dump (Self : in b2FrictionJoint)
    is
+      use b2_Common;
+
+      indexA : constant Natural := Self.m_bodyA.m_islandIndex;
+      indexB : constant Natural := Self.m_bodyB.m_islandIndex;
    begin
-      raise Program_Error with "TODO";
+     b2Dump ("  b2FrictionJointDef   jd;");
+     b2Dump ("  jd.bodyA = bodies[%d];"                  & indexA                 'Image);
+     b2Dump ("  jd.bodyB = bodies[%d];"                  & indexB                 'Image);
+     b2Dump ("  jd.collideConnected = bool(%d);"         & Self.m_collideConnected'Image);
+     b2Dump ("  jd.localAnchorA.Set(%.9g, %.9g);"        & Self.m_localAnchorA.x  'Image & Self.m_localAnchorA.y'Image);
+     b2Dump ("  jd.localAnchorB.Set(%.9g, %.9g);"        & Self.m_localAnchorB.x  'Image & Self.m_localAnchorB.y'Image);
+     b2Dump ("  jd.maxForce = %.9g;"                     & Self.m_maxForce        'Image);
+     b2Dump ("  jd.maxTorque = %.9g;"                    & Self.m_maxTorque       'Image);
+     b2Dump ("  joints[%d] = m_world->CreateJoint(&jd);" & Self.m_index           'Image);
    end dump;
 
 
