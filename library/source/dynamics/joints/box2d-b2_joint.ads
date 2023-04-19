@@ -314,7 +314,7 @@ is
    --    virtual void ShiftOrigin(const b2Vec2& newOrigin) { B2_NOT_USED(newOrigin);  }
    --
 
-   procedure shiftOrigin (Self : in b2Joint;   newOrigin : in b2Vec2) is null;
+   procedure shiftOrigin (Self : in out b2Joint;   newOrigin : in b2Vec2) is null;
 
 
 
@@ -322,7 +322,8 @@ is
    --    virtual void Draw(b2Draw* draw) const;
    --
 
-   procedure draw (Self : in b2Joint;   draw : access b2Draw'Class);
+   procedure draw_any (Self : in b2Joint'Class;   draw : access b2Draw'Class);
+   procedure draw     (Self : in b2Joint;         draw : access b2Draw'Class) is null;
 
 
 
@@ -358,7 +359,7 @@ is
 
    package Forge
    is
-      procedure define (Self : out b2Joint;   def : in b2JointDef);
+      procedure define (Self : out b2Joint'Class;   def : in b2JointDef'Class);
    end Forge;
 
 
