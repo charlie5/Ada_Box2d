@@ -3428,8 +3428,93 @@ is
 
    procedure dump (Self : in out b2World)
    is
+      use b2_Common;
+
+      i : Natural;
+      b : b2Body_ptr;
+      j : b2Joint_ptr;
    begin
-      raise Program_Error with "TODO";
+     if Self.m_locked
+     then
+        return;
+     end if;
+
+      b2OpenDump ("box2d_dump.inl");
+
+      b2Dump ("b2Vec2 g(%.9g, %.9g);" & Self.m_gravity.x'Image & Self.m_gravity.y'Image);
+      b2Dump ("m_world->SetGravity (g);");
+
+      b2Dump ("b2Body**  bodies = (b2Body **)b2Alloc (%d * sizeof (b2Body* ));" & Self.m_bodyCount'Image);
+      b2Dump ("b2Joint** joints = (b2Joint**)b2Alloc (%d * sizeof (b2Joint*));" & Self.m_jointCount'Image);
+
+
+      i := 0;
+      b := Self.m_bodyList;
+
+      while b /= null
+      loop
+         b.m_islandIndex_is (i);
+         b.dump;
+
+         i := i + 1;
+         b := b.m_next;
+      end loop;
+
+
+      i := 0;
+      j := Self.m_jointList;
+
+      while j /= null
+      loop
+         j.m_index_is (i);
+         i         := i + 1;
+         j         := j.m_next;
+      end loop;
+
+
+      -- First pass on joints, skip gear joints.
+      --
+      j := Self.m_jointList;
+
+      while j /= null
+      loop
+         if j.getType = e_gearJoint
+         then
+            null;
+         else
+            b2Dump ("{");
+            j.dump;
+            b2Dump ("}");
+         end if;
+
+         j := j.m_next;
+      end loop;
+
+
+      -- Second pass on joints, only gear joints.
+      --
+      j := Self.m_jointList;
+
+      while j /= null
+      loop
+         if j.getType /= e_gearJoint
+         then
+            null;
+         else
+            b2Dump ("{");
+            j.dump;
+            b2Dump ("}");
+         end if;
+
+         j := j.m_next;
+      end loop;
+
+      b2Dump ("b2Free (joints);");
+      b2Dump ("b2Free (bodies);");
+      b2Dump ("joints = null;");
+      b2Dump ("bodies = null;");
+
+      b2CloseDump;
    end dump;
 
 
