@@ -34,10 +34,11 @@ is
 
    Fast_Options := ("-g",
                     "-O3", 
+                    "-gnato",
+                    "-ffast-math",
+                    "-march=native",
                     "-gnatn2",
                     "-gnatp",
-                    "-funroll-loops",
-                    "-fpeel-loops",
                     "-ftracer",
                     "-funswitch-loops",
                     "-fweb",
@@ -46,12 +47,11 @@ is
    Small_Options := ("-Os",
                      "-gnatp",
                      "-fno-inline",
-                     "-march=i386",
+                     "-march=native",
                      "-ffunction-sections",
                      "-falign-jumps=0",
                      "-falign-loops=0",
-                     "-falign-functions=0",
-                     "-mpreferred-stack-boundary=2");
+                     "-falign-functions=0");
 
 
    -- Modify options to cater for the build mode.
