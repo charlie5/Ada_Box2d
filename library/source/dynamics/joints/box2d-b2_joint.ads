@@ -426,6 +426,10 @@ is
      with inline;
 
 
+   procedure m_Index_is (Self : in out b2Joint;   Now : in Natural)
+     with inline;
+
+
 
    --  inline b2JointType b2Joint::GetType() const
    --  {

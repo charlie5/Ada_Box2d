@@ -805,4 +805,12 @@ is
    end m_islandFlag_is;
 
 
+
+   procedure m_Index_is (Self : in out b2Joint;   Now : in Natural)
+   is
+   begin
+     Self.m_Index := Now;
+   end m_Index_is;
+
+
 end box2d.b2_Joint;
